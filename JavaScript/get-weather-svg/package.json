@@ -1,0 +1,13 @@
+{
+  "name": "get-weather-svg",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.2"
+  }
+}

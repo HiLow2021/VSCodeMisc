@@ -1,0 +1,24 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "build/index.d.ts": [ "build/index.d.ts" ],
+      "*": [ "build/*" ]
+    }
+  },
+  "exports": {
+    ".": "./build/index.js",
+    "./*": "./build/*.js"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "npx tsc --build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

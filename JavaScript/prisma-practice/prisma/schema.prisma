@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model t_member {
+  id        Int       @id
+  name      String    @db.VarChar(256)
+  sex_id    Int       @db.SmallInt
+  birth_day DateTime? @db.Date
+  zodiac_id Int?      @db.SmallInt
+  t_sex     t_sex     @relation(fields: [sex_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "t_member_ibfk_1")
+  t_zodiac  t_zodiac? @relation(fields: [zodiac_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "t_member_ibfk_2")
+
+  @@index([sex_id], map: "sex_id")
+  @@index([zodiac_id], map: "zodiac_id")
+}
+
+model t_sex {
+  id       Int        @id @db.SmallInt
+  name     String?    @db.VarChar(8)
+  t_member t_member[]
+}
+
+model t_zodiac {
+  id           Int        @id @db.SmallInt
+  namehiragana String?    @db.VarChar(16)
+  namekanji    String?    @db.VarChar(16)
+  nameenglish  String?    @db.VarChar(16)
+  symbol       String?    @db.Char(2)
+  t_member     t_member[]
+}

@@ -1,0 +1,946 @@
+{
+	"100": {
+		"code": 100,
+		"pathDaily": "100.svg",
+		"pathNight": "500.svg",
+		"unknown": "100",
+		"weatherJapanese": "晴",
+		"weatherEnglish": "CLEAR"
+	},
+	"101": {
+		"code": 101,
+		"pathDaily": "101.svg",
+		"pathNight": "501.svg",
+		"unknown": "100",
+		"weatherJapanese": "晴時々曇",
+		"weatherEnglish": "PARTLY CLOUDY"
+	},
+	"102": {
+		"code": 102,
+		"pathDaily": "102.svg",
+		"pathNight": "502.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴一時雨",
+		"weatherEnglish": "CLEAR, OCCASIONAL SCATTERED SHOWERS"
+	},
+	"103": {
+		"code": 103,
+		"pathDaily": "102.svg",
+		"pathNight": "502.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴時々雨",
+		"weatherEnglish": "CLEAR, FREQUENT SCATTERED SHOWERS"
+	},
+	"104": {
+		"code": 104,
+		"pathDaily": "104.svg",
+		"pathNight": "504.svg",
+		"unknown": "400",
+		"weatherJapanese": "晴一時雪",
+		"weatherEnglish": "CLEAR, SNOW FLURRIES"
+	},
+	"105": {
+		"code": 105,
+		"pathDaily": "104.svg",
+		"pathNight": "504.svg",
+		"unknown": "400",
+		"weatherJapanese": "晴時々雪",
+		"weatherEnglish": "CLEAR, FREQUENT SNOW FLURRIES"
+	},
+	"106": {
+		"code": 106,
+		"pathDaily": "102.svg",
+		"pathNight": "502.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴一時雨か雪",
+		"weatherEnglish": "CLEAR, OCCASIONAL SCATTERED SHOWERS OR SNOW FLURRIES"
+	},
+	"107": {
+		"code": 107,
+		"pathDaily": "102.svg",
+		"pathNight": "502.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴時々雨か雪",
+		"weatherEnglish": "CLEAR, FREQUENT SCATTERED SHOWERS OR SNOW FLURRIES"
+	},
+	"108": {
+		"code": 108,
+		"pathDaily": "102.svg",
+		"pathNight": "502.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴一時雨か雷雨",
+		"weatherEnglish": "CLEAR, OCCASIONAL SCATTERED SHOWERS AND/OR THUNDER"
+	},
+	"110": {
+		"code": 110,
+		"pathDaily": "110.svg",
+		"pathNight": "510.svg",
+		"unknown": "100",
+		"weatherJapanese": "晴後時々曇",
+		"weatherEnglish": "CLEAR, PARTLY CLOUDY LATER"
+	},
+	"111": {
+		"code": 111,
+		"pathDaily": "110.svg",
+		"pathNight": "510.svg",
+		"unknown": "100",
+		"weatherJapanese": "晴後曇",
+		"weatherEnglish": "CLEAR, CLOUDY LATER"
+	},
+	"112": {
+		"code": 112,
+		"pathDaily": "112.svg",
+		"pathNight": "512.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴後一時雨",
+		"weatherEnglish": "CLEAR, OCCASIONAL SCATTERED SHOWERS LATER"
+	},
+	"113": {
+		"code": 113,
+		"pathDaily": "112.svg",
+		"pathNight": "512.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴後時々雨",
+		"weatherEnglish": "CLEAR, FREQUENT SCATTERED SHOWERS LATER"
+	},
+	"114": {
+		"code": 114,
+		"pathDaily": "112.svg",
+		"pathNight": "512.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴後雨",
+		"weatherEnglish": "CLEAR,RAIN LATER"
+	},
+	"115": {
+		"code": 115,
+		"pathDaily": "115.svg",
+		"pathNight": "515.svg",
+		"unknown": "400",
+		"weatherJapanese": "晴後一時雪",
+		"weatherEnglish": "CLEAR, OCCASIONAL SNOW FLURRIES LATER"
+	},
+	"116": {
+		"code": 116,
+		"pathDaily": "115.svg",
+		"pathNight": "515.svg",
+		"unknown": "400",
+		"weatherJapanese": "晴後時々雪",
+		"weatherEnglish": "CLEAR, FREQUENT SNOW FLURRIES LATER"
+	},
+	"117": {
+		"code": 117,
+		"pathDaily": "115.svg",
+		"pathNight": "515.svg",
+		"unknown": "400",
+		"weatherJapanese": "晴後雪",
+		"weatherEnglish": "CLEAR,SNOW LATER"
+	},
+	"118": {
+		"code": 118,
+		"pathDaily": "112.svg",
+		"pathNight": "512.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴後雨か雪",
+		"weatherEnglish": "CLEAR, RAIN OR SNOW LATER"
+	},
+	"119": {
+		"code": 119,
+		"pathDaily": "112.svg",
+		"pathNight": "512.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴後雨か雷雨",
+		"weatherEnglish": "CLEAR, RAIN AND/OR THUNDER LATER"
+	},
+	"120": {
+		"code": 120,
+		"pathDaily": "102.svg",
+		"pathNight": "502.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴朝夕一時雨",
+		"weatherEnglish": "OCCASIONAL SCATTERED SHOWERS IN THE MORNING AND EVENING, CLEAR DURING THE DAY"
+	},
+	"121": {
+		"code": 121,
+		"pathDaily": "102.svg",
+		"pathNight": "502.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴朝の内一時雨",
+		"weatherEnglish": "OCCASIONAL SCATTERED SHOWERS IN THE MORNING, CLEAR DURING THE DAY"
+	},
+	"122": {
+		"code": 122,
+		"pathDaily": "112.svg",
+		"pathNight": "512.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴夕方一時雨",
+		"weatherEnglish": "CLEAR, OCCASIONAL SCATTERED SHOWERS IN THE EVENING"
+	},
+	"123": {
+		"code": 123,
+		"pathDaily": "100.svg",
+		"pathNight": "500.svg",
+		"unknown": "100",
+		"weatherJapanese": "晴山沿い雷雨",
+		"weatherEnglish": "CLEAR IN THE PLAINS, RAIN AND THUNDER NEAR MOUTAINOUS AREAS"
+	},
+	"124": {
+		"code": 124,
+		"pathDaily": "100.svg",
+		"pathNight": "500.svg",
+		"unknown": "100",
+		"weatherJapanese": "晴山沿い雪",
+		"weatherEnglish": "CLEAR IN THE PLAINS, SNOW NEAR MOUTAINOUS AREAS"
+	},
+	"125": {
+		"code": 125,
+		"pathDaily": "112.svg",
+		"pathNight": "512.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴午後は雷雨",
+		"weatherEnglish": "CLEAR, RAIN AND THUNDER IN THE AFTERNOON"
+	},
+	"126": {
+		"code": 126,
+		"pathDaily": "112.svg",
+		"pathNight": "512.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴昼頃から雨",
+		"weatherEnglish": "CLEAR, RAIN IN THE AFTERNOON"
+	},
+	"127": {
+		"code": 127,
+		"pathDaily": "112.svg",
+		"pathNight": "512.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴夕方から雨",
+		"weatherEnglish": "CLEAR, RAIN IN THE EVENING"
+	},
+	"128": {
+		"code": 128,
+		"pathDaily": "112.svg",
+		"pathNight": "512.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴夜は雨",
+		"weatherEnglish": "CLEAR, RAIN IN THE NIGHT"
+	},
+	"130": {
+		"code": 130,
+		"pathDaily": "100.svg",
+		"pathNight": "500.svg",
+		"unknown": "100",
+		"weatherJapanese": "朝の内霧後晴",
+		"weatherEnglish": "FOG IN THE MORNING, CLEAR LATER"
+	},
+	"131": {
+		"code": 131,
+		"pathDaily": "100.svg",
+		"pathNight": "500.svg",
+		"unknown": "100",
+		"weatherJapanese": "晴明け方霧",
+		"weatherEnglish": "FOG AROUND DAWN, CLEAR LATER"
+	},
+	"132": {
+		"code": 132,
+		"pathDaily": "101.svg",
+		"pathNight": "501.svg",
+		"unknown": "100",
+		"weatherJapanese": "晴朝夕曇",
+		"weatherEnglish": "CLOUDY IN THE MORNING AND EVENING, CLEAR DURING THE DAY"
+	},
+	"140": {
+		"code": 140,
+		"pathDaily": "102.svg",
+		"pathNight": "502.svg",
+		"unknown": "300",
+		"weatherJapanese": "晴時々雨で雷を伴う",
+		"weatherEnglish": "CLEAR, FREQUENT SCATTERED SHOWERS AND THUNDER"
+	},
+	"160": {
+		"code": 160,
+		"pathDaily": "104.svg",
+		"pathNight": "504.svg",
+		"unknown": "400",
+		"weatherJapanese": "晴一時雪か雨",
+		"weatherEnglish": "CLEAR, SNOW FLURRIES OR OCCASIONAL SCATTERED SHOWERS"
+	},
+	"170": {
+		"code": 170,
+		"pathDaily": "104.svg",
+		"pathNight": "504.svg",
+		"unknown": "400",
+		"weatherJapanese": "晴時々雪か雨",
+		"weatherEnglish": "CLEAR, FREQUENT SNOW FLURRIES OR SCATTERED SHOWERS"
+	},
+	"181": {
+		"code": 181,
+		"pathDaily": "115.svg",
+		"pathNight": "515.svg",
+		"unknown": "400",
+		"weatherJapanese": "晴後雪か雨",
+		"weatherEnglish": "CLEAR, SNOW OR RAIN LATER"
+	},
+	"200": {
+		"code": 200,
+		"pathDaily": "200.svg",
+		"pathNight": "200.svg",
+		"unknown": "200",
+		"weatherJapanese": "曇",
+		"weatherEnglish": "CLOUDY"
+	},
+	"201": {
+		"code": 201,
+		"pathDaily": "201.svg",
+		"pathNight": "601.svg",
+		"unknown": "200",
+		"weatherJapanese": "曇時々晴",
+		"weatherEnglish": "MOSTLY CLOUDY"
+	},
+	"202": {
+		"code": 202,
+		"pathDaily": "202.svg",
+		"pathNight": "202.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇一時雨",
+		"weatherEnglish": "CLOUDY, OCCASIONAL SCATTERED SHOWERS"
+	},
+	"203": {
+		"code": 203,
+		"pathDaily": "202.svg",
+		"pathNight": "202.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇時々雨",
+		"weatherEnglish": "CLOUDY, FREQUENT SCATTERED SHOWERS"
+	},
+	"204": {
+		"code": 204,
+		"pathDaily": "204.svg",
+		"pathNight": "204.svg",
+		"unknown": "400",
+		"weatherJapanese": "曇一時雪",
+		"weatherEnglish": "CLOUDY, OCCASIONAL SNOW FLURRIES"
+	},
+	"205": {
+		"code": 205,
+		"pathDaily": "204.svg",
+		"pathNight": "204.svg",
+		"unknown": "400",
+		"weatherJapanese": "曇時々雪",
+		"weatherEnglish": "CLOUDY FREQUENT SNOW FLURRIES"
+	},
+	"206": {
+		"code": 206,
+		"pathDaily": "202.svg",
+		"pathNight": "202.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇一時雨か雪",
+		"weatherEnglish": "CLOUDY, OCCASIONAL SCATTERED SHOWERS OR SNOW FLURRIES"
+	},
+	"207": {
+		"code": 207,
+		"pathDaily": "202.svg",
+		"pathNight": "202.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇時々雨か雪",
+		"weatherEnglish": "CLOUDY, FREQUENT SCCATERED SHOWERS OR SNOW FLURRIES"
+	},
+	"208": {
+		"code": 208,
+		"pathDaily": "202.svg",
+		"pathNight": "202.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇一時雨か雷雨",
+		"weatherEnglish": "CLOUDY, OCCASIONAL SCATTERED SHOWERS AND/OR THUNDER"
+	},
+	"209": {
+		"code": 209,
+		"pathDaily": "200.svg",
+		"pathNight": "200.svg",
+		"unknown": "200",
+		"weatherJapanese": "霧",
+		"weatherEnglish": "FOG"
+	},
+	"210": {
+		"code": 210,
+		"pathDaily": "210.svg",
+		"pathNight": "610.svg",
+		"unknown": "200",
+		"weatherJapanese": "曇後時々晴",
+		"weatherEnglish": "CLOUDY, PARTLY CLOUDY LATER"
+	},
+	"211": {
+		"code": 211,
+		"pathDaily": "210.svg",
+		"pathNight": "610.svg",
+		"unknown": "200",
+		"weatherJapanese": "曇後晴",
+		"weatherEnglish": "CLOUDY, CLEAR LATER"
+	},
+	"212": {
+		"code": 212,
+		"pathDaily": "212.svg",
+		"pathNight": "212.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇後一時雨",
+		"weatherEnglish": "CLOUDY, OCCASIONAL SCATTERED SHOWERS LATER"
+	},
+	"213": {
+		"code": 213,
+		"pathDaily": "212.svg",
+		"pathNight": "212.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇後時々雨",
+		"weatherEnglish": "CLOUDY, FREQUENT SCATTERED SHOWERS LATER"
+	},
+	"214": {
+		"code": 214,
+		"pathDaily": "212.svg",
+		"pathNight": "212.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇後雨",
+		"weatherEnglish": "CLOUDY, RAIN LATER"
+	},
+	"215": {
+		"code": 215,
+		"pathDaily": "215.svg",
+		"pathNight": "215.svg",
+		"unknown": "400",
+		"weatherJapanese": "曇後一時雪",
+		"weatherEnglish": "CLOUDY, SNOW FLURRIES LATER"
+	},
+	"216": {
+		"code": 216,
+		"pathDaily": "215.svg",
+		"pathNight": "215.svg",
+		"unknown": "400",
+		"weatherJapanese": "曇後時々雪",
+		"weatherEnglish": "CLOUDY, FREQUENT SNOW FLURRIES LATER"
+	},
+	"217": {
+		"code": 217,
+		"pathDaily": "215.svg",
+		"pathNight": "215.svg",
+		"unknown": "400",
+		"weatherJapanese": "曇後雪",
+		"weatherEnglish": "CLOUDY, SNOW LATER"
+	},
+	"218": {
+		"code": 218,
+		"pathDaily": "212.svg",
+		"pathNight": "212.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇後雨か雪",
+		"weatherEnglish": "CLOUDY, RAIN OR SNOW LATER"
+	},
+	"219": {
+		"code": 219,
+		"pathDaily": "212.svg",
+		"pathNight": "212.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇後雨か雷雨",
+		"weatherEnglish": "CLOUDY, RAIN AND/OR THUNDER LATER"
+	},
+	"220": {
+		"code": 220,
+		"pathDaily": "202.svg",
+		"pathNight": "202.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇朝夕一時雨",
+		"weatherEnglish": "OCCASIONAL SCCATERED SHOWERS IN THE MORNING AND EVENING, CLOUDY DURING THE DAY"
+	},
+	"221": {
+		"code": 221,
+		"pathDaily": "202.svg",
+		"pathNight": "202.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇朝の内一時雨",
+		"weatherEnglish": "CLOUDY OCCASIONAL SCCATERED SHOWERS IN THE MORNING"
+	},
+	"222": {
+		"code": 222,
+		"pathDaily": "212.svg",
+		"pathNight": "212.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇夕方一時雨",
+		"weatherEnglish": "CLOUDY, OCCASIONAL SCCATERED SHOWERS IN THE EVENING"
+	},
+	"223": {
+		"code": 223,
+		"pathDaily": "201.svg",
+		"pathNight": "601.svg",
+		"unknown": "200",
+		"weatherJapanese": "曇日中時々晴",
+		"weatherEnglish": "CLOUDY IN THE MORNING AND EVENING, PARTLY CLOUDY DURING THE DAY,"
+	},
+	"224": {
+		"code": 224,
+		"pathDaily": "212.svg",
+		"pathNight": "212.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇昼頃から雨",
+		"weatherEnglish": "CLOUDY, RAIN IN THE AFTERNOON"
+	},
+	"225": {
+		"code": 225,
+		"pathDaily": "212.svg",
+		"pathNight": "212.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇夕方から雨",
+		"weatherEnglish": "CLOUDY, RAIN IN THE EVENING"
+	},
+	"226": {
+		"code": 226,
+		"pathDaily": "212.svg",
+		"pathNight": "212.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇夜は雨",
+		"weatherEnglish": "CLOUDY, RAIN IN THE NIGHT"
+	},
+	"228": {
+		"code": 228,
+		"pathDaily": "215.svg",
+		"pathNight": "215.svg",
+		"unknown": "400",
+		"weatherJapanese": "曇昼頃から雪",
+		"weatherEnglish": "CLOUDY, SNOW IN THE AFTERNOON"
+	},
+	"229": {
+		"code": 229,
+		"pathDaily": "215.svg",
+		"pathNight": "215.svg",
+		"unknown": "400",
+		"weatherJapanese": "曇夕方から雪",
+		"weatherEnglish": "CLOUDY, SNOW IN THE EVENING"
+	},
+	"230": {
+		"code": 230,
+		"pathDaily": "215.svg",
+		"pathNight": "215.svg",
+		"unknown": "400",
+		"weatherJapanese": "曇夜は雪",
+		"weatherEnglish": "CLOUDY, SNOW IN THE NIGHT"
+	},
+	"231": {
+		"code": 231,
+		"pathDaily": "200.svg",
+		"pathNight": "200.svg",
+		"unknown": "200",
+		"weatherJapanese": "曇海上海岸は霧か霧雨",
+		"weatherEnglish": "CLOUDY, FOG OR DRIZZLING ON THE SEA AND NEAR SEASHORE"
+	},
+	"240": {
+		"code": 240,
+		"pathDaily": "202.svg",
+		"pathNight": "202.svg",
+		"unknown": "300",
+		"weatherJapanese": "曇時々雨で雷を伴う",
+		"weatherEnglish": "CLOUDY, FREQUENT SCCATERED SHOWERS AND THUNDER"
+	},
+	"250": {
+		"code": 250,
+		"pathDaily": "204.svg",
+		"pathNight": "204.svg",
+		"unknown": "400",
+		"weatherJapanese": "曇時々雪で雷を伴う",
+		"weatherEnglish": "CLOUDY, FREQUENT SNOW AND THUNDER"
+	},
+	"260": {
+		"code": 260,
+		"pathDaily": "204.svg",
+		"pathNight": "204.svg",
+		"unknown": "400",
+		"weatherJapanese": "曇一時雪か雨",
+		"weatherEnglish": "CLOUDY, SNOW FLURRIES OR OCCASIONAL SCATTERED SHOWERS"
+	},
+	"270": {
+		"code": 270,
+		"pathDaily": "204.svg",
+		"pathNight": "204.svg",
+		"unknown": "400",
+		"weatherJapanese": "曇時々雪か雨",
+		"weatherEnglish": "CLOUDY, FREQUENT SNOW FLURRIES OR SCATTERED SHOWERS"
+	},
+	"281": {
+		"code": 281,
+		"pathDaily": "215.svg",
+		"pathNight": "215.svg",
+		"unknown": "400",
+		"weatherJapanese": "曇後雪か雨",
+		"weatherEnglish": "CLOUDY, SNOW OR RAIN LATER"
+	},
+	"300": {
+		"code": 300,
+		"pathDaily": "300.svg",
+		"pathNight": "300.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨",
+		"weatherEnglish": "RAIN"
+	},
+	"301": {
+		"code": 301,
+		"pathDaily": "301.svg",
+		"pathNight": "701.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨時々晴",
+		"weatherEnglish": "RAIN, PARTLY CLOUDY"
+	},
+	"302": {
+		"code": 302,
+		"pathDaily": "302.svg",
+		"pathNight": "302.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨時々止む",
+		"weatherEnglish": "SHOWERS THROUGHOUT THE DAY"
+	},
+	"303": {
+		"code": 303,
+		"pathDaily": "303.svg",
+		"pathNight": "303.svg",
+		"unknown": "400",
+		"weatherJapanese": "雨時々雪",
+		"weatherEnglish": "RAIN,FREQUENT SNOW FLURRIES"
+	},
+	"304": {
+		"code": 304,
+		"pathDaily": "300.svg",
+		"pathNight": "300.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨か雪",
+		"weatherEnglish": "RAINORSNOW"
+	},
+	"306": {
+		"code": 306,
+		"pathDaily": "300.svg",
+		"pathNight": "300.svg",
+		"unknown": "300",
+		"weatherJapanese": "大雨",
+		"weatherEnglish": "HEAVYRAIN"
+	},
+	"308": {
+		"code": 308,
+		"pathDaily": "308.svg",
+		"pathNight": "308.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨で暴風を伴う",
+		"weatherEnglish": "RAINSTORM"
+	},
+	"309": {
+		"code": 309,
+		"pathDaily": "303.svg",
+		"pathNight": "303.svg",
+		"unknown": "400",
+		"weatherJapanese": "雨一時雪",
+		"weatherEnglish": "RAIN,OCCASIONAL SNOW"
+	},
+	"311": {
+		"code": 311,
+		"pathDaily": "311.svg",
+		"pathNight": "711.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨後晴",
+		"weatherEnglish": "RAIN,CLEAR LATER"
+	},
+	"313": {
+		"code": 313,
+		"pathDaily": "313.svg",
+		"pathNight": "313.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨後曇",
+		"weatherEnglish": "RAIN,CLOUDY LATER"
+	},
+	"314": {
+		"code": 314,
+		"pathDaily": "314.svg",
+		"pathNight": "314.svg",
+		"unknown": "400",
+		"weatherJapanese": "雨後時々雪",
+		"weatherEnglish": "RAIN, FREQUENT SNOW FLURRIES LATER"
+	},
+	"315": {
+		"code": 315,
+		"pathDaily": "314.svg",
+		"pathNight": "314.svg",
+		"unknown": "400",
+		"weatherJapanese": "雨後雪",
+		"weatherEnglish": "RAIN,SNOW LATER"
+	},
+	"316": {
+		"code": 316,
+		"pathDaily": "311.svg",
+		"pathNight": "711.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨か雪後晴",
+		"weatherEnglish": "RAIN OR SNOW, CLEAR LATER"
+	},
+	"317": {
+		"code": 317,
+		"pathDaily": "313.svg",
+		"pathNight": "313.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨か雪後曇",
+		"weatherEnglish": "RAIN OR SNOW, CLOUDY LATER"
+	},
+	"320": {
+		"code": 320,
+		"pathDaily": "311.svg",
+		"pathNight": "711.svg",
+		"unknown": "300",
+		"weatherJapanese": "朝の内雨後晴",
+		"weatherEnglish": "RAIN IN THE MORNING, CLEAR LATER"
+	},
+	"321": {
+		"code": 321,
+		"pathDaily": "313.svg",
+		"pathNight": "313.svg",
+		"unknown": "300",
+		"weatherJapanese": "朝の内雨後曇",
+		"weatherEnglish": "RAIN IN THE MORNING, CLOUDY LATER"
+	},
+	"322": {
+		"code": 322,
+		"pathDaily": "303.svg",
+		"pathNight": "303.svg",
+		"unknown": "400",
+		"weatherJapanese": "雨朝晩一時雪",
+		"weatherEnglish": "OCCASIONAL SNOW IN THE MORNING AND EVENING, RAIN DURING THE DAY"
+	},
+	"323": {
+		"code": 323,
+		"pathDaily": "311.svg",
+		"pathNight": "711.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨昼頃から晴",
+		"weatherEnglish": "RAIN, CLEAR IN THE AFTERNOON"
+	},
+	"324": {
+		"code": 324,
+		"pathDaily": "311.svg",
+		"pathNight": "711.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨夕方から晴",
+		"weatherEnglish": "RAIN, CLEAR IN THE EVENING"
+	},
+	"325": {
+		"code": 325,
+		"pathDaily": "311.svg",
+		"pathNight": "711.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨夜は晴",
+		"weatherEnglish": "RAIN, CLEAR IN THE NIGHT"
+	},
+	"326": {
+		"code": 326,
+		"pathDaily": "314.svg",
+		"pathNight": "314.svg",
+		"unknown": "400",
+		"weatherJapanese": "雨夕方から雪",
+		"weatherEnglish": "RAIN, SNOW IN THE EVENING"
+	},
+	"327": {
+		"code": 327,
+		"pathDaily": "314.svg",
+		"pathNight": "314.svg",
+		"unknown": "400",
+		"weatherJapanese": "雨夜は雪",
+		"weatherEnglish": "RAIN,SNOW IN THE NIGHT"
+	},
+	"328": {
+		"code": 328,
+		"pathDaily": "300.svg",
+		"pathNight": "300.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨一時強く降る",
+		"weatherEnglish": "RAIN, EXPECT OCCASIONAL HEAVY RAINFALL"
+	},
+	"329": {
+		"code": 329,
+		"pathDaily": "300.svg",
+		"pathNight": "300.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨一時みぞれ",
+		"weatherEnglish": "RAIN, OCCASIONAL SLEET"
+	},
+	"340": {
+		"code": 340,
+		"pathDaily": "400.svg",
+		"pathNight": "400.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪か雨",
+		"weatherEnglish": "SNOWORRAIN"
+	},
+	"350": {
+		"code": 350,
+		"pathDaily": "300.svg",
+		"pathNight": "300.svg",
+		"unknown": "300",
+		"weatherJapanese": "雨で雷を伴う",
+		"weatherEnglish": "RAIN AND THUNDER"
+	},
+	"361": {
+		"code": 361,
+		"pathDaily": "411.svg",
+		"pathNight": "811.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪か雨後晴",
+		"weatherEnglish": "SNOW OR RAIN, CLEAR LATER"
+	},
+	"371": {
+		"code": 371,
+		"pathDaily": "413.svg",
+		"pathNight": "413.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪か雨後曇",
+		"weatherEnglish": "SNOW OR RAIN, CLOUDY LATER"
+	},
+	"400": {
+		"code": 400,
+		"pathDaily": "400.svg",
+		"pathNight": "400.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪",
+		"weatherEnglish": "SNOW"
+	},
+	"401": {
+		"code": 401,
+		"pathDaily": "401.svg",
+		"pathNight": "801.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪時々晴",
+		"weatherEnglish": "SNOW, FREQUENT CLEAR"
+	},
+	"402": {
+		"code": 402,
+		"pathDaily": "402.svg",
+		"pathNight": "402.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪時々止む",
+		"weatherEnglish": "SNOWTHROUGHOUT THE DAY"
+	},
+	"403": {
+		"code": 403,
+		"pathDaily": "403.svg",
+		"pathNight": "403.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪時々雨",
+		"weatherEnglish": "SNOW,FREQUENT SCCATERED SHOWERS"
+	},
+	"405": {
+		"code": 405,
+		"pathDaily": "400.svg",
+		"pathNight": "400.svg",
+		"unknown": "400",
+		"weatherJapanese": "大雪",
+		"weatherEnglish": "HEAVYSNOW"
+	},
+	"406": {
+		"code": 406,
+		"pathDaily": "406.svg",
+		"pathNight": "406.svg",
+		"unknown": "400",
+		"weatherJapanese": "風雪強い",
+		"weatherEnglish": "SNOWSTORM"
+	},
+	"407": {
+		"code": 407,
+		"pathDaily": "406.svg",
+		"pathNight": "406.svg",
+		"unknown": "400",
+		"weatherJapanese": "暴風雪",
+		"weatherEnglish": "HEAVYSNOWSTORM"
+	},
+	"409": {
+		"code": 409,
+		"pathDaily": "403.svg",
+		"pathNight": "403.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪一時雨",
+		"weatherEnglish": "SNOW, OCCASIONAL SCCATERED SHOWERS"
+	},
+	"411": {
+		"code": 411,
+		"pathDaily": "411.svg",
+		"pathNight": "811.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪後晴",
+		"weatherEnglish": "SNOW,CLEAR LATER"
+	},
+	"413": {
+		"code": 413,
+		"pathDaily": "413.svg",
+		"pathNight": "413.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪後曇",
+		"weatherEnglish": "SNOW,CLOUDY LATER"
+	},
+	"414": {
+		"code": 414,
+		"pathDaily": "414.svg",
+		"pathNight": "414.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪後雨",
+		"weatherEnglish": "SNOW,RAIN LATER"
+	},
+	"420": {
+		"code": 420,
+		"pathDaily": "411.svg",
+		"pathNight": "811.svg",
+		"unknown": "400",
+		"weatherJapanese": "朝の内雪後晴",
+		"weatherEnglish": "SNOW IN THE MORNING, CLEAR LATER"
+	},
+	"421": {
+		"code": 421,
+		"pathDaily": "413.svg",
+		"pathNight": "413.svg",
+		"unknown": "400",
+		"weatherJapanese": "朝の内雪後曇",
+		"weatherEnglish": "SNOW IN THE MORNING, CLOUDY LATER"
+	},
+	"422": {
+		"code": 422,
+		"pathDaily": "414.svg",
+		"pathNight": "414.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪昼頃から雨",
+		"weatherEnglish": "SNOW, RAIN IN THE AFTERNOON"
+	},
+	"423": {
+		"code": 423,
+		"pathDaily": "414.svg",
+		"pathNight": "414.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪夕方から雨",
+		"weatherEnglish": "SNOW, RAIN IN THE EVENING"
+	},
+	"425": {
+		"code": 425,
+		"pathDaily": "400.svg",
+		"pathNight": "400.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪一時強く降る",
+		"weatherEnglish": "SNOW, EXPECT OCCASIONAL HEAVY SNOWFALL"
+	},
+	"426": {
+		"code": 426,
+		"pathDaily": "400.svg",
+		"pathNight": "400.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪後みぞれ",
+		"weatherEnglish": "SNOW, SLEET LATER"
+	},
+	"427": {
+		"code": 427,
+		"pathDaily": "400.svg",
+		"pathNight": "400.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪一時みぞれ",
+		"weatherEnglish": "SNOW, OCCASIONAL SLEET"
+	},
+	"450": {
+		"code": 450,
+		"pathDaily": "400.svg",
+		"pathNight": "400.svg",
+		"unknown": "400",
+		"weatherJapanese": "雪で雷を伴う",
+		"weatherEnglish": "SNOW AND THUNDER"
+	}
+}

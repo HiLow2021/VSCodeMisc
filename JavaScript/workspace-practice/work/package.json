@@ -1,0 +1,17 @@
+{
+  "name": "work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/index.js",
+  "scripts": {
+    "build": "npx tsc --build",
+    "debug": "npx ts-node ./src/index.ts",
+    "start": "node ./build/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "shared": "^1.0.0"
+  }
+}

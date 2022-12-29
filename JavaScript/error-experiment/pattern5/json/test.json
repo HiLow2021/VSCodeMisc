@@ -1,0 +1,10 @@
+[
+  {
+    "errorCode": "errorCode1",
+    "errorMessage": "errorMessageJson1"
+  },
+  {
+    "errorCode": "errorCode2",
+    "errorMessage": "errorMessageJson2"
+  }
+]

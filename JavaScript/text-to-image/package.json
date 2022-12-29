@@ -1,0 +1,14 @@
+{
+  "name": "text-to-image",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "text-to-image": "^4.1.1",
+    "ultimate-text-to-image": "^1.0.0"
+  }
+}
