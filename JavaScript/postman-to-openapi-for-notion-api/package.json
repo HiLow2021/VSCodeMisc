@@ -1,0 +1,15 @@
+{
+  "name": "postman-to-openapi-for-notion-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx p2o ./Notion_API.postman_collection.json -f ./Notion_API.result.yml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "postman-to-openapi": "^3.0.0"
+  }
+}

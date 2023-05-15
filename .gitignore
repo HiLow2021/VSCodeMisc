@@ -3,3 +3,5 @@ output
 out
 obj
 build
+.env
+credentials.json

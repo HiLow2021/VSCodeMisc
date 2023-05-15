@@ -1,0 +1,16 @@
+{
+  "name": "gcp-speech-to-text",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/speech": "^5.0.3",
+    "deepl-node": "^1.6.0",
+    "dotenv": "^16.0.3",
+    "node-record-lpcm16": "^1.0.1"
+  }
+}
