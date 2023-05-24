@@ -1,6 +1,7 @@
 node_modules
 output
 out
+bin
 obj
 build
 .env
