@@ -1,5 +1,52 @@
 # 導入
 
+## JavaScript 版
+
+1. プロジェクト初期化
+
+```sh
+> npm init -y
+```
+
+2. Prisma インストール
+
+```sh
+> npm install prisma --save-dev
+```
+
+3. Prisma セットアップ (MySQL用)
+
+```sh
+> npx prisma init --datasource-provider mysql
+```
+
+4. .env ファイルに指定したDBのURLを記述 (MySQL用)
+
+```
+DATABASE_URL="mysql://root:password@localhost:13306/mydb"
+```
+
+5. 既存のDBスキーマからPrismaスキーマを構築
+
+```sh
+> npx prisma db pull
+```
+  - prisma フォルダのschema.prismaファイルに、スキーマが追加される。
+
+6. Prisma Client を生成する
+
+```sh
+> npx prisma generate
+```
+  - コード内で、Prisma Client を使用できるようになる。
+
+```ts
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+```
+
+## TypeScript 版
+
 1. プロジェクト初期化
 
 ```sh
@@ -33,14 +80,20 @@
 > npx prisma init --datasource-provider mysql
 ```
 
-5. 既存のDBスキーマからPrismaスキーマを構築
+5. .env ファイルに指定したDBのURLを記述 (MySQL用)
+
+```
+DATABASE_URL="mysql://root:password@localhost:13306/mydb"
+```
+
+6. 既存のDBスキーマからPrismaスキーマを構築
 
 ```sh
 > npx prisma db pull
 ```
   - prisma フォルダのschema.prismaファイルに、スキーマが追加される。
 
-6. Prisma Client を生成する
+7. Prisma Client を生成する
 
 ```sh
 > npx prisma generate
@@ -52,6 +105,6 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 ```
 
-# 接続先のDB
+## 接続先のDB
 
 docker フォルダ参照。
