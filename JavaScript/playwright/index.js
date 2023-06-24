@@ -15,4 +15,3 @@ const html = await page.content();
 
 fs.writeFileSync(`${outDirectory}page.html`, html, 'utf8');
 await browser.close();
-
