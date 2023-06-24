@@ -13,7 +13,7 @@ const browser = await puppeteer.launch({
 const page = await browser.newPage();
 
 await page.goto('https://www.google.com/');
-await page.screenshot({ path: './out/screenshot.png', fullPage: true });
+await page.screenshot({ path: `${outDirectory}screenshot.png`, fullPage: true });
 const html = await page.content();
 
 fs.writeFileSync(`${outDirectory}page.html`, html, 'utf8');
