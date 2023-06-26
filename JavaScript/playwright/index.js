@@ -7,7 +7,7 @@ if (!fs.existsSync(outDirectory)) {
 }
 
 const browser = await chromium.launch();
-const page = await browser.newPage({});
+const page = await browser.newPage();
 
 await page.goto('https://www.bing.com');
 await page.screenshot({ path: `${outDirectory}screenshot.png`, fullPage: true });
