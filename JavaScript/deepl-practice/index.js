@@ -6,7 +6,7 @@ try {
         free_api: true,
         text: 'I am a text',
         target_lang: 'JA',
-        auth_key: Config.DeepLAuthKey
+        auth_key: Config.deepLAuthKey
         // All optional parameters available in the official documentation can be defined here as well.
     });
 
