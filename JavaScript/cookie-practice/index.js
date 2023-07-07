@@ -1,5 +1,5 @@
-import express from 'express';
 import cookieParser from 'cookie-parser';
+import express from 'express';
 
 const app = express();
 const port = 5000;
