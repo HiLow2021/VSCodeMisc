@@ -17,9 +17,9 @@ export default function Home() {
             <div className="w-full max-w-5xl">
                 <p className="flex w-full justify-center text-2xl rounded-xl border border-neutral-400 bg-neutral-200 p-4">{message}</p>
                 {isAuthenticated ? (
-                    <div className="flex justify-center p-4">
+                    <div className="flex justify-center p-8">
                         <button className="bg-green-600 hover:bg-green-500 text-white rounded w-48 px-4 py-2" onClick={gotoPrivate}>
-                            プライベートページ
+                            プライベートページへ
                         </button>
                     </div>
                 ) : (
