@@ -1,5 +1,6 @@
 import { useAuth } from '@/components/authProvider';
 import { Layout } from '@/components/layout';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 export default function Home() {
@@ -14,6 +15,9 @@ export default function Home() {
 
     return (
         <Layout>
+            <Head>
+                <title>トップ</title>
+            </Head>
             <div className="w-full max-w-5xl">
                 <p className="flex w-full justify-center text-2xl rounded-xl border border-neutral-400 bg-neutral-200 p-4">{message}</p>
                 {isAuthenticated ? (
