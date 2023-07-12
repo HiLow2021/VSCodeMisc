@@ -6,8 +6,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return;
     }
 
-    console.log(req.cookies);
-
     const token = req.cookies.token;
 
     res.status(200).json({ success: true, user: token });
