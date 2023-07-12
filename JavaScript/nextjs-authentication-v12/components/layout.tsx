@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useAuth } from './authProvider';
 
-export const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
+const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
     const { isAuthenticated, logout } = useAuth();
 
     const router = useRouter();
@@ -49,3 +49,5 @@ export const Layout = ({ children }: { children: React.ReactNode }): JSX.Element
         </>
     );
 };
+
+export default Layout;

@@ -1,5 +1,5 @@
 import { useAuth } from '@/components/authProvider';
-import { Layout } from '@/components/layout';
+import Layout from '@/components/layout';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';

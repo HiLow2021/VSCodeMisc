@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = (req: NextApiRequest, res: NextApiResponse): void => {
     if (req.method !== 'GET') {
         res.status(400).json({ success: false });
         return;

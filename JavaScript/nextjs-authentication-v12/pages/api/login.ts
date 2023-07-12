@@ -8,7 +8,7 @@ type RequestBody = {
 const correctName = 'admin';
 const correctPassword = 'password';
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = (req: NextApiRequest, res: NextApiResponse): void => {
     if (req.method !== 'POST') {
         res.status(400).json({ success: false });
         return;

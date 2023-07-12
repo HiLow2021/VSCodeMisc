@@ -17,7 +17,7 @@ const AuthContext = createContext<AuthContextProps>({
     logout: () => new Promise(() => {})
 });
 
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
     const [user, setUser] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
 
