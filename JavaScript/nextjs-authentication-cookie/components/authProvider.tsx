@@ -5,7 +5,7 @@ type AuthContextProps = {
     user: string | null;
     isAuthenticated: boolean;
     loading: boolean;
-    login: (name: string, password: string) => Promise<boolean>;
+    login: (username: string, password: string) => Promise<boolean>;
     logout: () => Promise<void>;
 };
 
@@ -29,9 +29,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }): JSX.E
         }
     };
 
-    const login = async (name: string, password: string): Promise<boolean> => {
+    const login = async (username: string, password: string): Promise<boolean> => {
         try {
-            await axios.post('/api/login', { name, password });
+            await axios.post('/api/login', { username, password });
             await loadUser();
 
             return true;

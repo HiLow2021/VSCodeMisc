@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 type RequestBody = {
-    name: string;
+    username: string;
     password: string;
 };
 
-const correctName = 'admin';
+const correctUsername = 'admin';
 const correctPassword = 'password';
 
 const handler = (req: NextApiRequest, res: NextApiResponse): void => {
@@ -14,9 +14,11 @@ const handler = (req: NextApiRequest, res: NextApiResponse): void => {
         return;
     }
 
-    const { name, password } = req.body as RequestBody;
-    if (name === correctName && password === correctPassword) {
-        res.status(200).setHeader('Set-Cookie', `token=${name}; sameSite=strict; httpOnly=true; maxAge=60*60*24`).json({ success: true });
+    const { username, password } = req.body as RequestBody;
+    if (username === correctUsername && password === correctPassword) {
+        res.status(200)
+            .setHeader('Set-Cookie', `token=${username}; sameSite=strict; httpOnly=true; maxAge=60*60*24`)
+            .json({ success: true });
     } else {
         res.status(400).json({ success: false });
     }
