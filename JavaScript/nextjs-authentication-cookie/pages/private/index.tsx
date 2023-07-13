@@ -2,7 +2,7 @@ import Layout from '@/components/layout';
 import Head from 'next/head';
 
 export default function Private(): JSX.Element {
-    const message = 'Private Page';
+    const message = 'Hello Secret';
 
     return (
         <Layout>
