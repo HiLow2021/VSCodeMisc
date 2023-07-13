@@ -57,6 +57,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }): JSX.E
     return <AuthContext.Provider value={{ user, isAuthenticated: !!user, loading, login, logout }}>{children}</AuthContext.Provider>;
 };
 
-export const useAuth = () => {
+export const useAuth = (): AuthContextProps => {
     return useContext(AuthContext);
 };

@@ -4,9 +4,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-export default function Login() {
+export default function Login(): JSX.Element {
     const { login } = useAuth();
-
     const router = useRouter();
 
     const [name, setName] = useState('');
