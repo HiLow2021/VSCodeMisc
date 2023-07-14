@@ -33,10 +33,10 @@
 
 1. 依存パッケージファイルを生成
     ```ps
-    (.venv) PS > pip freeze > requirements.txt
+    (.venv) PS > python -m pip freeze > requirements.txt
     ```
 
 2. 依存パッケージファイルからインストール
     ```ps
-    (.venv) PS > pip install -r requirements.txt
+    (.venv) PS > python -m pip install -r requirements.txt
     ```
