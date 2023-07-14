@@ -6,6 +6,7 @@
         "codepaths",
         "datasource",
         "deepl",
+        "jsonify",
         "lpcm",
         "mdblocks",
         "mydb",
