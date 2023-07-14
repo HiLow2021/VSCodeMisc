@@ -18,6 +18,7 @@
         "openapi",
         "Postmanto",
         "tailwindcss",
-        "tsbuildinfo"
+        "tsbuildinfo",
+        "venv"
     ]
 }

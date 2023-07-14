@@ -6,4 +6,5 @@ obj
 build
 __pycache__
 .env
+.venv
 credentials.json
