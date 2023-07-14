@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def length(arr, target=0):
     suc_flg = False
     suc_num = 0
@@ -18,9 +19,12 @@ def length(arr, target=0):
         ret.append(suc_num)
     return ret
 
+
 def generate(img, game_w, game_h, threshold=100):
     img = img.resize((game_w, game_h))
-    img_bw = img.convert('L').point(lambda x: 0 if x<=threshold else 255)  # Black/White image
+    img_bw = img.convert("L").point(
+        lambda x: 0 if x <= threshold else 255
+    )  # Black/White image
     img_arr = np.array(img_bw)  # Convert image to a numpy array
 
     # count row and column lines
