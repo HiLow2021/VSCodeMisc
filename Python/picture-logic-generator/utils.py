@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def length(arr, target=1):
+def __length(arr, target=1):
     suc_flg = False
     suc_num = 0
     ret = []
@@ -28,7 +28,7 @@ def generate(img, game_w, game_h, threshold):
     img_arr = np.array(img_bw)  # Convert image to a numpy array
 
     # count row and column lines
-    rows = [length(x) for x in img_arr]
-    cols = [length(x) for x in img_arr.T]
+    rows = [__length(x) for x in img_arr]
+    cols = [__length(x) for x in img_arr.T]
 
     return (rows, cols, img_arr.tolist())
