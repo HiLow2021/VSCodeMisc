@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def length(arr, target=0):
+def length(arr, target=1):
     suc_flg = False
     suc_num = 0
     ret = []
@@ -20,10 +20,10 @@ def length(arr, target=0):
     return ret
 
 
-def generate(img, game_w, game_h, threshold=100):
+def generate(img, game_w, game_h, threshold):
     img = img.resize((game_w, game_h))
     img_bw = img.convert("L").point(
-        lambda x: 0 if x <= threshold else 255
+        lambda x: 1 if x <= threshold else 0
     )  # Black/White image
     img_arr = np.array(img_bw)  # Convert image to a numpy array
 
@@ -31,4 +31,4 @@ def generate(img, game_w, game_h, threshold=100):
     rows = [length(x) for x in img_arr]
     cols = [length(x) for x in img_arr.T]
 
-    return (rows, cols)
+    return (rows, cols, img_arr.tolist())
