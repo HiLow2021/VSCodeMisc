@@ -1,4 +1,5 @@
 import json
+import os
 from PIL import Image
 from utils import generate
 
@@ -18,5 +19,7 @@ data = [
     {"width": width, "height": height, "rows": rows, "cols": cols, "answer": answer}
 ]
 
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 with open(f"{output_dir}result.json", "w") as f:
     json.dump(data, f, indent=4, ensure_ascii=False)
