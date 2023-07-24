@@ -4,6 +4,7 @@ out
 bin
 obj
 build
+media
 __pycache__
 .env
 .venv
