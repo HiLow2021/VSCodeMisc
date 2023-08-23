@@ -1,4 +1,4 @@
-import { add, sub, mul, div } from '../function.js';
+const { add, sub, mul, div } = require('../function.js');
 
 describe('function test', () => {
     test('add', () => {
