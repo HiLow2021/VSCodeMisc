@@ -1,6 +1,6 @@
 const { add, sub, mul, div } = require('../function.js');
 
-describe('function test', () => {
+describe('Function Test', () => {
     test('add', () => {
         expect(add(1, 2)).toBe(3);
     });
