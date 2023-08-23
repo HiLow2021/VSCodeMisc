@@ -5,6 +5,7 @@ bin
 obj
 build
 media
+coverage
 __pycache__
 .env
 .venv
