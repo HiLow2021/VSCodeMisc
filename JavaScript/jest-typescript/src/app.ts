@@ -1,5 +1,6 @@
-const express = require('express');
-const app = express();
+import express, { Request, Response } from 'express';
+
+const app: express.Express = express();
 
 app.use(express.json());
 
@@ -8,11 +9,11 @@ const users = [
     { id: 2, name: 'Betty', age: 30 }
 ];
 
-app.get('/', (_req, res) => {
+app.get('/', (_req: Request, res: Response): void => {
     res.json(users);
 });
 
-app.get('/:id', (req, res) => {
+app.get('/:id', (req: Request, res: Response): void => {
     const id = parseInt(req.params.id);
     const user = users.find((x) => x.id === id);
     if (user) {
@@ -22,7 +23,7 @@ app.get('/:id', (req, res) => {
     }
 });
 
-app.post('/', (req, res) => {
+app.post('/', (req: Request, res: Response): void => {
     const id = users.length + 1;
     const newUser = { id, ...req.body };
 
@@ -31,7 +32,7 @@ app.post('/', (req, res) => {
     res.json({ id });
 });
 
-app.put('/:id', (req, res) => {
+app.put('/:id', (req: Request, res: Response): void => {
     const id = parseInt(req.params.id);
     const user = users.find((x) => x.id === id);
     if (user) {
@@ -45,7 +46,7 @@ app.put('/:id', (req, res) => {
     res.status(404).json({ message: 'Not found' });
 });
 
-app.delete('/', (req, res) => {
+app.delete('/', (req: Request, res: Response): void => {
     const ids = req.body;
     let deletedCount = 0;
     for (const id of ids) {
@@ -59,7 +60,4 @@ app.delete('/', (req, res) => {
     res.json({ deletedCount });
 });
 
-module.exports = {
-    app,
-    users
-};
+export { app, users };
