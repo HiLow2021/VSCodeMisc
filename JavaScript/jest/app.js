@@ -9,20 +9,18 @@ const users = [
     { id: 2, name: 'Betty', age: 30 }
 ];
 
-app.get('/', (req, res) => {
-    const name = req.query.name;
-    if (!name) {
-        res.json(users);
-        return;
-    }
+app.get('/', (_req, res) => {
+    res.json(users);
+});
 
-    const user = users.find((x) => x.name === name);
+app.get('/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const user = users.find((x) => x.id === id);
     if (user) {
         res.json(user);
-        return;
+    } else {
+        res.status(404).json({ message: 'Not found' });
     }
-
-    res.status(404).json({ message: 'Not found' });
 });
 
 app.post('/', (req, res) => {
@@ -34,25 +32,29 @@ app.post('/', (req, res) => {
     res.json({ id });
 });
 
-app.put('/', (req, res) => {
-    const body = req.body;
-    const user = users.find((x) => x.name === body.name);
+app.put('/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const user = users.find((x) => x.id === id);
     if (user) {
-        user.age = body.age;
+        user.name = req.body.name;
+        user.age = req.body.age;
         res.sendStatus(200);
+
         return;
     }
 
     res.status(404).json({ message: 'Not found' });
 });
 
-app.delete('/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-    const index = users.findIndex((x) => x.id === id);
+app.delete('/', (req, res) => {
+    const ids = req.body;
     let deletedCount = 0;
-    if (index >= 0) {
-        users.splice(index, 1);
-        deletedCount++;
+    for (const id of ids) {
+        const index = users.findIndex((x) => x.id === id);
+        if (index >= 0) {
+            users.splice(index, 1);
+            deletedCount++;
+        }
     }
 
     res.json({ deletedCount });

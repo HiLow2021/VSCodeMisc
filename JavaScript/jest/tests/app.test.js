@@ -13,18 +13,18 @@ describe('API Test', () => {
         });
 
         test('Get User', async () => {
-            const query = { name: 'Betty' };
+            const id = 2;
 
-            const response = await request.get('/').query(query);
+            const response = await request.get(`/${id}`);
 
             expect(response.statusCode).toBe(200);
             expect(response.body).toEqual(users[1]);
         });
 
         test('User not Found', async () => {
-            const query = { name: 'Daisy' };
+            const id = 999;
 
-            const response = await request.get('/').query(query);
+            const response = await request.get(`/${id}`);
 
             expect(response.statusCode).toBe(404);
             expect(response.body).toEqual({ message: 'Not found' });
@@ -45,31 +45,33 @@ describe('API Test', () => {
 
     describe('PUT', () => {
         test('Update User', async () => {
-            const body = { name: 'Alice', age: 10 };
+            const id = 1;
+            const body = { name: 'Daisy', age: 10 };
 
             // before
             {
-                const user = users.find((x) => x.name === body.name);
+                const user = users.find((x) => x.id === id);
 
-                expect(user.age).toBe(20);
+                expect(user).toEqual(users[0]);
             }
 
-            const response = await request.put('/').send(body);
+            const response = await request.put(`/${id}`).send(body);
 
             expect(response.statusCode).toBe(200);
 
             // after
             {
-                const user = users.find((x) => x.name === body.name);
+                const user = users.find((x) => x.id === id);
 
-                expect(user.age).toBe(10);
+                expect(user).toEqual({ id, ...body });
             }
         });
 
         test('User not Found', async () => {
+            const id = 999;
             const body = { name: 'Daisy', age: 10 };
 
-            const response = await request.put('/').send(body);
+            const response = await request.put(`/${id}`).send(body);
 
             expect(response.statusCode).toBe(404);
             expect(response.body).toEqual({ message: 'Not found' });
@@ -78,13 +80,13 @@ describe('API Test', () => {
 
     describe('DELETE', () => {
         test('Delete User', async () => {
-            const id = 1;
+            const ids = [1, 2];
 
-            const response = await request.delete(`/${id}`);
+            const response = await request.delete('/').send(ids);
 
             expect(response.statusCode).toBe(200);
-            expect(response.body).toEqual({ deletedCount: 1 });
-            expect(users).toHaveLength(2);
+            expect(response.body).toEqual({ deletedCount: 2 });
+            expect(users).toHaveLength(1);
         });
     });
 });
