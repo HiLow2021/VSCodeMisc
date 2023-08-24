@@ -48,22 +48,20 @@ describe('API Test', () => {
             const id = 1;
             const body = { name: 'Daisy', age: 10 };
 
-            // before
             {
-                const user = users.find((x) => x.id === id);
+                const before = users.find((x) => x.id === id);
 
-                expect(user).toEqual(users[0]);
+                expect(before).toEqual(users[0]);
             }
 
             const response = await request.put(`/${id}`).send(body);
 
             expect(response.statusCode).toBe(200);
 
-            // after
             {
-                const user = users.find((x) => x.id === id);
+                const after = users.find((x) => x.id === id);
 
-                expect(user).toEqual({ id, ...body });
+                expect(after).toEqual({ id, ...body });
             }
         });
 
