@@ -6,7 +6,7 @@ const decompressedText = unzip(compressedText);
 
 console.log(`Original size: ${text.length} bytes`);
 console.log(`Compressed size: ${compressedText.length} bytes`);
-console.log(`Original Text === Decompressed Text: ${text === decompressedText}`);
+console.log(`Original text equals decompressed text: ${text === decompressedText}`);
 
 function zip(data) {
     const str = encodeURIComponent(data);
