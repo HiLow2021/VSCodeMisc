@@ -1,5 +1,5 @@
-import { chromium } from 'playwright';
 import fs from 'fs';
+import { chromium } from 'playwright';
 
 const outDirectory = './out/';
 if (!fs.existsSync(outDirectory)) {

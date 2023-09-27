@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "eslint": "npx eslint ./**/*.ts",
-    "prettier": "npx prettier --write ./**/*.{js,ts}"
+    "prettier": "npx prettier --write ./**/*.{js,ts,jsx,tsx}"
   },
   "keywords": [],
   "author": "",

@@ -35,7 +35,7 @@ export default function Login(): JSX.Element {
             </Head>
             <div className="flex flex-col gap-4 w-full max-w-5xl">
                 <p className="flex w-full justify-center text-2xl rounded border border-neutral-400 bg-neutral-200 p-4">ログイン</p>
-                <div className='flex flex-col gap-6 px-24 pt-8'>
+                <div className="flex flex-col gap-6 px-24 pt-8">
                     <div className="relative h-11 w-full min-w-[200px]">
                         <input
                             className="peer h-full w-full border-b border-neutral-500 bg-transparent pt-4 pb-1.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border-blue-gray-200 focus:border-green-500 focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"

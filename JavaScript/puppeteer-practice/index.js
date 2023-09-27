@@ -1,5 +1,5 @@
-import puppeteer from 'puppeteer';
 import fs from 'fs';
+import puppeteer from 'puppeteer';
 
 const outDirectory = './out/';
 if (!fs.existsSync(outDirectory)) {

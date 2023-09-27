@@ -1,6 +1,6 @@
+import fs from 'fs';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-import fs from 'fs';
 
 const outDirectory = './out/';
 if (!fs.existsSync(outDirectory)) {
