@@ -1,5 +1,5 @@
-import sharp from 'sharp';
 import fs from 'fs';
+import sharp from 'sharp';
 
 function splitImage(imagePath, saveDirectory, n) {
     sharp(imagePath)
