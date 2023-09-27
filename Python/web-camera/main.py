@@ -1,6 +1,7 @@
 import cv2
 
 cap = cv2.VideoCapture(0)
+cv2.namedWindow("Window", cv2.WINDOW_NORMAL)
 
 while True:
     ret, frame = cap.read()
