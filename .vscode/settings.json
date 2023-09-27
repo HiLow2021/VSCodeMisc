@@ -8,6 +8,7 @@
         "codepaths",
         "datasource",
         "deepl",
+        "imshow",
         "jsonify",
         "lcov",
         "lpcm",
