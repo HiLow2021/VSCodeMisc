@@ -1,13 +1,16 @@
 {
-  "name": "get-weather-svg",
+  "name": "get-forecast-map",
   "version": "1.0.0",
-  "description": "",
   "type": "module",
+  "description": "",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.6.2"
+    "playwright": "^1.38.1"
   }
 }
