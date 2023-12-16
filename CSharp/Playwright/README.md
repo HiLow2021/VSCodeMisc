@@ -28,4 +28,20 @@
 
 ## 備考
 
-`dotnet build` や `dotnet run` は `dotnet restore` の操作を含むので、厳密には手順の 1 は不要。備忘録のために敢えて残しています。
+- `dotnet build` や `dotnet run` は `dotnet restore` の操作を含むため、厳密には手順の 1 は不要。備忘録のために敢えて記載。
+
+- ブラウザのインストールは C# コード内からも行える。
+
+```cs
+// インストール
+Microsoft.Playwright.Program.Main(new[] { "install" });
+
+// クロミウムのみインストール
+Microsoft.Playwright.Program.Main(new[] { "install", "chromium" });
+
+// アンインストール
+Microsoft.Playwright.Program.Main(new[] { "uninstall" });
+
+// 他のプログラムで使用しているブラウザもアンインストール
+Microsoft.Playwright.Program.Main(new[] { "uninstall", "--all" });
+```
