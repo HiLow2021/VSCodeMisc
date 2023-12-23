@@ -3,9 +3,9 @@ const fs = require('fs');
 const filePath = './.env'; 
 
 try {
-    const stats = fs.statSync(filePath);
+    const state = fs.statSync(filePath);
 
-    console.log(stats);
+    console.log(state);
 } catch (error) {
     console.error('Error reading the file:', error.message);
 }
