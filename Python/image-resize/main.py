@@ -7,8 +7,8 @@ output_dir = "./out/"
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
-width = 800
-height = 800
+width = 600
+height = 600
 
 for filename in os.listdir(image_dir):
     if filename.lower().endswith((".png", ".jpg", ".jpeg", ".bmp")):
