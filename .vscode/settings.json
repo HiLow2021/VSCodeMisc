@@ -28,7 +28,9 @@
         "tsbuildinfo",
         "unitmap",
         "unmocked",
-        "venv"
+        "venv",
+        "vrchat",
+        "wrld"
     ],
     "[python]": {
         "editor.defaultFormatter": "ms-python.python"
