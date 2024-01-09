@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const filePath = './.env'; 
+const filePath = './.env';
 
 try {
     const state = fs.statSync(filePath);
