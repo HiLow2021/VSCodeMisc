@@ -1,0 +1,17 @@
+{
+  "name": "prisma-practice-seed",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prisma": "^5.10.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.10.2"
+  }
+}
