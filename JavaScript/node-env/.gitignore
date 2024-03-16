@@ -1,0 +1,5 @@
+# サンプルコードのため、env ファイルは意図的に .gitignore から除外。
+
+#.env.development
+#.env.staging
+#.env.production
