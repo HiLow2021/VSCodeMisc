@@ -1,5 +1,5 @@
 import { Body, Controller, HttpCode, Post } from '@nestjs/common';
-import { result } from '../result';
+import { result } from '../shared/result';
 import { FunctionService } from './function.service';
 
 export type Request = {
