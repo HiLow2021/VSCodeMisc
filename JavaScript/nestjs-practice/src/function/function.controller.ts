@@ -13,32 +13,24 @@ export class FunctionController {
     @Post('/add')
     @HttpCode(200)
     add(@Body() request: Request) {
-        const answer = this.functionService.add(request.a, request.b);
-
-        return { answer };
+        return this.functionService.add(request.a, request.b);
     }
 
     @Post('/sub')
     @HttpCode(200)
     sub(@Body() request: Request) {
-        const answer = this.functionService.sub(request.a, request.b);
-
-        return { answer };
+        return this.functionService.sub(request.a, request.b);
     }
 
     @Post('/mul')
     @HttpCode(200)
     mul(@Body() request: Request) {
-        const answer = this.functionService.mul(request.a, request.b);
-
-        return { answer };
+        return this.functionService.mul(request.a, request.b);
     }
 
     @Post('/div')
     @HttpCode(200)
     div(@Body() request: Request) {
-        const answer = this.functionService.div(request.a, request.b);
-
-        return { answer };
+        return this.functionService.div(request.a, request.b);
     }
 }
