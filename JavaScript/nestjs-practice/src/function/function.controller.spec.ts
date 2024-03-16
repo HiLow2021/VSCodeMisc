@@ -17,25 +17,25 @@ describe('FunctionController', () => {
     it('add', () => {
         const dto = createDto(8, 2);
 
-        expect(controller.add(dto)).toBe(10);
+        expect(controller.add(dto)).toEqual({ answer: 10 });
     });
 
     it('subtract', () => {
         const dto = createDto(8, 2);
 
-        expect(controller.sub(dto)).toBe(6);
+        expect(controller.sub(dto)).toEqual({ answer: 6 });
     });
 
     it('multiply', () => {
         const dto = createDto(8, 2);
 
-        expect(controller.mul(dto)).toBe(16);
+        expect(controller.mul(dto)).toEqual({ answer: 16 });
     });
 
     it('divide', () => {
         const dto = createDto(8, 2);
 
-        expect(controller.div(dto)).toBe(4);
+        expect(controller.div(dto)).toEqual({ answer: 4 });
     });
 
     function createDto(a: number, b: number): Request {
