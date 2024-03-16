@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { AppService } from './app.service';
 
 export type Request = {
@@ -23,7 +23,7 @@ export class AppController {
     }
 
     @Get('/user/:id')
-    getUser(@Param('id') id: string) {
+    getUser(@Param('id', ParseIntPipe) id: number) {
         const user = this.appService.getUser(Number(id));
 
         return user;
@@ -37,7 +37,7 @@ export class AppController {
     }
 
     @Put('/user/:id')
-    putUser(@Param('id') id: string, @Body() request: Request) {
+    putUser(@Param('id', ParseIntPipe) id: number, @Body() request: Request) {
         const user = { id: Number(id), name: request.name, age: request.age };
 
         this.appService.updateUser(user);

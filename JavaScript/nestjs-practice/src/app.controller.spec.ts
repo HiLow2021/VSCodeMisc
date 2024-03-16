@@ -31,7 +31,7 @@ describe('AppController', () => {
 
         it('Get User', async () => {
             const id = 2;
-            const user = controller.getUser(id.toString());
+            const user = controller.getUser(id);
 
             expect(user).toEqual(users[1]);
         });
@@ -40,7 +40,7 @@ describe('AppController', () => {
             const id = 999;
 
             try {
-                controller.getUser(id.toString());
+                controller.getUser(id);
             } catch (err) {
                 expect(err).toBeInstanceOf(NotFoundException);
             }
@@ -68,7 +68,7 @@ describe('AppController', () => {
                 expect(before).toEqual(users[0]);
             }
 
-            controller.putUser(id.toString(), body);
+            controller.putUser(id, body);
 
             {
                 const after = users.find((x) => x.id === id);
@@ -82,7 +82,7 @@ describe('AppController', () => {
             const body = { name: 'Daisy', age: 10 };
 
             try {
-                controller.putUser(id.toString(), body);
+                controller.putUser(id, body);
             } catch (err) {
                 expect(err).toBeInstanceOf(NotFoundException);
             }
