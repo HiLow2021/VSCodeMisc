@@ -27,12 +27,12 @@ export class AppService {
     }
 
     addUser(name: string, age: number): number {
-        const id = users.length + 1;
-        const newUser = { id, name, age };
+        const newId = users.length + 1;
+        const newUser = { id: newId, name, age };
 
         users.push(newUser);
 
-        return id;
+        return newId;
     }
 
     updateUser(user: User): void {

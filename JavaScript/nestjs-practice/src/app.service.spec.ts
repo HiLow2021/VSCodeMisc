@@ -47,22 +47,20 @@ describe('FunctionService', () => {
 
     describe('PUT', () => {
         it('Update User', async () => {
-            const id = 1;
-            const name = 'Daisy';
-            const age = 10;
+            const target = { id: 1, name: 'Daisy', age: 10 };
 
             {
-                const before = users.find((x) => x.id === id);
+                const before = users.find((x) => x.id === target.id);
 
                 expect(before).toEqual(users[0]);
             }
 
-            service.updateUser({ id, name, age });
+            service.updateUser(target);
 
             {
-                const after = users.find((x) => x.id === id);
+                const after = users.find((x) => x.id === target.id);
 
-                expect(after).toEqual({ id, name, age });
+                expect(after).toEqual(target);
             }
         });
     });
