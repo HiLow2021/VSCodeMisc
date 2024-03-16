@@ -1,5 +1,5 @@
 import { Body, Controller, HttpCode, Post } from '@nestjs/common';
-import { result } from '../shared/result';
+import { successResult } from '../shared/result';
 import { FunctionService } from './function.service';
 
 export type Request = {
@@ -18,7 +18,7 @@ export class FunctionController {
 
         return {
             answer: dto,
-            result: result
+            result: successResult
         };
     }
 
@@ -29,7 +29,7 @@ export class FunctionController {
 
         return {
             answer: dto,
-            result: result
+            result: successResult
         };
     }
 
@@ -40,7 +40,7 @@ export class FunctionController {
 
         return {
             answer: dto,
-            result: result
+            result: successResult
         };
     }
 
@@ -51,7 +51,7 @@ export class FunctionController {
 
         return {
             answer: dto,
-            result: result
+            result: successResult
         };
     }
 }

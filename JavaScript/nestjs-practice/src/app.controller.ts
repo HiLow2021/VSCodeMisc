@@ -1,6 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { AppService } from './app.service';
-import { result } from './shared/result';
 
 export type PostRequest = {
     name: string;
@@ -8,7 +7,6 @@ export type PostRequest = {
 };
 
 export type PutRequest = {
-    id: number;
     name: string;
     age: number;
 };
@@ -21,57 +19,43 @@ export type DeleteRequest = {
 export class AppController {
     constructor(private readonly appService: AppService) {}
 
-    @Get()
+    @Get('/ping')
     getPing(): string {
         return this.appService.ping();
     }
 
-    @Get()
+    @Get('/users')
     getUsers() {
-        const dto = this.appService.getUsers();
+        const users = this.appService.getUsers();
 
-        return {
-            users: dto,
-            result: result
-        };
+        return users;
     }
 
-    @Get(':id')
-    getUser(@Param('id') id: number) {
-        const dto = this.appService.getUser(id);
+    @Get('/user/:id')
+    getUser(@Param('id') id: string) {
+        const user = this.appService.getUser(Number(id));
 
-        return {
-            user: dto,
-            result: result
-        };
+        return user;
     }
 
-    @Post()
+    @Post('/user')
     postUser(@Body() request: PostRequest) {
         const id = this.appService.addUser(request.name, request.age);
 
-        return {
-            id,
-            result: result
-        };
+        return id;
     }
 
-    @Put()
-    putUser(@Body() request: PutRequest) {
-        this.appService.updateUser(request);
+    @Put('/user/:id')
+    putUser(@Param('id') id: string, @Body() request: PutRequest) {
+        const user = { id: Number(id), name: request.name, age: request.age };
 
-        return {
-            result: result
-        };
+        this.appService.updateUser(user);
     }
 
-    @Delete()
+    @Delete('/user')
     deleteUser(@Body() request: DeleteRequest) {
         const deletedCount = this.appService.deleteUser(request.ids);
 
-        return {
-            deletedCount,
-            result: result
-        };
+        return deletedCount;
     }
 }

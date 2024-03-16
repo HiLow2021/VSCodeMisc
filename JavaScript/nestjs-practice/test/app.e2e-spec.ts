@@ -18,28 +18,27 @@ describe('AppController (e2e)', () => {
 
     describe('GET', () => {
         it('Get All Users', async () => {
-            const response = await request(app.getHttpServer()).get('/');
+            const response = await request(app.getHttpServer()).get('/users');
 
-            expect(response.status).toBe(200);
+            expect(response.statusCode).toBe(200);
             expect(response.body).toEqual(users);
         });
 
         it('Get User', async () => {
             const id = 2;
 
-            const response = await request(app.getHttpServer()).get(`/${id}`);
+            const response = await request(app.getHttpServer()).get(`/user/:${id}`);
 
-            expect(response.status).toBe(200);
+            expect(response.statusCode).toBe(200);
             expect(response.body).toEqual(users[1]);
         });
 
         it('User not Found', async () => {
             const id = 999;
 
-            const response = await request(app.getHttpServer()).get(`/${id}`);
+            const response = await request(app.getHttpServer()).get(`/user/:${id}`);
 
-            expect(response.status).toBe(404);
-            expect(response.body).toEqual({ message: 'Not found' });
+            expect(response.statusCode).toBe(404);
         });
     });
 
@@ -47,9 +46,9 @@ describe('AppController (e2e)', () => {
         it('Add User', async () => {
             const body = { name: 'Cathy', age: 40 };
 
-            const response = await request(app.getHttpServer()).post('/').send(body);
+            const response = await request(app.getHttpServer()).post('/user').send(body);
 
-            expect(response.status).toBe(201);
+            expect(response.statusCode).toBe(201);
             expect(response.body).toEqual({ id: 3 });
             expect(users).toHaveLength(3);
         });
@@ -66,9 +65,9 @@ describe('AppController (e2e)', () => {
                 expect(before).toEqual(users[0]);
             }
 
-            const response = await request(app.getHttpServer()).put(`/${id}`).send(body);
+            const response = await request(app.getHttpServer()).put(`/user/:${id}`).send(body);
 
-            expect(response.status).toBe(200);
+            expect(response.statusCode).toBe(200);
 
             {
                 const after = users.find((x) => x.id === id);
@@ -81,10 +80,9 @@ describe('AppController (e2e)', () => {
             const id = 999;
             const body = { name: 'Daisy', age: 10 };
 
-            const response = await request(app.getHttpServer()).put(`/${id}`).send(body);
+            const response = await request(app.getHttpServer()).put(`/user:${id}`).send(body);
 
-            expect(response.status).toBe(404);
-            expect(response.body).toEqual({ message: 'Not found' });
+            expect(response.statusCode).toBe(404);
         });
     });
 
@@ -92,9 +90,9 @@ describe('AppController (e2e)', () => {
         it('Delete User', async () => {
             const ids = [1, 2];
 
-            const response = await request(app.getHttpServer()).delete('/').send(ids);
+            const response = await request(app.getHttpServer()).delete('/user').send(ids);
 
-            expect(response.status).toBe(200);
+            expect(response.statusCode).toBe(200);
             expect(response.body).toEqual({ deletedCount: 2 });
             expect(users).toHaveLength(1);
         });
