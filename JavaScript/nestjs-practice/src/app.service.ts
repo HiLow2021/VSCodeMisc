@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { users } from './shared/data';
 
 export type User = {
@@ -9,7 +9,7 @@ export type User = {
 
 @Injectable()
 export class AppService {
-    ping(): string {
+    getHello(): string {
         return 'Hello World!';
     }
 
@@ -20,7 +20,7 @@ export class AppService {
     getUser(id: number): User | undefined {
         const user = users.find((x) => x.id === id);
         if (!user) {
-            return undefined;
+            throw new NotFoundException('User not found');
         }
 
         return user;
@@ -38,7 +38,7 @@ export class AppService {
     updateUser(user: User): void {
         const target = users.find((x) => x.id === user.id);
         if (!target) {
-            return;
+            throw new NotFoundException('User not found');
         }
 
         target.name = user.name;

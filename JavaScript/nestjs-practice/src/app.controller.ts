@@ -11,17 +11,13 @@ export type PutRequest = {
     age: number;
 };
 
-export type DeleteRequest = {
-    ids: number[];
-};
-
 @Controller()
 export class AppController {
     constructor(private readonly appService: AppService) {}
 
-    @Get('/ping')
-    getPing(): string {
-        return this.appService.ping();
+    @Get('/')
+    getHello(): string {
+        return this.appService.getHello();
     }
 
     @Get('/users')
@@ -42,7 +38,7 @@ export class AppController {
     postUser(@Body() request: PostRequest) {
         const id = this.appService.addUser(request.name, request.age);
 
-        return id;
+        return { id };
     }
 
     @Put('/user/:id')
@@ -52,10 +48,10 @@ export class AppController {
         this.appService.updateUser(user);
     }
 
-    @Delete('/user')
-    deleteUser(@Body() request: DeleteRequest) {
-        const deletedCount = this.appService.deleteUser(request.ids);
+    @Delete('/users')
+    deleteUser(@Body() ids: number[]) {
+        const deletedCount = this.appService.deleteUser(ids);
 
-        return deletedCount;
+        return { deletedCount };
     }
 }
