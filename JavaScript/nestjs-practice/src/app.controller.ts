@@ -1,12 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { AppService } from './app.service';
 
-export type PostRequest = {
-    name: string;
-    age: number;
-};
-
-export type PutRequest = {
+export type Request = {
     name: string;
     age: number;
 };
@@ -35,14 +30,14 @@ export class AppController {
     }
 
     @Post('/user')
-    postUser(@Body() request: PostRequest) {
+    postUser(@Body() request: Request) {
         const id = this.appService.addUser(request.name, request.age);
 
         return { id };
     }
 
     @Put('/user/:id')
-    putUser(@Param('id') id: string, @Body() request: PutRequest) {
+    putUser(@Param('id') id: string, @Body() request: Request) {
         const user = { id: Number(id), name: request.name, age: request.age };
 
         this.appService.updateUser(user);
