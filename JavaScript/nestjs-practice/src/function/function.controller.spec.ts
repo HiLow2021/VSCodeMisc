@@ -1,17 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CalculateController, Request } from './calculate.controller';
-import { CalculateService } from './calculate.service';
+import { FunctionController, Request } from './function.controller';
+import { FunctionService } from './function.service';
 
-describe('CalculateController', () => {
-    let controller: CalculateController;
+describe('FunctionController', () => {
+    let controller: FunctionController;
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-            controllers: [CalculateController],
-            providers: [CalculateService]
+            controllers: [FunctionController],
+            providers: [FunctionService]
         }).compile();
 
-        controller = module.get<CalculateController>(CalculateController);
+        controller = module.get<FunctionController>(FunctionController);
     });
 
     it('add', () => {
@@ -23,19 +23,19 @@ describe('CalculateController', () => {
     it('subtract', () => {
         const dto = createDto(8, 2);
 
-        expect(controller.subtract(dto)).toBe(6);
+        expect(controller.sub(dto)).toBe(6);
     });
 
     it('multiply', () => {
         const dto = createDto(8, 2);
 
-        expect(controller.multiply(dto)).toBe(16);
+        expect(controller.mul(dto)).toBe(16);
     });
 
     it('divide', () => {
         const dto = createDto(8, 2);
 
-        expect(controller.divide(dto)).toBe(4);
+        expect(controller.div(dto)).toBe(4);
     });
 
     function createDto(a: number, b: number): Request {

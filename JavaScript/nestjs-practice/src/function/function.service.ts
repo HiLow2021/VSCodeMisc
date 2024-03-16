@@ -1,20 +1,20 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class CalculateService {
+export class FunctionService {
     add(a: number, b: number): number {
         return a + b;
     }
 
-    subtract(a: number, b: number): number {
+    sub(a: number, b: number): number {
         return a - b;
     }
 
-    multiply(a: number, b: number): number {
+    mul(a: number, b: number): number {
         return a * b;
     }
 
-    divide(a: number, b: number): number {
+    div(a: number, b: number): number {
         return a / b;
     }
 }
