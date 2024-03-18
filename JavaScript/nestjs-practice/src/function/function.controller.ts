@@ -12,7 +12,7 @@ export class FunctionController {
 
     @Post('/add')
     @HttpCode(200)
-    add(@Body() request: Request) {
+    add(@Body() request: Readonly<Request>) {
         const answer = this.functionService.add(request.a, request.b);
 
         return { answer };
@@ -20,7 +20,7 @@ export class FunctionController {
 
     @Post('/sub')
     @HttpCode(200)
-    sub(@Body() request: Request) {
+    sub(@Body() request: Readonly<Request>) {
         const answer = this.functionService.sub(request.a, request.b);
 
         return { answer };
@@ -28,7 +28,7 @@ export class FunctionController {
 
     @Post('/mul')
     @HttpCode(200)
-    mul(@Body() request: Request) {
+    mul(@Body() request: Readonly<Request>) {
         const answer = this.functionService.mul(request.a, request.b);
 
         return { answer };
@@ -36,7 +36,7 @@ export class FunctionController {
 
     @Post('/div')
     @HttpCode(200)
-    div(@Body() request: Request) {
+    div(@Body() request: Readonly<Request>) {
         const answer = this.functionService.div(request.a, request.b);
 
         return { answer };

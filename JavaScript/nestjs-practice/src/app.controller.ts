@@ -30,21 +30,21 @@ export class AppController {
     }
 
     @Post('/user')
-    postUser(@Body() request: Request) {
+    postUser(@Body() request: Readonly<Request>) {
         const id = this.appService.addUser(request.name, request.age);
 
         return { id };
     }
 
     @Put('/user/:id')
-    putUser(@Param('id', ParseIntPipe) id: number, @Body() request: Request) {
+    putUser(@Param('id', ParseIntPipe) id: number, @Body() request: Readonly<Request>) {
         const user = { id: Number(id), name: request.name, age: request.age };
 
         this.appService.updateUser(user);
     }
 
     @Delete('/users')
-    deleteUser(@Body() ids: number[]) {
+    deleteUser(@Body() ids: readonly number[]) {
         const deletedCount = this.appService.deleteUser(ids);
 
         return { deletedCount };

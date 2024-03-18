@@ -35,7 +35,7 @@ export class AppService {
         return newId;
     }
 
-    updateUser(user: User): void {
+    updateUser(user: Readonly<User>): void {
         const target = users.find((x) => x.id === user.id);
         if (!target) {
             throw new NotFoundException('User not found');
@@ -45,7 +45,7 @@ export class AppService {
         target.age = user.age;
     }
 
-    deleteUser(ids: number[]): number {
+    deleteUser(ids: readonly number[]): number {
         let deletedCount = 0;
         for (const id of ids) {
             const index = users.findIndex((x) => x.id === id);
