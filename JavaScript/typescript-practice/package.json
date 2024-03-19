@@ -7,8 +7,8 @@
     "build": "npx tsc --build",
     "debug": "npx ts-node ./src/index.ts",
     "start": "node ./build/index.js",
-    "eslint-run": "npx eslint ./src/**/*.ts",
-    "prettier-write": "npx prettier --write ./src/**/*.ts"
+    "lint": "npx eslint ./src/**/*.ts",
+    "format": "npx prettier --write ./src/**/*.ts"
   },
   "keywords": [],
   "author": "",
