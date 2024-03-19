@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "prettier": "npx prettier --write ./*/src/**/*.ts"
+    "format": "npx prettier --write ./*/src/**/*.ts"
   },
   "keywords": [],
   "author": "",

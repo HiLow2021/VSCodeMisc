@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "eslint": "npx eslint ./**/*.ts",
-    "prettier": "npx prettier --write ./**/*.{js,ts,jsx,tsx}"
+    "lint": "npx eslint ./**/*.{ts,tsx}",
+    "format": "npx prettier --write ./**/*.{js,ts,jsx,tsx}"
   },
   "keywords": [],
   "author": "",
