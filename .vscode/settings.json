@@ -13,6 +13,7 @@
         "imwrite",
         "jsonify",
         "lcov",
+        "lintstagedrc",
         "lpcm",
         "mdblocks",
         "mydb",
