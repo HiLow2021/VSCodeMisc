@@ -2,17 +2,13 @@
   "name": "javascript",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "lint": "npx eslint ./**/*.{ts,tsx}",
-    "format": "npx prettier --write ./**/*.{js,ts,jsx,tsx}"
+    "format": "npx prettier --write ./**/*.{js,jsx,ts,tsx}"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.8.0",
-    "eslint-config-prettier": "^8.3.0",
-    "prettier": "^2.5.1"
+    "prettier": "^2.8.8"
   }
 }
