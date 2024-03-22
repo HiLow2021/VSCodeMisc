@@ -1,5 +1,5 @@
 export const Config = {
-    envNode: process.env.ENV_NODE || '',
+    nodeEnv: process.env.NODE_ENV || '',
     userName: process.env.USER_NAME || '',
     password: process.env.PASSWORD || ''
 };
