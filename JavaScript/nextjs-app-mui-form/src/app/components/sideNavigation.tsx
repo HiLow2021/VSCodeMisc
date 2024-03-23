@@ -18,7 +18,7 @@ const SideNavigation = () => {
 
 const Title = () => {
     return (
-        <div className={'flex flex-row justify-center items-center text-5xl leading-snug mb-2 h-20 rounded-md md:h-40 p-4 text-white bg-blue-600'}>
+        <div className="mb-2 flex h-20 flex-row items-center justify-center rounded-md bg-blue-600 p-4 text-5xl leading-snug text-white md:h-40">
             <p>Next.js Practice</p>
         </div>
     );
