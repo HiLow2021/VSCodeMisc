@@ -19,10 +19,10 @@ export default function RootLayout({
         <html lang="ja">
             <body className={inter.className}>
                 <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-                    <div className="w-full flex-none md:w-64">
+                    <div className="w-full flex-none md:w-64 ">
                         <SideNavigation />
                     </div>
-                    <div className="flex-grow p-2 md:overflow-y-auto">{children}</div>
+                    <div className="flex flex-grow flex-col items-center justify-between p-4 md:overflow-y-auto">{children}</div>
                 </div>
             </body>
         </html>
