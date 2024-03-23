@@ -5,7 +5,7 @@ import Link from 'next/link';
 const SideNavigation = () => {
     return (
         <div className="flex h-full flex-col px-3 py-4 md:px-2">
-            <Link className="mb-2 flex h-20 justify-center items-center rounded-md bg-blue-600 p-4 md:h-40" href="/">
+            <Link href="/">
                 <Title />
             </Link>
             <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
@@ -18,7 +18,7 @@ const SideNavigation = () => {
 
 const Title = () => {
     return (
-        <div className={'flex flex-row justify-center text-white text-5xl leading-snug'}>
+        <div className={'flex flex-row justify-center items-center text-5xl leading-snug mb-2 h-20 rounded-md md:h-40 p-4 text-white bg-blue-600'}>
             <p>Next.js Practice</p>
         </div>
     );
