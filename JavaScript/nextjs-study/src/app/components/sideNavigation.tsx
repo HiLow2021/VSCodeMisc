@@ -1,8 +1,9 @@
 'use client';
 
-import { Apps, Home } from '@mui/icons-material';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { LinkData } from '../const/linkData';
+import { Site } from '../const/site';
 
 const SideNavigation = () => {
     return (
@@ -21,21 +22,17 @@ const SideNavigation = () => {
 const Title = () => {
     return (
         <div className="mb-2 flex h-20 flex-row items-center justify-center rounded-md bg-blue-600 p-4 text-5xl leading-snug text-white md:h-40">
-            <p>Next.js Practice</p>
+            <p>{Site.title}</p>
         </div>
     );
 };
 
 const Links = () => {
     const pathname = usePathname();
-    const links = [
-        { name: 'Home', href: '/', icon: Home },
-        { name: 'Form', href: '/form', icon: Apps }
-    ];
 
     return (
         <>
-            {links.map((link) => {
+            {LinkData.map((link) => {
                 const LinkIcon = link.icon;
 
                 return (
@@ -45,7 +42,7 @@ const Links = () => {
                         className={`flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3 ${pathname === link.href ? 'bg-sky-100 text-blue-600' : ''}`}
                     >
                         <LinkIcon className="w-6" />
-                        <p className="text-sm font-medium hidden md:block">{link.name}</p>
+                        <p className="hidden text-sm font-medium md:block">{link.name}</p>
                     </Link>
                 );
             })}
