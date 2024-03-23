@@ -2,12 +2,13 @@ import '@/style/globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import SideNavigation from './components/sideNavigation';
+import { Site } from './const/site';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-    title: 'Next.js Practice',
-    description: 'Next.js Practice'
+    title: Site.title,
+    description: Site.title
 };
 
 export default function RootLayout({
