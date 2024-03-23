@@ -1,8 +1,8 @@
+import { Site } from '@/shared/const/site';
 import '@/style/globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import SideNavigation from './components/sideNavigation';
-import { Site } from './const/site';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,7 +23,7 @@ export default function RootLayout({
                     <div className="w-full flex-none md:w-64 ">
                         <SideNavigation />
                     </div>
-                    <div className="flex flex-grow flex-col items-center justify-between p-4 md:overflow-y-auto">{children}</div>
+                    <div className="flex w-full justify-center p-4 md:overflow-y-auto">{children}</div>
                 </div>
             </body>
         </html>

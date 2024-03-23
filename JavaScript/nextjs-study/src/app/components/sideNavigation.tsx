@@ -1,9 +1,9 @@
 'use client';
 
+import { LinkData } from '@/shared/const/linkData';
+import { Site } from '@/shared/const/site';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LinkData } from '../const/linkData';
-import { Site } from '../const/site';
 
 const SideNavigation = () => {
     return (
