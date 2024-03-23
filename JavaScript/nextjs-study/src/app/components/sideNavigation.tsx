@@ -1,6 +1,8 @@
-import { Home, Apps } from '@mui/icons-material';
+'use client';
 
+import { Apps, Home } from '@mui/icons-material';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const SideNavigation = () => {
     return (
@@ -25,6 +27,7 @@ const Title = () => {
 };
 
 const Links = () => {
+    const pathname = usePathname();
     const links = [
         { name: 'Home', href: '/', icon: Home },
         { name: 'Form', href: '/form', icon: Apps }
@@ -39,10 +42,10 @@ const Links = () => {
                     <Link
                         key={link.name}
                         href={link.href}
-                        className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
+                        className={`flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3 ${pathname === link.href ? 'bg-sky-100 text-blue-600' : ''}`}
                     >
                         <LinkIcon className="w-6" />
-                        <p className="hidden md:block">{link.name}</p>
+                        <p className="text-sm font-medium hidden md:block">{link.name}</p>
                     </Link>
                 );
             })}
