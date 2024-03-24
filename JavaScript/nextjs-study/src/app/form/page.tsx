@@ -1,16 +1,30 @@
 'use client';
 
-import { Button, FormControl, TextField } from '@mui/material';
+import { Prefectures } from '@/shared/const/prefecture';
+import {
+    Button,
+    FormControl,
+    FormControlLabel,
+    FormHelperText,
+    FormLabel,
+    MenuItem,
+    Radio,
+    RadioGroup,
+    Select,
+    TextField
+} from '@mui/material';
+import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 export default function Form() {
     const { control, handleSubmit } = useForm({ mode: 'onBlur' });
+    const [submitted, setSubmitted] = useState(false);
 
     return (
         <main className="w-full flex justify-center">
             <div className="flex flex-col w-full max-w-5xl text-3xl">
                 <h1 className="flex justify-center p-2 lg:p-4">Form Page</h1>
-                <FormControl component="form" className="flex flex-col gap-4" onSubmit={handleSubmit((data) => console.log(data))}>
+                <FormControl component="form" className="flex flex-col gap-4" onSubmit={handleSubmit((data) => setSubmitted(true))}>
                     <Controller
                         name="name"
                         control={control}
@@ -30,6 +44,44 @@ export default function Form() {
                             />
                         )}
                     />
+                    <Controller
+                        name="sex"
+                        control={control}
+                        rules={{
+                            required: { value: true, message: '入力が必須です' }
+                        }}
+                        render={({ field, formState: { errors } }) => (
+                            <FormControl {...field} error={errors.sex ? true : false}>
+                                <FormLabel id="sex-group-label">性別</FormLabel>
+                                <RadioGroup name="sex" row aria-labelledby="sex-group-label">
+                                    <FormControlLabel value={0} control={<Radio />} label="男" />
+                                    <FormControlLabel value={1} control={<Radio />} label="女" />
+                                    <FormControlLabel value={2} control={<Radio />} label="その他" />
+                                </RadioGroup>
+                                <FormHelperText className="ml-0">{errors.sex?.message as string}</FormHelperText>
+                            </FormControl>
+                        )}
+                    />
+                    <div>
+                        <Controller
+                            name="prefecture"
+                            control={control}
+                            defaultValue={12}
+                            render={({ field, formState: { errors } }) => (
+                                <FormControl className="w-32" variant="standard" error={errors.prefecture ? true : false}>
+                                    <FormLabel id="prefecture-label">都道府県</FormLabel>
+                                    <Select labelId="prefecture-label" id="prefecture" label="prefecture" {...field}>
+                                        {Prefectures.map((x, i) => (
+                                            <MenuItem key={x} value={i}>
+                                                {x}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                    <FormHelperText>{errors.prefecture?.message as string}</FormHelperText>
+                                </FormControl>
+                            )}
+                        />
+                    </div>
                     <Controller
                         name="email"
                         control={control}
@@ -79,9 +131,12 @@ export default function Form() {
                         )}
                     />
                     <div className="flex justify-center">
-                        <Button type="submit" variant="contained" size="large">
+                        <Button className="w-32" type="submit" variant="contained" size="large">
                             送信
                         </Button>
+                    </div>
+                    <div className='flex justify-center'>
+                        <p className="text-lg font-semibold text-green-600">{submitted ? '送信されました' : ''}</p>
                     </div>
                 </FormControl>
             </div>
