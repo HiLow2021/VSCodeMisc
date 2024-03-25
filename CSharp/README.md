@@ -32,7 +32,7 @@ PS > dotnet add package <パッケージ名>
 - 削除
 
 ```ps
-PS > dotnet add package <パッケージ名>
+PS > dotnet remove package <パッケージ名>
 ```
 
 - 復元 (インストール)
