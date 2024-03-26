@@ -1,4 +1,4 @@
-import { GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';
+import { GraphQLObjectType, GraphQLSchema, GraphQLString } from 'graphql';
 
 /**
  * Construct a GraphQL schema and define the necessary resolvers.

@@ -34,8 +34,8 @@ export default function SignIn(): JSX.Element {
             <Head>
                 <title>サインイン</title>
             </Head>
-            <div className="flex flex-col gap-4 w-full max-w-5xl">
-                <p className="flex w-full justify-center text-2xl rounded border border-neutral-400 bg-neutral-200 p-4">サインイン</p>
+            <div className="flex w-full max-w-5xl flex-col gap-4">
+                <p className="flex w-full justify-center rounded border border-neutral-400 bg-neutral-200 p-4 text-2xl">サインイン</p>
                 <SendForm updateEmail={updateEmail} updatePassword={updatePassword} onclick={onclick} />
             </div>
         </Layout>

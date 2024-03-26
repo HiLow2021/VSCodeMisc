@@ -30,14 +30,14 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
                     {router.pathname === '/' ? (
                         <></>
                     ) : (
-                        <button className="bg-neutral-500 hover:bg-neutral-400 text-white rounded w-32 px-4 py-2" onClick={gotoTop}>
+                        <button className="w-32 rounded bg-neutral-500 px-4 py-2 text-white hover:bg-neutral-400" onClick={gotoTop}>
                             トップ
                         </button>
                     )}
                 </div>
                 <div>
                     {isSignedIn ? (
-                        <button className="bg-green-600 hover:bg-green-500 text-white rounded w-32 px-4 py-2" onClick={clickSignOut}>
+                        <button className="w-32 rounded bg-green-600 px-4 py-2 text-white hover:bg-green-500" onClick={clickSignOut}>
                             サインアウト
                         </button>
                     ) : (
@@ -45,14 +45,14 @@ const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
                             {router.pathname === '/signIn' ? (
                                 <></>
                             ) : (
-                                <button className="bg-green-600 hover:bg-green-500 text-white rounded w-32 px-4 py-2" onClick={gotoSignIn}>
+                                <button className="w-32 rounded bg-green-600 px-4 py-2 text-white hover:bg-green-500" onClick={gotoSignIn}>
                                     サインイン
                                 </button>
                             )}
                             {router.pathname === '/signUp' ? (
                                 <></>
                             ) : (
-                                <button className="bg-green-600 hover:bg-green-500 text-white rounded w-32 px-4 py-2" onClick={gotoSignUp}>
+                                <button className="w-32 rounded bg-green-600 px-4 py-2 text-white hover:bg-green-500" onClick={gotoSignUp}>
                                     サインアップ
                                 </button>
                             )}

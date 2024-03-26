@@ -1,5 +1,5 @@
-import recorder from 'node-record-lpcm16';
 import { SpeechClient } from '@google-cloud/speech';
+import recorder from 'node-record-lpcm16';
 import { Config } from './config.js';
 
 function start() {

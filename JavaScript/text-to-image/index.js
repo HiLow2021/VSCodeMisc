@@ -1,5 +1,5 @@
-import { UltimateTextToImage } from 'ultimate-text-to-image';
 import fs from 'fs';
+import { UltimateTextToImage } from 'ultimate-text-to-image';
 
 const input = 'sampleAA.txt';
 const text = fs.readFileSync(`./input/${input}`, { encoding: 'utf-8' });
