@@ -1,6 +1,6 @@
 import NextAuth, { AuthError } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { authConfig } from './authConfig';
+import { authConfig } from './auth.config';
 
 const correctEmail = 'admin@test.com';
 const correctPassword = 'password';

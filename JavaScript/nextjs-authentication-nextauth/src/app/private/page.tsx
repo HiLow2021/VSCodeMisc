@@ -1,4 +1,4 @@
-import { signOut } from '@/auth';
+import { signOut } from '@/shared/auth/auth';
 
 export default function Private() {
     return (

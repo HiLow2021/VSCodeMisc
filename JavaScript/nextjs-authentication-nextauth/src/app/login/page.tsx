@@ -1,6 +1,6 @@
 'use client';
 
-import { authenticate } from '@/authAction';
+import { authenticate } from '@/shared/auth/auth.action';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
