@@ -1,19 +1,15 @@
 'use client';
 
 import { authenticate } from '@/shared/auth/auth.action';
+import { LoginFormInput } from '@/shared/types/loginFormInput';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-type FormInput = {
-    email: string;
-    password: string;
-};
-
 export default function Login() {
-    const { register, handleSubmit } = useForm<FormInput>();
+    const { register, handleSubmit } = useForm<LoginFormInput>();
     const [errorMessage, setErrorMessage] = useState('');
 
-    const onSubmit: SubmitHandler<FormInput> = async (data) => {
+    const onSubmit: SubmitHandler<LoginFormInput> = async (data) => {
         const result = await authenticate(data);
         setErrorMessage(result as string);
     };
