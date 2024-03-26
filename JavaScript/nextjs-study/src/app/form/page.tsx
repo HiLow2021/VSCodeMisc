@@ -21,8 +21,8 @@ export default function Form() {
     const [submitted, setSubmitted] = useState(false);
 
     return (
-        <main className="w-full flex justify-center">
-            <div className="flex flex-col w-full max-w-5xl text-3xl">
+        <main className="flex w-full justify-center">
+            <div className="flex w-full max-w-5xl flex-col text-3xl">
                 <h1 className="flex justify-center p-2 lg:p-4">Form Page</h1>
                 <FormControl component="form" className="flex flex-col gap-4" onSubmit={handleSubmit((data) => setSubmitted(true))}>
                     <Controller
@@ -135,7 +135,7 @@ export default function Form() {
                             送信
                         </Button>
                     </div>
-                    <div className='flex justify-center'>
+                    <div className="flex justify-center">
                         <p className="text-lg font-semibold text-green-600">{submitted ? '送信されました' : ''}</p>
                     </div>
                 </FormControl>
