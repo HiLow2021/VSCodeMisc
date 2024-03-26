@@ -1,9 +1,9 @@
-import NextAuth from 'next-auth';
+import NextAuth, { AuthError } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { authConfig } from './auth.config';
+import { authConfig } from './authConfig';
 
-const correctEmail = '';
-const correctPassword = '';
+const correctEmail = 'admin@test.com';
+const correctPassword = 'password';
 
 export const { auth, signIn, signOut } = NextAuth({
     ...authConfig,
@@ -14,7 +14,10 @@ export const { auth, signIn, signOut } = NextAuth({
 
                 const isMatched = email === correctEmail && password === correctPassword;
                 if (isMatched) {
-                    return {};
+                    return {
+                        name: 'Admin',
+                        email: email
+                    };
                 }
 
                 console.log('Invalid credentials');

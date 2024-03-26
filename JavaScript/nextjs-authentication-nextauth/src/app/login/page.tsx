@@ -1,14 +1,27 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { authenticate } from '@/authAction';
+import { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
+type FormInput = {
+    email: string;
+    password: string;
+};
 
 export default function Login() {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit } = useForm<FormInput>();
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const onSubmit: SubmitHandler<FormInput> = async (data) => {
+        const result = await authenticate(data);
+        setErrorMessage(result as string);
+    };
 
     return (
         <main className="flex h-screen w-full flex-col items-center justify-center">
             <h1 className="mb-12 flex w-full justify-center p-4 text-3xl">Sign In</h1>
-            <form className="flex flex-col" onSubmit={handleSubmit((data) => console.log(data))}>
+            <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex flex-col gap-2">
                     <label htmlFor="email">Email Address</label>
                     <input
@@ -27,6 +40,7 @@ export default function Login() {
                 <button className="mt-8 h-12 rounded-md bg-purple-600 hover:bg-purple-500" type="submit">
                     SIGN IN
                 </button>
+                <p className="mt-2 flex justify-center text-red-500">{errorMessage}</p>
             </form>
         </main>
     );
