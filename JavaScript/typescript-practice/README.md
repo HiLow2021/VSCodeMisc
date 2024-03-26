@@ -13,7 +13,7 @@ node.js と TypeScript を使ったプロジェクトの作成の流れを自分
     - npx tsc --init
 
     - npm i --save-dev ts-node nodemon
-        - ts-node は、ts ファイルを直接実行できるパッケージ。一度、node.js にトランスパイルしてから実行する必要がなくなる。
+        - ts-node は、ts ファイルを直接実行できるパッケージ。一度、JavaScript にトランスパイルしてから実行する必要がなくなる。
         - nodemon は、ソースビルド時に、node を自動で再起動するパッケージ。開発時に有用。
 
 - node.js や TypeScript の設定について
