@@ -9,11 +9,16 @@ export const authConfig = {
             const isLoggedIn = !!auth?.user;
             const isOnPrivate = nextUrl.pathname.startsWith('/private');
             if (isOnPrivate) {
-                if (isLoggedIn) return true;
-                return false; // Redirect unauthenticated users to login page
+                if (isLoggedIn) {
+                    return true;
+                }
+
+                // Redirect unauthenticated users to login page
+                return false;
             } else if (isLoggedIn) {
                 return Response.redirect(new URL('/private', nextUrl));
             }
+
             return true;
         }
     },

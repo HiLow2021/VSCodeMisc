@@ -10,6 +10,7 @@ export default function Private() {
             </h1>
             <form
                 action={async () => {
+                    'use server';
                     await signOut();
                 }}
             >
