@@ -1,0 +1,17 @@
+{
+  "name": "jsdom",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^24.0.0",
+    "node-fetch": "^3.3.2"
+  }
+}
