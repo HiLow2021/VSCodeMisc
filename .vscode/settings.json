@@ -8,6 +8,7 @@
         "codepaths",
         "datasource",
         "deepl",
+        "fastapi",
         "imread",
         "imshow",
         "imwrite",
@@ -32,6 +33,7 @@
         "tsbuildinfo",
         "unitmap",
         "unmocked",
+        "uvicorn",
         "venv",
         "vrchat",
         "wrld"
