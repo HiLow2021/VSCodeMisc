@@ -5,8 +5,8 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-    title: 'Next.js Authentication with NextAuth',
-    description: 'Next.js Authentication with NextAuth'
+    title: 'Next.js Authentication with Auth.js',
+    description: 'Next.js Authentication with Auth.js'
 };
 
 export default function RootLayout({

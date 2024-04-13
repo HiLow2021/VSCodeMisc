@@ -1,13 +1,20 @@
-# Next.js Authentication with NextAuth.js
+# Next.js Authentication with Auth.js
 
 ## 概要
 
-- Next.js アプリの認証に NextAuth.js を利用したデモリポジトリ。
-- Next.js v14 & NextAuth.js v5 (ベータ版)
+- Next.js アプリの認証に Auth.js を利用したデモリポジトリ。
+- Next.js v14 & Auth.js v5
 - App Router 対応
+
+# 公式
+
+- https://nextjs.org/
+- https://authjs.dev/ (Auth.js v5 以降)
+- https://next-auth.js.org/ (NextAuth.js v4 以前)
 
 ## 備考
 
+- Auth.js は以前は NextAuth.js と呼ばれていたが、v5 から Auth.js になった。このリポジトリは Auth.js v5 を使用。
 - middleware.{js,ts} という名前のファイルを app ディレクトリと同じ階層に置くことで、各ルーティング前に割り込み処理を行える。
 - env ファイルに NEXTAUTH_SECRET をセットする必要あり。ない場合、TypeError: "ikm"" must be an instance of Uint8Array or a string が発生。
 
