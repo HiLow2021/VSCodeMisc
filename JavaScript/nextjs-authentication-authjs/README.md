@@ -3,8 +3,7 @@
 ## 概要
 
 - Next.js アプリの認証に Auth.js を利用したデモリポジトリ。
-- Next.js v14 & Auth.js v5
-- App Router 対応
+- Next.js v14 (App Router) & Auth.js v5
 
 # 公式
 
