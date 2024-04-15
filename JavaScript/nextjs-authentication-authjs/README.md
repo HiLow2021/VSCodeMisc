@@ -4,6 +4,7 @@
 
 - Next.js アプリの認証に Auth.js を利用したデモリポジトリ。
 - Next.js v14 (App Router) & Auth.js v5
+- 認証形式は Credentials Provider (メールアドレスやパスワードを自前で用意 & 認証する方式) を使用。
 
 # 公式
 
