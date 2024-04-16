@@ -1,8 +1,5 @@
-import { sign } from 'jsonwebtoken';
-
 const correctEmail = 'admin@test.com';
 const correctPassword = 'password';
-const secretOrPrivateKey = 'dummy';
 
 export default defineEventHandler(async (event) => {
     const { email, password } = await readBody(event);
@@ -15,15 +12,7 @@ export default defineEventHandler(async (event) => {
         });
     }
 
-    const user = {
-        email
-    };
-
-    const accessToken = sign(user, secretOrPrivateKey, {
-        expiresIn: 60 // 60 seconds
-    });
-
     return {
-        token: accessToken
+        token: 'token' // in production, you should use jwt token.
     };
 });

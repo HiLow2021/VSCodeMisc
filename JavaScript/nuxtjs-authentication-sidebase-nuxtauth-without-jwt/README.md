@@ -1,4 +1,4 @@
-# Nuxt.js Authentication with Sidebase Nuxt-Auth
+# Nuxt.js Authentication with Sidebase Nuxt-Auth (without jwt)
 
 ## 概要
 
@@ -15,29 +15,13 @@
 
 - Nuxt.js v3 に自前の Auth モジュールが組み込まれる予定らしいが、現状は @sidebase/nuxt-auth を使用する必要があるとのこと。
 - @sidebase/nuxt-auth は v0.6 から Local Provider (Auth.js における Credentials Provider) が使用できるようになった。
-- node module の jsonwebtoken を使用する場合、nuxt.config.ts でトランスパイルの設定をしないとエラーが出る。
-
-  ```diff
-  // nuxt.config.ts
-  export default defineNuxtConfig({
-      devtools: { enabled: true },
-      modules: ['@sidebase/nuxt-auth'],
-  +   build: {
-  +       transpile: ['jsonwebtoken']
-  +   },
-      auth: {
-          globalAppMiddleware: true,
-          provider: {
-              type: 'local'
-          }
-      }
-  });
-  ```
 
 ## 参考
 
 - https://reffect.co.jp/nuxt/sidebase-nuxt-auth
 - https://github.com/sidebase/nuxt-auth/tree/main/playground-local
+  
+  - jwt を使った、より実践的なサンプル
 
 ## 引用
 

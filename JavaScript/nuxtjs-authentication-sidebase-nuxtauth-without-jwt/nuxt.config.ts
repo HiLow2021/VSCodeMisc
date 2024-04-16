@@ -2,9 +2,6 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: ['@sidebase/nuxt-auth', "@nuxtjs/tailwindcss"],
-    build: {
-        transpile: ['jsonwebtoken']
-    },
     auth: {
         globalAppMiddleware: true,
         provider: {
