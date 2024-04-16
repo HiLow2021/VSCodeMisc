@@ -1,0 +1,24 @@
+{
+  "name": "nuxtjs-authentication-sidebase-nuxtauth",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "format": "npx prettier --write ./**/*.{ts,vue}"
+  },
+  "dependencies": {
+    "@nuxt/ui": "^2.15.2",
+    "@sidebase/nuxt-auth": "^0.7.1",
+    "nuxt": "^3.11.2",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.13"
+  }
+}
