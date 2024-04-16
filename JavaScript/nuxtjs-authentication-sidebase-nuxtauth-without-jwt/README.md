@@ -15,6 +15,8 @@
 
 - Nuxt.js v3 に自前の Auth モジュールが組み込まれる予定らしいが、現状は @sidebase/nuxt-auth を使用する必要があるとのこと。
 - @sidebase/nuxt-auth は v0.6 から Local Provider (Auth.js における Credentials Provider) が使用できるようになった。
+- jwt を返す場合 ([nuxtjs-authentication-sidebase-nuxtauth](../nuxtjs-authentication-sidebase-nuxtauth/)) と対比をするためのリポジトリ。
+  <span style="color: orange">jwt を適切に返さないことによる不具合が生じる可能性があることに注意</span>
 
 ## 参考
 
