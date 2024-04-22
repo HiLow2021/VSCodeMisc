@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+/// This collection uses a JSON Schema defined in the database, which requires additional setup for migrations. Visit https://pris.ly/d/mongodb-json-schema for more info.
+model users {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  created_date DateTime @db.Date
+  gender       String
+  name         String
+}
