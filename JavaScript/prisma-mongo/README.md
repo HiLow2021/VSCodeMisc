@@ -1,7 +1,8 @@
+# Prisma with MongoDB
+
 ## 概要
 
-- PrismaClient からデータを挿入するサンプル
-- Nextjs-14-Tutorial のデータを使用
+- Prisma でデータを取得するサンプル
 - MongoDB 使用
 
 ## 公式

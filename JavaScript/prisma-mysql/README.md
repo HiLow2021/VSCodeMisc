@@ -1,6 +1,17 @@
-# 導入
+# Prisma with MySQL
 
-## JavaScript 版
+## 概要
+
+- Prisma でデータを取得するサンプル
+- MySQL 使用
+
+## 公式
+
+- https://www.prisma.io/docs/orm/overview/databases/mysql
+
+## 導入
+
+### JavaScript 版
 
 1. プロジェクト初期化
 
@@ -45,7 +56,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 ```
 
-## TypeScript 版
+### TypeScript 版
 
 1. プロジェクト初期化
 

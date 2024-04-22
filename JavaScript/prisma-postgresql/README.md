@@ -1,8 +1,14 @@
+# Prisma with PostgreSQL
+
 ## 概要
 
-- PrismaClient からデータを挿入するサンプル
+- Prisma でデータを挿入するサンプル
 - Nextjs-14-Tutorial のデータを使用
-- PostgreSQL 使用 
+- PostgreSQL 使用
+
+## 公式
+
+- https://www.prisma.io/docs/orm/overview/databases/postgresql
 
 ## 導入
 
