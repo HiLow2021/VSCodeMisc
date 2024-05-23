@@ -28,6 +28,14 @@
 
 6. F5 でデバッグを実行。
 
+## マテリアルデザイン (UIフレームワーク)
+
+- Flutter 3.16 から、マテリアルデザインはデフォルトで導入済みなので、別途インストールする必要なし。
+- [公式](https://m3.material.io/)
+- [コードサンプル](https://api.flutter.dev/flutter/material/material-library.html)
+
+## その他
+
 ### Flutter 関連のインストール状況を調べる方法
 
 - `flutter doctor -v` コマンドを使う。
