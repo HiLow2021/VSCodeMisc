@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:local_storage/app_storage.dart';
+import 'package:local_storage/models/app_storage.dart';
 
-import 'app.dart';
+import 'views/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
