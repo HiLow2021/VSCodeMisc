@@ -90,6 +90,47 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               ),
             ),
+            const SizedBox(height: 20),
+            SizedBox(
+              width: 200,
+              height: 40,
+              child: FilledButton(
+                child: const Text('Progress', style: TextStyle(fontSize: 20)),
+                onPressed: () async {
+                  if (context.mounted) {
+                    var isCanceled = false;
+
+                    Future<void> process(int percentage) async {
+                      await Future.delayed(const Duration(seconds: 5));
+                      print('process has $percentage% finished');
+
+                      if (isCanceled) {
+                        throw Exception();
+                      }
+                    }
+
+                    await DialogUtility.showProgressDialog(
+                        context: context,
+                        title: 'Progress',
+                        message: 'Progress Description',
+                        task: () async {
+                          try {
+                            print('Process has started');
+                            await process(25);
+                            await process(50);
+                            await process(75);
+                            await process(100);
+                          } catch (e) {
+                            print('Process has canceled');
+                          }
+                        },
+                        onCancel: () {
+                          isCanceled = true;
+                        });
+                  }
+                },
+              ),
+            ),
           ],
         ),
       ),

@@ -123,4 +123,63 @@ class DialogUtility {
           ]),
     );
   }
+
+  static Future<void> showProgressDialog(
+      {required BuildContext context,
+      required String title,
+      required String message,
+      FutureOr<void> Function()? task,
+      FutureOr<void> Function()? onCancel}) async {
+    await showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          Future.sync(() async {
+            await task?.call();
+          }).then((_) async {
+            if (context.mounted) {
+              Navigator.pop(context, true);
+            }
+          });
+
+          return SimpleDialog(
+              title: Text(title, style: const TextStyle(fontSize: 30)),
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const SizedBox(height: 20),
+                    const SizedBox(
+                      height: 40,
+                      width: 40,
+                      child: CircularProgressIndicator(),
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          height: 40,
+                          child: TextButton(
+                            onPressed: () async {
+                              await onCancel?.call();
+
+                              if (context.mounted) {
+                                Navigator.pop(context, true);
+                              }
+                            },
+                            child: const Text(
+                              'Cancel',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 20)
+                      ],
+                    )
+                  ],
+                )
+              ]);
+        });
+  }
 }
