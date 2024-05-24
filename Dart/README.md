@@ -35,6 +35,20 @@
 - [コードサンプル](https://api.flutter.dev/flutter/material/material-library.html)
 - [アイコン検索](https://fonts.google.com/icons)
 
+## パッケージ
+
+- パッケージ追加
+
+```sh
+> flutter pub add <package_name>
+```
+
+- パッケージ削除
+
+```sh
+> flutter pub remove <package_name>
+```
+
 ## その他
 
 ### Flutter 関連のインストール状況を調べる方法
