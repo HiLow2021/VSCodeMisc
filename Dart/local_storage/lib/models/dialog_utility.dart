@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class DialogUtility {
@@ -5,7 +7,7 @@ class DialogUtility {
       {required BuildContext context,
       required String title,
       required String message,
-      Future<void> Function()? onOk}) async {
+      FutureOr<void> Function()? onOk}) async {
     await showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
@@ -37,8 +39,8 @@ class DialogUtility {
       {required BuildContext context,
       required String title,
       required String message,
-      Future<void> Function()? onOk,
-      Future<void> Function()? onCancel}) async {
+      FutureOr<void> Function()? onOk,
+      FutureOr<void> Function()? onCancel}) async {
     return await showDialog<bool>(
       context: context,
       builder: (BuildContext context) => AlertDialog(
