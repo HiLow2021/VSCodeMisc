@@ -1,2 +1,5 @@
 *.cc linguist-detectable=false
 *.cmake linguist-detectable=false
+
+*.cc linguist-vendored=false
+*.cmake linguist-vendored=false
