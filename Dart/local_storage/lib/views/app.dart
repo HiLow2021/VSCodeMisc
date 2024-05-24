@@ -130,6 +130,41 @@ class _MyHomePageState extends State<MyHomePage> {
                               _emailController.text, _passwordController.text);
 
                           await widget.storage.save(settings);
+
+                          if (context.mounted) {
+                            await showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => Dialog(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      const Text(
+                                        'Saved Data on Local Storage.',
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                      const SizedBox(height: 20),
+                                      SizedBox(
+                                        width: 100,
+                                        height: 40,
+                                        child: TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text(
+                                            'OK',
+                                            style: TextStyle(fontSize: 20),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
                         },
                       ),
                     )
