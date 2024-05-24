@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:local_storage/models/app_settings.dart';
 import 'package:local_storage/models/app_storage.dart';
-import 'package:local_storage/views/components/dialog.dart';
+import 'package:local_storage/models/dialog_utility.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
