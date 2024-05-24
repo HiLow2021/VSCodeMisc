@@ -133,6 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           if (context.mounted) {
                             await DialogUtility.showMessageDialog(
                                 context: context,
+                                title: 'Message',
                                 message: 'Data has saved on Local Storage.');
                           }
                         },
@@ -158,6 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             final result =
                                 await DialogUtility.showConfirmationDialog(
                                     context: context,
+                                    title: 'Confirmation',
                                     message:
                                         'Are you sure you want to delete the data?',
                                     onOk: () async {
@@ -169,6 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             if (context.mounted && result == true) {
                               await DialogUtility.showMessageDialog(
                                   context: context,
+                                  title: 'Message',
                                   message:
                                       'Data has deleted on Local Storage.');
                             }
