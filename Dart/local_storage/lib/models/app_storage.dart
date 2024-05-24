@@ -13,10 +13,11 @@ class AppStorage {
   Future<String> get _localAppDirectory async =>
       '${await _localBaseDirectory}/flutter/local_storage/';
 
-  Future<String> get _localPath async => '${await _localAppDirectory}settings.json';
+  Future<String> get _localPath async =>
+      '${await _localAppDirectory}settings.json';
 
   Future<void> initialize() async {
-    await createDirectories();
+    await _createDirectories();
   }
 
   Future<AppSettings?> load() async {
@@ -42,7 +43,14 @@ class AppStorage {
     await file.writeAsString(jsonString);
   }
 
-  Future<void> createDirectories() async {
+  Future<void> delete() async {
+    final path = await _localPath;
+    final file = File(path);
+
+    await file.delete();
+  }
+
+  Future<void> _createDirectories() async {
     final directory = Directory(await _localAppDirectory);
 
     if (!directory.existsSync()) {

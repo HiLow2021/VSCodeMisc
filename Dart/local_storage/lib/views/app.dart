@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:local_storage/models/app_settings.dart';
 import 'package:local_storage/models/app_storage.dart';
+import 'package:local_storage/views/components/dialog.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -73,8 +74,6 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const Text('Data'),
-                const SizedBox(height: 20.0),
                 TextField(
                   controller: _nameController,
                   decoration: InputDecoration(
@@ -132,38 +131,47 @@ class _MyHomePageState extends State<MyHomePage> {
                           await widget.storage.save(settings);
 
                           if (context.mounted) {
-                            await showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) => Dialog(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      const Text(
-                                        'Saved Data on Local Storage.',
-                                        style: TextStyle(fontSize: 20),
-                                      ),
-                                      const SizedBox(height: 20),
-                                      SizedBox(
-                                        width: 100,
-                                        height: 40,
-                                        child: TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: const Text(
-                                            'OK',
-                                            style: TextStyle(fontSize: 20),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
+                            await DialogUtility.showMessageDialog(
+                                context: context,
+                                message: 'Data has saved on Local Storage.');
+                          }
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 20.0),
+                    SizedBox(
+                      width: 150,
+                      height: 40,
+                      child: FilledButton.icon(
+                        label: const Text('Delete',
+                            style: TextStyle(fontSize: 20)),
+                        icon: const Icon(Icons.delete),
+                        style:
+                            FilledButton.styleFrom(backgroundColor: Colors.red),
+                        onPressed: () async {
+                          final settings = AppSettings(_nameController.text,
+                              _emailController.text, _passwordController.text);
+
+                          await widget.storage.save(settings);
+
+                          if (context.mounted) {
+                            final result =
+                                await DialogUtility.showConfirmationDialog(
+                                    context: context,
+                                    message:
+                                        'Are you sure you want to delete the data?',
+                                    onOk: () async {
+                                      _nameController.clear();
+                                      _emailController.clear();
+                                      _passwordController.clear();
+                                      await widget.storage.delete();
+                                    });
+                            if (context.mounted && result == true) {
+                              await DialogUtility.showMessageDialog(
+                                  context: context,
+                                  message:
+                                      'Data has deleted on Local Storage.');
+                            }
                           }
                         },
                       ),

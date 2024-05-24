@@ -8,3 +8,4 @@
 
 - https://docs.flutter.dev/data-and-backend/serialization/json
 - https://docs.flutter.dev/cookbook/persistence/reading-writing-files
+- https://stackoverflow.com/questions/74368262/how-to-use-getapplicationdocumentsdirectory-with-flutter-for-web
