@@ -5,7 +5,7 @@ import 'package:local_storage/models/app_storage.dart';
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  static const title = 'Flutter Persist Data Demo';
+  static const title = 'Flutter Local Storage Demo';
 
   @override
   Widget build(BuildContext context) {
