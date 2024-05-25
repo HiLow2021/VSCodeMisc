@@ -49,6 +49,12 @@
 > flutter pub remove <package_name>
 ```
 
+## テスト
+
+```sh
+> flutter test
+```
+
 ## その他
 
 ### Flutter 関連のインストール状況を調べる方法
