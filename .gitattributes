@@ -1,2 +1,2 @@
-*.cc linguist-vendored
-*.cmake linguist-vendored
+*.cc linguist-vendored=true
+*.cmake linguist-vendored=true
