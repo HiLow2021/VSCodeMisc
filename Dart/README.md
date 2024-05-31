@@ -28,6 +28,10 @@
 
 6. F5 でデバッグを実行。
 
+## パッケージ
+
+- [公式](https://pub.dev/)
+
 ## マテリアルデザイン (UIフレームワーク)
 
 - Flutter 3.16 から、マテリアルデザインはデフォルトで導入済みなので、別途インストールする必要なし。
@@ -35,9 +39,15 @@
 - [コードサンプル](https://api.flutter.dev/flutter/material/material-library.html)
 - [アイコン検索](https://fonts.google.com/icons)
 
-## パッケージ
+## コマンド
 
-- [公式](https://pub.dev/)
+### パッケージ
+
+- パッケージ更新
+
+```sh
+> flutter pub get
+```
 
 - パッケージ追加
 
@@ -51,11 +61,43 @@
 > flutter pub remove <package_name>
 ```
 
+### ビルド
+
+```sh
+> flutter build <target_platform>
+```
+
+- 例
+```sh
+> flutter build windows
+```
+
+### プロジェクト
+
+- build ディレクトリなど削除
+
+```sh
+> flutter clean
+```
+
 ## テスト
 
 ```sh
 > flutter test
 ```
+
+## リリース
+
+- Google PlayとApp Storeの場合は、公開のための申請を行い、審査を受ける必要あり。
+
+| プラットフォーム | 手順 |
+| --- | --- |
+| Android | Google Playにアップロードして、公開 |
+| iOS | App Storeにアップロードして、公開 |
+| Web | Webサーバ (Firebase Hosting など) にデプロイ |
+| Windows | 実行可能形式にビルドして配布 |
+| macOS | 実行可能形式にビルドして配布 |
+| Linux | 実行可能形式にビルドして配布 |
 
 ## その他
 
@@ -77,3 +119,7 @@ Ctrl + Shift + P でコマンドパレットを開いて、Flutter: Select Devic
 ### Android デバッグ用のデバイス選択時にエラーが発生する場合
 
 - Hyper-V が起動しているか確認する。ただし、動作が重いため、正規の Intel HAXM をインストールするか、実機を使ったデバッグを推奨。
+
+### Git Clone でリポジトリをクローンした時にエラーが発生する場合
+
+- `flutter pub get` で依存パッケージを更新。
