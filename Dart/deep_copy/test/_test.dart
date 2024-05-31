@@ -2,9 +2,9 @@ import 'package:deep_copy/lib.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Map', () {
+  group('Map Simplex', () {
     final original1 = {'id': 1, 'name': 'Alice'};
-    final original2 = {'id': 2, 'name': 'betty'};
+    final original2 = {'id': 2, 'name': 'Betty'};
 
     test('Success', () {
       final source = {'id': 1, 'name': 'Alice'};
@@ -12,9 +12,70 @@ void main() {
       final Map<String, Object> copy = Map.from(source);
 
       copy['id'] = 2;
-      copy['name'] = 'betty';
+      copy['name'] = 'Betty';
 
       expect([source, copy], [original1, original2]);
+    });
+  });
+
+  group('Map Complex', () {
+    final original1 = {
+      'id': 1,
+      'name': 'Alice',
+      'email': ['alice@sample.com', 'alice@test.com'],
+      'detail': {'age': 20, 'place': 'New York'},
+    };
+    final original2 = {
+      'id': 2,
+      'name': 'Betty',
+      'email': ['betty@sample.com', 'betty@test.com'],
+      'detail': {'age': 30, 'place': 'London'},
+    };
+
+    test('Success', () {
+      final source = {
+        'id': 1,
+        'name': 'Alice',
+        'email': ['alice@sample.com', 'alice@test.com'],
+        'detail': {'age': 20, 'place': 'New York'},
+      };
+
+      final copy = deepCopy(source);
+
+      copy['id'] = 2;
+      copy['name'] = 'Betty';
+      copy['email'][0] = 'betty@sample.com';
+      copy['email'][1] = 'betty@test.com';
+      copy['detail']['age'] = 30;
+      copy['detail']['place'] = 'London';
+
+      expect([source, copy], [original1, original2]);
+    });
+
+    test('Failure', () {
+      final source = {
+        'id': 1,
+        'name': 'Alice',
+        'email': ['alice@sample.com', 'alice@test.com'],
+        'detail': {'age': 20, 'place': 'New York'},
+      };
+      final failure = {
+        'id': 1,
+        'name': 'Alice',
+        'email': ['betty@sample.com', 'betty@test.com'],
+        'detail': {'age': 30, 'place': 'London'},
+      };
+
+      final Map<String, dynamic> copy = Map.from(source);
+
+      copy['id'] = 2;
+      copy['name'] = 'Betty';
+      copy['email'][0] = 'betty@sample.com';
+      copy['email'][1] = 'betty@test.com';
+      copy['detail']['age'] = 30;
+      copy['detail']['place'] = 'London';
+
+      expect([source, copy], [failure, original2]);
     });
   });
 
