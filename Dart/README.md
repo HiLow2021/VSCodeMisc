@@ -80,6 +80,19 @@
 > flutter clean
 ```
 
+### Android
+
+- Android SDK のパスを設定
+
+```sh
+> flutter config --android-sdk <sdk_directory_name>
+```
+
+- 例
+```sh
+> flutter config --android-sdk "C:\Users\<User>\AppData\Local\Android\Sdk"
+```
+
 ## テスト
 
 ```sh
@@ -115,6 +128,11 @@ Ctrl + Shift + P でコマンドパレットを開いて、Flutter: Select Devic
 
 - `flutter config --android-sdk <sdk_directory_name>` でインストール先を直接設定する。
 - Windows 10 & Visual Studio 2022 経由で Android SDK をインストールしている場合、`C:\Program Files (x86)\Android\android-sdk` にインストールされている可能性が高い。
+
+### Android SDK を既にインストールしているが、Android Studio 経由の Android SDK のパスに変更したい場合
+
+- `flutter config --android-sdk <sdk_directory_name>` でインストール先を直接設定する。
+- Android Studio をデフォルトの設定でインストールしている場合、`C:\Users\<User>\AppData\Local\Android\Sdk` にインストールされている可能性が高い。
 
 ### Android デバッグ用のデバイス選択時にエラーが発生する場合
 
