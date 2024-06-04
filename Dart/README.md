@@ -99,7 +99,9 @@
 > flutter test
 ```
 
-## リリース
+## リリース (公開)
+
+### 手順
 
 - Google PlayとApp Storeの場合は、公開のための申請を行い、審査を受ける必要あり。
 
@@ -111,6 +113,49 @@
 | Windows | 実行可能形式にビルドして配布 |
 | macOS | 実行可能形式にビルドして配布 |
 | Linux | 実行可能形式にビルドして配布 |
+
+### アプリ名の変更
+
+| プラットフォーム | パス | 説明 |
+| --- | --- | --- |
+| Android | android/app/src/main/AndroidManifest.xml | android:label の値を変更 |
+| iOS | ios/Runner/info.plist | key が CFBundleName の値を変更 |
+
+### アイコンの変更
+
+1. [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons) パッケージをインストール
+
+```sh
+> flutter pub add flutter_launcher_icons
+```
+
+2. pubspec.yaml に flutter_launcher_icons の設定を追加
+
+```yml
+// 例
+dev_dependencies:
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "path/to/image.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "path/to/image.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "path/to/image.png"
+```
+
+3. `flutter pub run flutter_launcher_icons` コマンドを実行
 
 ## その他
 
