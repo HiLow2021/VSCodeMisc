@@ -55,6 +55,12 @@
 > flutter pub add <package_name>
 ```
 
+- パッケージ追加 (開発用)
+
+```sh
+> flutter pub add --dev <package_name>
+```
+
 - パッケージ削除
 
 ```sh
