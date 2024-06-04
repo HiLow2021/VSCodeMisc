@@ -126,6 +126,9 @@
 | --- | --- | --- |
 | Android | android/app/src/main/AndroidManifest.xml | android:label の値を変更 |
 | iOS | ios/Runner/info.plist | key が CFBundleName の値を変更 |
+| Windows | [window_manager](https://pub.dev/packages/window_manager) を使用 |
+| macOS | [window_manager](https://pub.dev/packages/window_manager) を使用 |
+| Linux | [window_manager](https://pub.dev/packages/window_manager) を使用 |
 
 ### アイコンの変更
 
