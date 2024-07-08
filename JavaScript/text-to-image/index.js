@@ -1,15 +1,25 @@
 import fs from 'fs';
-import { UltimateTextToImage } from 'ultimate-text-to-image';
+import sharp from 'sharp';
+import pkg from 'text-to-svg';
+const { loadSync } = pkg;
 
-const input = 'sampleAA.txt';
-const text = fs.readFileSync(`./input/${input}`, { encoding: 'utf-8' });
-const replacedText = text.replace(/　/g, '  ');
-const fontFamily = 'MS PGothic';
+const outDirectory = './out/';
 
-const textToImage = new UltimateTextToImage(replacedText, {
-    fontFamily: fontFamily,
-    fontSize: 24,
-    fontColor: '#FFFFFF',
-    noAutoWrap: true
-});
-textToImage.render().toFile(`./output/out_${input}_${fontFamily.replace(/\s+?/g, '_')}.png`);
+if (!fs.existsSync(outDirectory)) {
+    fs.mkdirSync(outDirectory);
+}
+
+const text = "('ω')";
+const fontSize = 72;
+const magnification = 2;
+const attributes = { fill: 'white', stroke: 'black' };
+const options = { x: 0, y: 0, fontSize: fontSize, anchor: 'top', attributes: attributes };
+
+const textToSVG = loadSync();
+const metrics = textToSVG.getMetrics(text, options);
+const svg = textToSVG.getSVG(text, options);
+
+await sharp(Buffer.from(svg))
+    .resize({ width: metrics.width * magnification })
+    .png()
+    .toFile(`${outDirectory}result.png`);
