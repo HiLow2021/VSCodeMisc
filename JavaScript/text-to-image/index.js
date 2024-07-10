@@ -9,17 +9,12 @@ if (!fs.existsSync(outDirectory)) {
     fs.mkdirSync(outDirectory);
 }
 
-const text = "('ω')";
+const text = 'Sample Text';
 const fontSize = 72;
-const magnification = 2;
 const attributes = { fill: 'white', stroke: 'black' };
 const options = { x: 0, y: 0, fontSize: fontSize, anchor: 'top', attributes: attributes };
 
 const textToSVG = loadSync();
-const metrics = textToSVG.getMetrics(text, options);
 const svg = textToSVG.getSVG(text, options);
 
-await sharp(Buffer.from(svg))
-    .resize({ width: metrics.width * magnification })
-    .png()
-    .toFile(`${outDirectory}result.png`);
+await sharp(Buffer.from(svg)).png().toFile(`${outDirectory}result.png`);
