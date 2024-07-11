@@ -11,10 +11,17 @@ if (!fs.existsSync(outDirectory)) {
 
 const text = 'Sample Text';
 const fontSize = 72;
-const attributes = { fill: 'white', stroke: 'black' };
+const fontColor = 'red';
+const fontBorderColor = 'green';
+const backgroundColor = 'blue';
+const attributes = { fill: fontColor, stroke: fontBorderColor };
 const options = { x: 0, y: 0, fontSize: fontSize, anchor: 'top', attributes: attributes };
 
 const textToSVG = loadSync();
-const svg = textToSVG.getSVG(text, options);
+const svg = background(textToSVG.getSVG(text, options), backgroundColor);
 
 await sharp(Buffer.from(svg)).png().toFile(`${outDirectory}result.png`);
+
+function background(svg, color) {
+    return svg.replace(/(^<svg.+>)(<path.+\/>)(<\/svg>)/, `\$1<rect width="100%" height="100%" fill="${color}" />\$2\$3`);
+}
