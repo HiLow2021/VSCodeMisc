@@ -9,4 +9,8 @@ export class UsersService {
     async findAll(skip?: number, take?: number): Promise<User[]> {
         return await this.usersStore.findAll({ skip, take });
     }
+
+    async find(id: number): Promise<User | undefined> {
+        return await this.usersStore.find({ id });
+    }
 }

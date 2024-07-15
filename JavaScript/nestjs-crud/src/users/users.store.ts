@@ -26,4 +26,12 @@ export class UsersStore {
 
         return users.map(convertToUser);
     }
+
+    async find(userWhereUniqueInput: Prisma.userWhereUniqueInput): Promise<User | null> {
+        const user = await this.prisma.user.findUnique({
+            where: userWhereUniqueInput
+        });
+
+        return convertToUser(user);
+    }
 }
