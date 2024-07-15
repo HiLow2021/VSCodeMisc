@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model gender {
+  id   Int     @id @db.SmallInt
+  name String? @db.VarChar(8)
+  user user[]
+}
+
+model user {
+  id        Int       @id
+  name      String    @db.VarChar(256)
+  gender_id Int       @db.SmallInt
+  birth_day DateTime? @db.Date
+  gender    gender    @relation(fields: [gender_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "user_ibfk_1")
+
+  @@index([gender_id], map: "gender_id")
+}
