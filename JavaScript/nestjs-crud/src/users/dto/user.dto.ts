@@ -1,6 +1,6 @@
 import { Gender } from '../enums/gender';
 
-export class CreateUserDto {
+export class UserDto {
     name: string;
 
     gender: Gender;

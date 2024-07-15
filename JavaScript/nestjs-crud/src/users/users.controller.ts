@@ -1,8 +1,8 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './models/user';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { UserDto } from './dto/user.dto';
+import { DeleteUserDto } from './dto/delete-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -14,21 +14,22 @@ export class UsersController {
     }
 
     @Get('/:id')
-    async find(@Param('id', ParseIntPipe) id: number): Promise<User> {
-        return await this.usersService.find(id);
+    async findOne(@Param('id', ParseIntPipe) id: number): Promise<User> {
+        return await this.usersService.findOne(id);
     }
 
     @Post()
-    async create(@Body() createUserDto: CreateUserDto): Promise<User> {
-        return await this.usersService.create(new User(createUserDto));
+    async create(@Body() userDto: UserDto): Promise<User> {
+        return await this.usersService.create(new User(userDto));
     }
 
     @Put('/:id')
-    async update(@Param('id', ParseIntPipe) id: number, @Body() updateUserDto: UpdateUserDto): Promise<User> {
-        if (id !== updateUserDto.id) {
-            throw Error('Invalid Id');
-        }
+    async update(@Param('id', ParseIntPipe) id: number, @Body() userDto: UserDto): Promise<User> {
+        return await this.usersService.update(new User(userDto, id));
+    }
 
-        return await this.usersService.update(new User(updateUserDto));
+    @Delete()
+    async delete(@Body() deleteUserDto: DeleteUserDto): Promise<number> {
+        return await this.usersService.delete(deleteUserDto.ids);
     }
 }

@@ -28,7 +28,7 @@ export class UsersStore {
         return users.map(convertToUser);
     }
 
-    async find(userWhereUniqueInput: Prisma.userWhereUniqueInput): Promise<User | null> {
+    async findOne(userWhereUniqueInput: Prisma.userWhereUniqueInput): Promise<User | null> {
         const user = await this.prisma.user.findUnique({
             where: userWhereUniqueInput
         });
@@ -62,5 +62,13 @@ export class UsersStore {
         });
 
         return convertToUser(updatedUser);
+    }
+
+    async delete(ids: readonly number[]): Promise<number> {
+        const users = await this.prisma.user.deleteMany({
+            where: { id: { in: [...ids] } }
+        });
+
+        return users.count;
     }
 }

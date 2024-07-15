@@ -1,5 +1,4 @@
-import { CreateUserDto } from '../dto/create-user.dto';
-import { UpdateUserDto } from '../dto/update-user.dto';
+import { UserDto } from '../dto/user.dto';
 import { Gender } from '../enums/gender';
 
 export class User {
@@ -11,8 +10,8 @@ export class User {
 
     birthday?: Date;
 
-    constructor(dto: CreateUserDto | UpdateUserDto) {
-        this.id = (dto as UpdateUserDto)?.id;
+    constructor(dto: UserDto, id?: number) {
+        this.id = id;
         this.name = dto.name;
         this.gender = dto.gender;
         this.birthday = dto.birthday;
