@@ -14,7 +14,7 @@ model gender {
 }
 
 model user {
-  id        Int       @id
+  id        Int       @id @default(autoincrement())
   name      String    @db.VarChar(256)
   gender_id Int       @db.SmallInt
   birth_day DateTime? @db.Date

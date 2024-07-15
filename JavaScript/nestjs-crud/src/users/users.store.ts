@@ -2,7 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/shared/prisma.service';
 import { convertToUser } from './converters/convert-to-users';
-import { User } from './types/user';
+import { Gender } from './enums/gender';
+import { User } from './models/user';
 
 @Injectable()
 export class UsersStore {
@@ -33,5 +34,33 @@ export class UsersStore {
         });
 
         return convertToUser(user);
+    }
+
+    async create(user: Readonly<User>): Promise<User> {
+        const newUser = await this.prisma.user.create({
+            data: {
+                id: undefined,
+                name: user.name,
+                gender_id: Gender.to(user.gender),
+                birth_day: user.birthday
+            }
+        });
+
+        return convertToUser(newUser);
+    }
+
+    async update(user: Readonly<User>): Promise<User> {
+        const updatedUser = await this.prisma.user.update({
+            data: {
+                name: user.name,
+                gender_id: Gender.to(user.gender),
+                birth_day: user.birthday
+            },
+            where: {
+                id: user.id
+            }
+        });
+
+        return convertToUser(updatedUser);
     }
 }

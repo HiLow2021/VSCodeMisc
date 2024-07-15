@@ -18,5 +18,18 @@ export const Gender = {
             default:
                 throw Error("don't come here");
         }
+    },
+
+    to: (gender: Gender): number => {
+        switch (gender) {
+            case Gender.Male:
+                return 0;
+            case Gender.Female:
+                return 1;
+            case Gender.Misc:
+                return 2;
+            default:
+                throw Error("don't come here");
+        }
     }
 } as const;

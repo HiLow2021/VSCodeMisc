@@ -1,6 +1,6 @@
 import { user } from '@prisma/client';
-import { User } from '../types/user';
 import { Gender } from '../enums/gender';
+import { User } from '../models/user';
 
 export function convertToUser(user: Readonly<user>): User {
     return {
