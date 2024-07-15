@@ -1,8 +1,7 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
-import { UsersService } from './users.service';
+import { CreateUserDto, DeleteUserDto, UpdateUserDto } from './dto';
 import { User } from './models/user';
-import { UserDto } from './dto/user.dto';
-import { DeleteUserDto } from './dto/delete-user.dto';
+import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
@@ -19,13 +18,13 @@ export class UsersController {
     }
 
     @Post()
-    async create(@Body() userDto: UserDto): Promise<User> {
-        return await this.usersService.create(new User(userDto));
+    async create(@Body() createUserDto: CreateUserDto): Promise<User> {
+        return await this.usersService.create(new User(createUserDto));
     }
 
     @Put('/:id')
-    async update(@Param('id', ParseIntPipe) id: number, @Body() userDto: UserDto): Promise<User> {
-        return await this.usersService.update(new User(userDto, id));
+    async update(@Param('id', ParseIntPipe) id: number, @Body() updateUserDto: UpdateUserDto): Promise<User> {
+        return await this.usersService.update(new User(updateUserDto, id));
     }
 
     @Delete()
