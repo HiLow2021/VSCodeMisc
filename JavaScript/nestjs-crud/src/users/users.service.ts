@@ -7,11 +7,11 @@ export class UsersService {
     constructor(private readonly usersStore: UsersStore) {}
 
     async findAll(skip?: number, take?: number): Promise<User[]> {
-        return await this.usersStore.findAll({ skip, take });
+        return await this.usersStore.findAll(skip, take);
     }
 
     async findOne(id: number): Promise<User | undefined> {
-        return await this.usersStore.findOne({ id });
+        return await this.usersStore.findOne(id);
     }
 
     async create(user: Readonly<User>): Promise<User> {

@@ -9,28 +9,18 @@ import { User } from './models/user';
 export class UsersStore {
     constructor(private readonly prisma: PrismaService) {}
 
-    async findAll(params: {
-        skip?: number;
-        take?: number;
-        cursor?: Prisma.userWhereUniqueInput;
-        where?: Prisma.userWhereInput;
-        orderBy?: Prisma.userOrderByWithRelationInput;
-    }): Promise<User[]> {
-        const { skip, take, cursor, where, orderBy } = params;
+    async findAll(skip?: number, take?: number): Promise<User[]> {
         const users = await this.prisma.user.findMany({
             skip,
-            take,
-            cursor,
-            where,
-            orderBy
+            take
         });
 
         return users.map(convertToUser);
     }
 
-    async findOne(userWhereUniqueInput: Prisma.userWhereUniqueInput): Promise<User | null> {
+    async findOne(id: number): Promise<User | null> {
         const user = await this.prisma.user.findUnique({
-            where: userWhereUniqueInput
+            where: { id }
         });
 
         return convertToUser(user);
