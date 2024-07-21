@@ -45,6 +45,12 @@ describe('UsersController', () => {
 
             expect(user).toEqual({ id: 2, name: 'Betty', age: 30, gender: Gender.Female });
         });
+
+        it('User Not Found', async () => {
+            const id = 999;
+
+            await expect(async () => await controller.findOne(id)).rejects.toThrow('User Not Found');
+        });
     });
 
     describe('POST', () => {
@@ -76,15 +82,30 @@ describe('UsersController', () => {
                 expect(after).toEqual(user);
             }
         });
+
+        it('User Not Found', async () => {
+            const id = 999;
+            const user = createUser(id, 'Adam', 30, Gender.Male);
+
+            await expect(async () => await controller.update(id, user)).rejects.toThrow('User Not Found');
+        });
     });
 
     describe('DELETE', () => {
-        it('Delete User', async () => {
+        it('Delete Multiple Users', async () => {
             const requestBody = { ids: [1, 2] };
 
             const deletedCount = await controller.delete(requestBody);
 
             expect(deletedCount).toBe(2);
+        });
+
+        it('Not Exist Users', async () => {
+            const requestBody = { ids: [998, 999] };
+
+            const deletedCount = await controller.delete(requestBody);
+
+            expect(deletedCount).toBe(0);
         });
     });
 

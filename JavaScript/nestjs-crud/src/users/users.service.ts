@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
-import { UsersStore } from './users.store';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { User } from './models/user';
+import { UsersStore } from './users.store';
 
 @Injectable()
 export class UsersService {
@@ -11,7 +11,12 @@ export class UsersService {
     }
 
     async findOne(id: number): Promise<User | undefined> {
-        return await this.usersStore.findOne(id);
+        const user = await this.usersStore.findOne(id);
+        if (!user) {
+            throw new HttpException('User Not Found', HttpStatus.NOT_FOUND);
+        }
+
+        return user;
     }
 
     async create(user: Readonly<User>): Promise<User> {
@@ -19,7 +24,12 @@ export class UsersService {
     }
 
     async update(user: Readonly<User>): Promise<User> {
-        return this.usersStore.update(user);
+        const found = await this.usersStore.findOne(user.id);
+        if (!found) {
+            throw new HttpException('User Not Found', HttpStatus.NOT_FOUND);
+        }
+
+        return await this.usersStore.update(user);
     }
 
     async delete(ids: readonly number[]): Promise<number> {

@@ -46,6 +46,12 @@ describe('UsersService', () => {
 
             expect(user).toEqual({ id: 2, name: 'Betty', age: 30, gender: Gender.Female });
         });
+
+        it('User Not Found', async () => {
+            const id = 999;
+
+            await expect(async () => await service.findOne(id)).rejects.toThrow('User Not Found');
+        });
     });
 
     describe('POST', () => {
@@ -77,15 +83,30 @@ describe('UsersService', () => {
                 expect(after).toEqual(user);
             }
         });
+
+        it('User Not Found', async () => {
+            const id = 999;
+            const user = createUser(id, 'Adam', 30, Gender.Male);
+
+            await expect(async () => await service.update(user)).rejects.toThrow('User Not Found');
+        });
     });
 
     describe('DELETE', () => {
-        it('Delete User', async () => {
+        it('Delete Multiple Users', async () => {
             const ids = [1, 2];
 
             const deletedCount = await service.delete(ids);
 
             expect(deletedCount).toBe(2);
+        });
+
+        it('Not Exist Users', async () => {
+            const ids = [998, 999];
+
+            const deletedCount = await service.delete(ids);
+
+            expect(deletedCount).toBe(0);
         });
     });
 

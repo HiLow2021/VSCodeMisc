@@ -9,24 +9,28 @@ export class UsersStore {
     constructor(private readonly prisma: PrismaService) {}
 
     async findAll(skip?: number, take?: number): Promise<User[]> {
-        const users = await this.prisma.user.findMany({
+        const entities = await this.prisma.user.findMany({
             skip,
             take
         });
 
-        return users.map(convertToUser);
+        return entities.map(convertToUser);
     }
 
-    async findOne(id: number): Promise<User | null> {
-        const user = await this.prisma.user.findUnique({
+    async findOne(id: number): Promise<User | undefined> {
+        const entity = await this.prisma.user.findUnique({
             where: { id }
         });
 
-        return convertToUser(user);
+        if (!entity) {
+            return undefined;
+        }
+
+        return convertToUser(entity);
     }
 
     async create(user: Readonly<User>): Promise<User> {
-        const newUser = await this.prisma.user.create({
+        const entity = await this.prisma.user.create({
             data: {
                 id: undefined,
                 name: user.name,
@@ -36,11 +40,11 @@ export class UsersStore {
             }
         });
 
-        return convertToUser(newUser);
+        return convertToUser(entity);
     }
 
-    async update(user: Readonly<User>): Promise<User> {
-        const updatedUser = await this.prisma.user.update({
+    async update(user: Readonly<User>): Promise<User | undefined> {
+        const entity = await this.prisma.user.update({
             data: {
                 name: user.name,
                 age: user.age,
@@ -52,14 +56,14 @@ export class UsersStore {
             }
         });
 
-        return convertToUser(updatedUser);
+        return convertToUser(entity);
     }
 
     async delete(ids: readonly number[]): Promise<number> {
-        const users = await this.prisma.user.deleteMany({
+        const entities = await this.prisma.user.deleteMany({
             where: { id: { in: [...ids] } }
         });
 
-        return users.count;
+        return entities.count;
     }
 }
