@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/shared/prisma.service';
 import { convertToUser } from './converters/convert-to-users';
 import { Gender } from './enums/gender';
