@@ -9,8 +9,6 @@ export class UsersController {
 
     @Get()
     async findAll(@Query() query: FindAllUserDto): Promise<User[]> {
-        console.log(query);
-
         return await this.usersService.findAll(query.skip, query.take);
     }
 
