@@ -7,6 +7,7 @@ export function convertToUser(user: Readonly<user>): User {
         id: user.id,
         name: user.name,
         age: user.age,
-        gender: Gender.from(user.gender_id)
+        gender: Gender.from(user.gender_id),
+        birthday: user.birth_day
     };
 }

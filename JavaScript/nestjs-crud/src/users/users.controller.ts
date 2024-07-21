@@ -21,12 +21,12 @@ export class UsersController {
 
     @Post()
     async create(@Body() createUserDto: CreateUserDto): Promise<User> {
-        return await this.usersService.create(new User(createUserDto));
+        return await this.usersService.create(new User(undefined, createUserDto));
     }
 
     @Put('/:id')
     async update(@Param('id', ParseIntPipe) id: number, @Body() updateUserDto: UpdateUserDto): Promise<User> {
-        return await this.usersService.update(new User(updateUserDto, id));
+        return await this.usersService.update(new User(id, updateUserDto));
     }
 
     @Delete()

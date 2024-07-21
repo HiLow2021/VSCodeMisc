@@ -13,7 +13,7 @@ export class User {
 
     birthday?: Date;
 
-    constructor(dto: Readonly<CreateUserDto | UpdateUserDto>, id?: number) {
+    constructor(id: number | undefined, dto: Readonly<CreateUserDto | UpdateUserDto>) {
         this.id = id;
         this.name = dto.name;
         this.age = dto.age;
