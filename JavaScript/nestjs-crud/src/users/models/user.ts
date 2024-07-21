@@ -1,5 +1,4 @@
-import { CreateUserDto } from '../dto/create-user.dto';
-import { UpdateUserDto } from '../dto/update-user.dto';
+import { CreateUserDto, UpdateUserDto } from '../dto';
 import { Gender } from '../enums/gender';
 
 export class User {
