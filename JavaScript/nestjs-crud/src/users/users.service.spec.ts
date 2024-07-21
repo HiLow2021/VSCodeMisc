@@ -32,6 +32,14 @@ describe('UsersService', () => {
             ]);
         });
 
+        it('Get Users With Skip & Take', async () => {
+            const skip = 1;
+            const take = 1;
+            const users = await service.findAll(skip, take);
+
+            expect(users).toEqual([{ id: 2, name: 'Betty', age: 30, gender: Gender.Female }]);
+        });
+
         it('Get User', async () => {
             const id = 2;
             const user = await service.findOne(id);

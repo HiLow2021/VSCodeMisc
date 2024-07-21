@@ -32,6 +32,13 @@ describe('UsersController', () => {
             ]);
         });
 
+        it('Get Users With Skip & Take', async () => {
+            const query = { skip: 1, take: 1 };
+            const users = await controller.findAll(query);
+
+            expect(users).toEqual([{ id: 2, name: 'Betty', age: 30, gender: Gender.Female }]);
+        });
+
         it('Get User', async () => {
             const id = 2;
             const user = await controller.findOne(id);
