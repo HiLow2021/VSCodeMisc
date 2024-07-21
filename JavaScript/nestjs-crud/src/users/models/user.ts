@@ -7,6 +7,8 @@ export class User {
 
     name: string;
 
+    age: number;
+
     gender: Gender;
 
     birthday?: Date;
@@ -14,6 +16,7 @@ export class User {
     constructor(dto: Readonly<CreateUserDto | UpdateUserDto>, id?: number) {
         this.id = id;
         this.name = dto.name;
+        this.age = dto.age;
         this.gender = dto.gender;
         this.birthday = dto.birthday;
     }

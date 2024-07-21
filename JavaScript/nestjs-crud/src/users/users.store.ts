@@ -30,6 +30,7 @@ export class UsersStore {
             data: {
                 id: undefined,
                 name: user.name,
+                age: user.age,
                 gender_id: Gender.to(user.gender),
                 birth_day: user.birthday
             }
@@ -42,6 +43,7 @@ export class UsersStore {
         const updatedUser = await this.prisma.user.update({
             data: {
                 name: user.name,
+                age: user.age,
                 gender_id: Gender.to(user.gender),
                 birth_day: user.birthday
             },

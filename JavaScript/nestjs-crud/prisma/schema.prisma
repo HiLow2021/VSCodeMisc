@@ -16,6 +16,7 @@ model gender {
 model user {
   id        Int       @id @default(autoincrement())
   name      String    @db.VarChar(256)
+  age       Int
   gender_id Int       @db.SmallInt
   birth_day DateTime? @db.Date
   gender    gender    @relation(fields: [gender_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "user_ibfk_1")
