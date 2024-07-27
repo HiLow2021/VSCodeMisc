@@ -1,14 +1,24 @@
 'use client';
 
+import CloseIcon from '@mui/icons-material/Close';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-import { Button } from '@mui/material';
-import { SnackbarProvider, enqueueSnackbar } from 'notistack';
+import { Button, IconButton } from '@mui/material';
+import { SnackbarProvider, closeSnackbar, enqueueSnackbar } from 'notistack';
 
 export default function FormSelect() {
     return (
         <main className="flex w-full justify-center">
-            <SnackbarProvider />
+            <SnackbarProvider
+                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                action={(snackbarKey) => {
+                    return (
+                        <IconButton onClick={() => closeSnackbar(snackbarKey)}>
+                            <CloseIcon className="text-white" />
+                        </IconButton>
+                    );
+                }}
+            />
             <div className="flex w-full max-w-5xl flex-col gap-4 text-3xl">
                 <h1 className="flex justify-center p-2 lg:p-4">File Page</h1>
                 <div className="flex flex-col items-center gap-4">
