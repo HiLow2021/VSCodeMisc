@@ -17,7 +17,7 @@ import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 export default function Form() {
-    const { control, handleSubmit } = useForm({ mode: 'onBlur' });
+    const { control, handleSubmit, setValue } = useForm({ mode: 'onBlur' });
     const [submitted, setSubmitted] = useState(false);
 
     return (
@@ -62,7 +62,7 @@ export default function Form() {
                             </FormControl>
                         )}
                     />
-                    <div>
+                    <div className="flex items-end gap-8">
                         <Controller
                             name="prefecture"
                             control={control}
@@ -81,6 +81,16 @@ export default function Form() {
                                 </FormControl>
                             )}
                         />
+                        <Button
+                            className="w-32"
+                            variant="contained"
+                            size="large"
+                            onClick={() => {
+                                setValue('prefecture', 12);
+                            }}
+                        >
+                            デフォルト
+                        </Button>
                     </div>
                     <Controller
                         name="email"
