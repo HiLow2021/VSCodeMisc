@@ -1,6 +1,6 @@
 'use client';
 
-import { LinkData } from '@/shared/const/linkData';
+import { LinkData } from '@/shared/const/link-data';
 import { Site } from '@/shared/const/site';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
