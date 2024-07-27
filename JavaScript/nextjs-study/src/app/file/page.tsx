@@ -11,13 +11,11 @@ export default function FormSelect() {
         <main className="flex w-full justify-center">
             <SnackbarProvider
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                action={(snackbarKey) => {
-                    return (
-                        <IconButton onClick={() => closeSnackbar(snackbarKey)}>
-                            <CloseIcon className="text-white" />
-                        </IconButton>
-                    );
-                }}
+                action={(snackbarKey) => (
+                    <IconButton onClick={() => closeSnackbar(snackbarKey)}>
+                        <CloseIcon className="text-white" />
+                    </IconButton>
+                )}
             />
             <div className="flex w-full max-w-5xl flex-col gap-4 text-3xl">
                 <h1 className="flex justify-center p-2 lg:p-4">File Page</h1>
