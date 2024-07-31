@@ -29,7 +29,7 @@ const response = await fetch(webhookUrl, {
                         type: 'section',
                         text: {
                             type: 'mrkdwn',
-                            text: 'Plain\n*Emphasis*\n~Strikethrough~\n<https://google.com|link>\n:sunny::cloud::rain_cloud::crescent_moon:'
+                            text: 'Plain\n*Emphasis*\n~Strikethrough~\n<https://google.com|Link>\n:sunny::cloud::rain_cloud::crescent_moon:'
                         },
                         accessory: {
                             type: 'image',
