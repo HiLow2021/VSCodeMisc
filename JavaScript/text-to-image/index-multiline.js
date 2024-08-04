@@ -9,7 +9,7 @@ if (!fs.existsSync(outDirectory)) {
     fs.mkdirSync(outDirectory);
 }
 
-const text = 'Sample Text\nSample Text Extra\n\nSample Text Extra Extra\n\nあいうえおたちつてと魚ー';
+const text = 'Sample Text\nSample Text Extra\n\nSample Text Extra Extra';
 const fontSize = 72;
 const fontColor = 'red';
 const fontBorderColor = 'green';
