@@ -16,8 +16,7 @@ const textPng = sharp({
         text,
         align: 'center',
         dpi: size,
-        rgba: true,
-        
+        rgba: true
     }
 }).png();
 const metadata = await textPng.metadata();
