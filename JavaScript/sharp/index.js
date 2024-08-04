@@ -15,7 +15,7 @@ const textPng = sharp({
     text: {
         text,
         align: 'center',
-        dpi: size,
+        dpi: size * 4,
         rgba: true
     }
 }).png();
@@ -37,4 +37,7 @@ await sharp({
         }
     ])
     .png()
-    .toFile(`${outDirectory}result.png`);
+    .toBuffer()
+    .then((data) => {
+        sharp(data).resize(size).toFile(`${outDirectory}result.png`);
+    });
