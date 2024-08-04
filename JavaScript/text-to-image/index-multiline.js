@@ -10,6 +10,7 @@ if (!fs.existsSync(outDirectory)) {
 }
 
 const text = 'Sample Text\nSample Text Extra\n\nSample Text Extra Extra';
+const size = 2048;
 const fontSize = 72;
 const fontColor = 'red';
 const fontBorderColor = 'green';
@@ -41,7 +42,7 @@ await sharp({
     )
     .png()
     .toBuffer()
-    .then((data) => sharp(data).resize(2048).toFile(`${outDirectory}result.png`));
+    .then((data) => sharp(data).resize(size).toFile(`${outDirectory}result.png`));
 
 function background(svg, color) {
     return svg.replace(/(^<svg.+>)(<path.+\/>)(<\/svg>)/, `\$1<rect width="100%" height="100%" fill="${color}" />\$2\$3`);
