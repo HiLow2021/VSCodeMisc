@@ -6,6 +6,10 @@
 - .nvmrc ファイルで状態管理
 - Windows 未対応なため、代替ツールとして [nvm-windows](https://github.com/coreybutler/nvm-windows) を使用
 
+## 公式
+
+- https://github.com/nvm-sh/nvm
+
 ## インストール
 
 ```sh
