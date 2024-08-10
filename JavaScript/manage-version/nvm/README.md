@@ -3,6 +3,7 @@
 ## 概要
 
 - Node.js のバージョン管理ツール
+- .nvmrc ファイルで状態管理
 - Windows 未対応なため、代替ツールとして [nvm-windows](https://github.com/coreybutler/nvm-windows) を使用
 
 ## インストール
@@ -12,6 +13,17 @@
 
 > wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 ```
+
+## アンインストール
+
+1. 下記コマンド実行
+
+```sh
+# 削除するディレクトリを事前に確認したいなら echo $NVM_DIR
+> rm -rf $NVM_DIR
+```
+
+2. ~/bashrc の nvm 関連の記述を削除
 
 ## コマンド
 
@@ -36,13 +48,12 @@
 - バージョン切り替え
 
 ```sh
-# .nvmrc があればバージョンの指定は不要
 > nvm use <node_version>
 ```
 
-## ディレクトリごとに自動でバージョン切り替え & インストール
+## ディレクトリごとの自動バージョン切り替え & インストール
 
-1. ~/bashrc の最後に下記のコマンド追記
+1. ~/bashrc の最後に下記を追記
 
 ```sh
 cdnvm() {
