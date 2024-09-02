@@ -5,7 +5,7 @@ export async function POST(req: Request): Promise<Response> {
         const blob = await req.blob();
         const buffer = await blob.arrayBuffer();
 
-        await fs.writeFile('media/upload.png', Buffer.from(buffer));
+        await fs.writeFile('static/upload.png', Buffer.from(buffer));
 
         return Response.json({ success: true }, { status: 200 });
     } catch (error) {
