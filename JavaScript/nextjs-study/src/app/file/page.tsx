@@ -4,12 +4,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
-import { Button, IconButton } from '@mui/material';
+import { Button, CircularProgress, Dialog, DialogContent, IconButton } from '@mui/material';
 import { SnackbarProvider, closeSnackbar, enqueueSnackbar } from 'notistack';
 import { useState } from 'react';
 
 export default function FormSelect() {
     const [selectedFile, setSelectedFile] = useState<File | undefined>();
+    const [open, setOpen] = useState(false);
 
     return (
         <main className="flex w-full justify-center">
@@ -49,9 +50,8 @@ export default function FormSelect() {
                     >
                         ダウンロード
                     </Button>
-                    <label htmlFor="upload-button">
+                    <label>
                         <input
-                            id="upload-button"
                             accept="image/png"
                             style={{ display: 'none' }}
                             type="file"
@@ -84,9 +84,8 @@ export default function FormSelect() {
                 <hr className="w-full border-b-[1px] border-neutral-400" />
                 <div className="flex flex-col items-center gap-4">
                     <div className="flex gap-4">
-                        <label htmlFor="select-file-button">
+                        <label>
                             <input
-                                id="select-file-button"
                                 accept="image/png"
                                 style={{ display: 'none' }}
                                 type="file"
@@ -110,6 +109,10 @@ export default function FormSelect() {
                             startIcon={<FileUploadIcon />}
                             onClick={async () => {
                                 if (selectedFile) {
+                                    setOpen(true);
+
+                                    await new Promise((resolve) => setTimeout(resolve, 5000));
+
                                     const blob = new Blob([selectedFile], { type: selectedFile.type });
 
                                     const response = await fetch('api/upload', {
@@ -125,10 +128,25 @@ export default function FormSelect() {
                                 } else {
                                     enqueueSnackbar('ファイルが未選択です', { variant: 'warning' });
                                 }
+
+                                setOpen(false);
                             }}
                         >
                             送信
                         </Button>
+                        <Dialog
+                            open={open}
+                            PaperProps={{
+                                style: {
+                                    backgroundColor: 'transparent',
+                                    boxShadow: 'none'
+                                }
+                            }}
+                        >
+                            <DialogContent>
+                                <CircularProgress />
+                            </DialogContent>
+                        </Dialog>
                     </div>
                 </div>
             </div>
