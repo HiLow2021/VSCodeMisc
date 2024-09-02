@@ -3,10 +3,14 @@
 import CloseIcon from '@mui/icons-material/Close';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 import { Button, IconButton } from '@mui/material';
 import { SnackbarProvider, closeSnackbar, enqueueSnackbar } from 'notistack';
+import { useState } from 'react';
 
 export default function FormSelect() {
+    const [selectedFile, setSelectedFile] = useState<File | undefined>();
+
     return (
         <main className="flex w-full justify-center">
             <SnackbarProvider
@@ -17,7 +21,7 @@ export default function FormSelect() {
                     </IconButton>
                 )}
             />
-            <div className="flex w-full max-w-5xl flex-col gap-4 text-3xl">
+            <div className="flex w-full max-w-5xl flex-col gap-8 text-3xl">
                 <h1 className="flex justify-center p-2 lg:p-4">File Page</h1>
                 <div className="flex flex-col items-center gap-4">
                     <Button
@@ -76,6 +80,56 @@ export default function FormSelect() {
                             アップロード
                         </Button>
                     </label>
+                </div>
+                <hr className="w-full border-b-[1px] border-neutral-400" />
+                <div className="flex flex-col items-center gap-4">
+                    <div className="flex gap-4">
+                        <label htmlFor="select-file-button">
+                            <input
+                                id="select-file-button"
+                                accept="image/png"
+                                style={{ display: 'none' }}
+                                type="file"
+                                onChange={async (e) => {
+                                    const { files } = e.target;
+                                    if (files && files.length > 0) {
+                                        setSelectedFile(files[0]);
+                                    }
+
+                                    e.target.value = '';
+                                }}
+                            />
+                            <Button className="h-10 w-40" variant="contained" component="span" startIcon={<InsertPhotoIcon />}>
+                                <div className=" truncate">{selectedFile ? selectedFile.name : 'ファイルを選択'}</div>
+                            </Button>
+                        </label>
+                        <Button
+                            className="h-10 w-24"
+                            variant="contained"
+                            component="span"
+                            startIcon={<FileUploadIcon />}
+                            onClick={async () => {
+                                if (selectedFile) {
+                                    const blob = new Blob([selectedFile], { type: selectedFile.type });
+
+                                    const response = await fetch('api/upload', {
+                                        method: 'POST',
+                                        body: blob
+                                    });
+
+                                    if (response.ok) {
+                                        enqueueSnackbar('アップロードに成功しました', { variant: 'success' });
+                                    } else {
+                                        enqueueSnackbar('アップロードに失敗しました', { variant: 'error' });
+                                    }
+                                } else {
+                                    enqueueSnackbar('ファイルが未選択です', { variant: 'warning' });
+                                }
+                            }}
+                        >
+                            送信
+                        </Button>
+                    </div>
                 </div>
             </div>
         </main>
