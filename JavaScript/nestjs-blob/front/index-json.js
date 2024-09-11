@@ -8,7 +8,10 @@ import fetch from 'node-fetch';
 
     const response = await fetch('http://localhost:5000/upload-json', {
         method: 'POST',
-        body: JSON.stringify({ data }),
+        body: JSON.stringify({
+            name: 'upload.png',
+            data
+        }),
         headers: { 'Content-Type': 'application/json' }
     });
 
