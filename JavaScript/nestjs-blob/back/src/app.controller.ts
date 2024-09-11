@@ -12,9 +12,16 @@ export class AppController {
         return this.appService.getHello();
     }
 
-    @Post('upload')
+    @Post('upload-file')
     @UseInterceptors(FileInterceptor('file'))
     async uploadFile(@Body() body: UploadDto, @UploadedFile() file: Express.Multer.File): Promise<void> {
         await this.appService.saveFile(file.buffer, body.name);
+    }
+
+    @Post('upload-json')
+    async uploadFile2(@Body() body: { data: number[] }): Promise<void> {
+        const buffer = Buffer.from(body.data);
+
+        await this.appService.saveFile(buffer, 'test.png');
     }
 }
