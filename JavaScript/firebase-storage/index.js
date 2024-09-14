@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 import { cert, initializeApp } from 'firebase-admin/app';
 import { getStorage } from 'firebase-admin/storage';
+import fs from 'fs/promises';
 
 dotenv.config();
 
@@ -16,11 +17,23 @@ initializeApp({
 const bucket = getStorage().bucket();
 
 (async () => {
-    await download();
-    await upload();
+    await downloadByData();
+    await downloadByFile();
+    await uploadByData();
+    await uploadByFile();
 })();
 
-async function download() {
+async function downloadByData() {
+    const source = `${storageDirectory}${downloadFileName}`;
+    const destination = `${localDirectory}${downloadFileName}`;
+    const file = bucket.file(source);
+
+    const [data] = await file.download();
+
+    await fs.writeFile(destination, data);
+}
+
+async function downloadByFile() {
     const source = `${storageDirectory}${downloadFileName}`;
     const destination = `${localDirectory}${downloadFileName}`;
     const file = bucket.file(source);
@@ -28,7 +41,20 @@ async function download() {
     await file.download({ destination });
 }
 
-async function upload() {
+async function uploadByData() {
+    const source = `${localDirectory}${uploadFileName}`;
+    const destination = `${storageDirectory}${uploadFileName}`;
+    const data = await fs.readFile(source);
+    const file = bucket.file(destination);
+
+    await file.save(data, {
+        metadata: {
+            contentType: 'image/png'
+        }
+    });
+}
+
+async function uploadByFile() {
     const source = `${localDirectory}${uploadFileName}`;
     const destination = `${storageDirectory}${uploadFileName}`;
 
