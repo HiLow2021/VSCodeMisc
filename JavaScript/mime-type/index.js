@@ -25,7 +25,7 @@ function getMimeType(data) {
         return 'image/gif';
     } else if (block1 === '52494646' && block3 === '57454250') {
         return 'image/webp';
-    } else if (block1.startsWith('0000001C') && block2 === '66747970' && block3 === '61766966') {
+    } else if (block1 === '0000001C' && block2 === '66747970' && block3 === '61766966') {
         return 'image/avif';
     } else {
         return 'unknown';
