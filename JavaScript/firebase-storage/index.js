@@ -47,9 +47,13 @@ async function uploadByData() {
     const data = await fs.readFile(source);
     const file = bucket.file(destination);
 
-    await file.save(data, {
+    await file.save(data);
+
+    file.setMetadata({
+        contentType: 'image/png',
         metadata: {
-            contentType: 'image/png'
+            custom1: 'value1',
+            custom2: 'value2'
         }
     });
 }
