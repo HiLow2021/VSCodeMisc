@@ -56,7 +56,8 @@
         "venv",
         "vrchat",
         "websockets",
-        "wrld"
+        "wrld",
+        "xychart"
     ],
     "[python]": {
         "editor.defaultFormatter": "ms-python.python"
