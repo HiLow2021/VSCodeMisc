@@ -2,13 +2,13 @@
 
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { Button } from '@mui/material';
-import { Chart, registerables } from 'chart.js';
+import { Chart as ChartJS, registerables } from 'chart.js';
 import html2canvas from 'html2canvas';
 import { useEffect, useState } from 'react';
 
-Chart.register(...registerables);
+ChartJS.register(...registerables);
 
-export default function Diagram() {
+export default function Chart() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export default function Diagram() {
     useEffect(() => {
         const canvas = document.getElementById('chart') as HTMLCanvasElement;
         if (canvas) {
-            new Chart(canvas, {
+            new ChartJS(canvas, {
                 type: 'bar',
                 data: {
                     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
