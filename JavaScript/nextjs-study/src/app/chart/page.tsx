@@ -50,7 +50,7 @@ export default function Chart() {
         <main className="flex w-full justify-center">
             <div className="flex w-full max-w-5xl flex-col gap-8 text-3xl">
                 <h1 className="flex w-full justify-center p-2 lg:p-4">Chart Page</h1>
-                <div className="flex justify-center" style={{ position: 'relative', width: '100%', height: '100%' }}>
+                <div className="flex h-full w-full justify-center">
                     <canvas id="chart" />
                 </div>
                 <div className="flex justify-center pb-8">
