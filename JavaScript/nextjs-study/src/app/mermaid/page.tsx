@@ -6,7 +6,7 @@ import html2canvas from 'html2canvas';
 import mermaid from 'mermaid';
 import { useEffect, useState } from 'react';
 
-export default function Diagram() {
+export default function Mermaid() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -69,7 +69,7 @@ export default function Diagram() {
 
                                 const link = document.createElement('a');
                                 link.href = image;
-                                link.download = 'diagram.png';
+                                link.download = 'mermaid.png';
                                 link.click();
                             }
                         }}
