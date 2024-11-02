@@ -1,0 +1,90 @@
+'use client';
+
+import { GeoData } from '@/shared/types/geo-data';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import { Button } from '@mui/material';
+import * as d3 from 'd3';
+import html2canvas from 'html2canvas';
+import { useEffect, useState } from 'react';
+import * as geoJson from '../../../static/prefectures.geojson.json';
+
+const data: GeoData = geoJson as GeoData;
+
+export default function Map() {
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (mounted) {
+            const width = 400;
+            const height = 400;
+            const scale = 1000;
+
+            const projection = d3
+                .geoMercator()
+                .center(d3.geoCentroid(geoJson as d3.ExtendedFeatureCollection))
+                .translate([width / 2, height / 2])
+                .scale(scale);
+
+            const path = d3.geoPath().projection(projection);
+
+            const svg = d3
+                .select('#map')
+                .append('svg')
+                .attr('viewBox', `0 0 ${width} ${height}`)
+                .attr('width', '100%')
+                .attr('height', '100%');
+
+            svg.selectAll('path')
+                .data(data.features)
+                .enter()
+                .append('path')
+                .attr('d', path as unknown as string)
+                .attr('stroke', '#dddddd')
+                .attr('stroke-width', 0.25)
+                .attr('fill', '#2566CC');
+
+            return () => {
+                d3.select('#map').selectAll('*').remove();
+            };
+        }
+    }, [mounted]);
+
+    if (!mounted) {
+        return <></>;
+    }
+
+    return (
+        <main className="flex w-full justify-center">
+            <div className="flex w-full max-w-5xl flex-col gap-8 text-3xl">
+                <h1 className="flex w-full justify-center p-2 lg:p-4">Map Page</h1>
+                <div className="flex h-full w-full justify-center" id="map" />
+                <div className="flex justify-center pb-8">
+                    <Button
+                        className="w-40"
+                        variant="contained"
+                        component="span"
+                        startIcon={<FileDownloadIcon />}
+                        onClick={async () => {
+                            const element = document.querySelector('#map');
+                            if (element) {
+                                const canvas = await html2canvas(element as HTMLElement);
+                                const image = canvas.toDataURL('image/png');
+
+                                const link = document.createElement('a');
+                                link.href = image;
+                                link.download = 'map.png';
+                                link.click();
+                            }
+                        }}
+                    >
+                        ダウンロード
+                    </Button>
+                </div>
+            </div>
+        </main>
+    );
+}

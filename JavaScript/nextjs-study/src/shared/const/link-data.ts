@@ -1,4 +1,4 @@
-import { Apps, AttachFile, BarChart, DataUsage, Home, Psychology, TableView } from '@mui/icons-material';
+import { Apps, AttachFile, BarChart, DataUsage, Home, Map, Psychology, TableView } from '@mui/icons-material';
 
 export const LinkData = [
     { name: 'Home', href: '/', icon: Home },
@@ -7,5 +7,6 @@ export const LinkData = [
     { name: 'File', href: '/file', icon: AttachFile },
     { name: 'Chart', href: '/chart', icon: BarChart },
     { name: 'Mermaid', href: '/mermaid', icon: DataUsage },
-    { name: 'Mindmap', href: '/mindmap', icon: Psychology }
+    { name: 'Mindmap', href: '/mindmap', icon: Psychology },
+    { name: 'Map', href: '/map', icon: Map }
 ] as const;
