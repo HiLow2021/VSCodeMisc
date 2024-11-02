@@ -1,3 +1,8 @@
 {
-  "extends": "next/core-web-vitals"
+    "extends": "next/core-web-vitals",
+    "rules": {
+        // https://nextjs.org/docs/pages/building-your-application/configuring/eslint
+        "react-hooks/exhaustive-deps": "off"
+    }
 }
+

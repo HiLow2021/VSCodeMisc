@@ -1,6 +1,6 @@
 'use client';
 
-import { GeoData } from '@/shared/types/geo-data';
+import { Feature, GeoData } from '@/shared/types/geo-data';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { Button } from '@mui/material';
 import * as d3 from 'd3';
@@ -12,6 +12,21 @@ const data: GeoData = geoJson as GeoData;
 
 export default function Map() {
     const [mounted, setMounted] = useState(false);
+    const [state, setState] = useState<boolean[]>([...Array(47).fill(false)]);
+
+    const selectedColor = '#CC0000';
+    const selectedHoverColor = '#FF0000';
+    const defaultColor = '#2566CC';
+    const defaultHoverColor = '#3588DD';
+
+    const getId = (feature: Feature) => feature.properties.pref - 1;
+
+    const getColor = (feature: Feature, hover?: boolean) => {
+        const id = getId(feature);
+        const color = state[id] ? (hover ? selectedHoverColor : selectedColor) : hover ? defaultHoverColor : defaultColor;
+
+        return color;
+    };
 
     useEffect(() => {
         setMounted(true);
@@ -45,13 +60,31 @@ export default function Map() {
                 .attr('d', path as unknown as string)
                 .attr('stroke', '#dddddd')
                 .attr('stroke-width', 0.25)
-                .attr('fill', '#2566CC');
+                .attr('fill', (feature) => {
+                    return getColor(feature);
+                })
+                .on('click', function (_event, feature) {
+                    const id = getId(feature);
+                    const color = getColor(feature);
+
+                    const newState = [...state];
+                    newState[id] = !newState[id];
+
+                    d3.select(this).attr('fill', color);
+                    setState(newState);
+                })
+                .on('mouseover', function (_event, feature) {
+                    d3.select(this).attr('fill', getColor(feature, true));
+                })
+                .on('mouseout', function (_event, feature) {
+                    d3.select(this).attr('fill', getColor(feature));
+                });
 
             return () => {
                 d3.select('#map').selectAll('*').remove();
             };
         }
-    }, [mounted]);
+    }, [mounted, state]);
 
     if (!mounted) {
         return <></>;
