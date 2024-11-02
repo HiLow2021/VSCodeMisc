@@ -6,16 +6,16 @@ import { Button } from '@mui/material';
 import * as d3 from 'd3';
 import html2canvas from 'html2canvas';
 import { useEffect, useState } from 'react';
-import * as geoJson from '../../../static/prefectures.geojson.json';
+import * as geoJson from '../../../static/prefectures.geo.json';
 
 const data: GeoData = geoJson as GeoData;
 
 export default function Map() {
     const [mounted, setMounted] = useState(false);
-    const [state, setState] = useState<boolean[]>([...Array(47).fill(false)]);
+    const [state, setState] = useState<boolean[]>([...Array(data.features.length).fill(false)]);
 
-    const selectedColor = '#CC0000';
-    const selectedHoverColor = '#FF0000';
+    const selectionColor = '#CC0000';
+    const selectionHoverColor = '#FF0000';
     const defaultColor = '#2566CC';
     const defaultHoverColor = '#3588DD';
 
@@ -23,7 +23,7 @@ export default function Map() {
 
     const getColor = (feature: Feature, hover?: boolean) => {
         const id = getId(feature);
-        const color = state[id] ? (hover ? selectedHoverColor : selectedColor) : hover ? defaultHoverColor : defaultColor;
+        const color = state[id] ? (hover ? selectionHoverColor : selectionColor) : hover ? defaultHoverColor : defaultColor;
 
         return color;
     };
@@ -58,7 +58,7 @@ export default function Map() {
                 .enter()
                 .append('path')
                 .attr('d', path as unknown as string)
-                .attr('stroke', '#dddddd')
+                .attr('stroke', '#DDDDDD')
                 .attr('stroke-width', 0.25)
                 .attr('fill', (feature) => {
                     return getColor(feature);
