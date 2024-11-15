@@ -26,5 +26,5 @@ const array = [
 const group = _.groupBy(array, (item) => item.groupId);
 const subgroup = _.mapValues(group, (group) => _.groupBy(group, (item) => item.subgroupId));
 
-console.log(group);
+console.log(JSON.stringify(group, null, 2));
 console.log(JSON.stringify(subgroup, null, 2));
