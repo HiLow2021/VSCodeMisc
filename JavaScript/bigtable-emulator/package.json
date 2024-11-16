@@ -1,0 +1,17 @@
+{
+  "name": "bigtable-emulator",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "env-cmd -f .env node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google-cloud/bigtable": "^5.1.2",
+    "env-cmd": "^10.1.0"
+  }
+}
