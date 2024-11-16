@@ -26,6 +26,6 @@ await table.insert([
 ]);
 
 const [rows] = await table.getRows();
-const data = rows.map(row => row.data);
+const data = rows.map((row) => row.data);
 
 console.log(JSON.stringify(data, null, 2));
