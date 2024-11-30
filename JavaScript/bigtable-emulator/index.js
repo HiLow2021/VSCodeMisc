@@ -5,6 +5,11 @@ console.log(`Accessing Bigtable Emulator: ${process.env.BIGTABLE_EMULATOR_HOST}`
 const instanceId = 'dev';
 const tableId = 'dev';
 
+// 実際の Bigtable インスタンスにアクセスするには、プロジェクトIDと認証情報が必要。
+// const projectId = 'your-project-id';
+// const keyFilename = '/path/to/your-service-account-file.json';
+// const bigtable = new Bigtable({ projectId, keyFilename });
+
 const bigtable = new Bigtable();
 const instance = bigtable.instance(instanceId);
 
