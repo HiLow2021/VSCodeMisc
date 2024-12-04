@@ -1,5 +1,5 @@
 console.log('Promise.all');
-await Promise.all(
+await Promise.allSettled(
     [1, 2, 3, 4, 5].map(async (x) => {
         try {
             if (x === 1) {
@@ -24,7 +24,7 @@ console.log('for of');
 for (const x of [1, 2, 3, 4, 5]) {
     try {
         if (x === 1) {
-            return;
+            continue;
         }
 
         const randomNum = Math.floor(Math.random() * 5) + 1;
