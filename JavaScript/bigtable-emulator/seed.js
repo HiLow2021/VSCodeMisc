@@ -20,16 +20,29 @@ if (!tableExists) {
 
 const table = instance.table(tableId);
 
-const [rows] = await table.getRows({
-    filter: {
-        column: ["columnQualifier1"],
-        value: {
-            start: 1,
-            end: 1
+const now1 = new Date().getTime();
+await table.insert([
+    {
+        key: `key#${now1}`,
+        data: {
+            columnFamily1: { columnQualifier1: 123 },
+            columnFamily2: { columnQualifier2: 'abc' }
         }
     }
-});
+]);
+
+const now2 = new Date().getTime();
+await table.insert([
+    {
+        key: `key#${now2}`,
+        data: {
+            columnFamily1: { columnQualifier1: 456 },
+            columnFamily2: { columnQualifier2: 'def' }
+        }
+    }
+]);
+
+const [rows] = await table.getRows();
 const data = rows.map((row) => row.data);
 
-console.log(rows.length);
 console.log(JSON.stringify(data, null, 2));
