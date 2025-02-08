@@ -21,6 +21,7 @@
         "imshow",
         "imwrite",
         "jsonify",
+        "jsqr",
         "lcov",
         "lintstagedrc",
         "lpcm",
