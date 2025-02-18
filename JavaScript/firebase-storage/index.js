@@ -49,7 +49,7 @@ async function uploadByData() {
 
     await file.save(data);
 
-    file.setMetadata({
+    await file.setMetadata({
         contentType: 'image/png',
         metadata: {
             custom1: 'value1',
