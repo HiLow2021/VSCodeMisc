@@ -1,24 +1,19 @@
+import cors from 'cors';
 import express from 'express';
 
 const app = express();
 const port = 5000;
 
+const corsOptions = {
+    origin: ['http://localhost:3000']
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get('/api', (_, res, next) => {
     try {
-        res.status(200).json({ text: 'Good!!' });
-    } catch (error) {
-        next(error);
-    }
-
-    next();
-});
-
-app.post('/api', (req, res, next) => {
-    try {
-        const { count } = req.body;
-        res.status(200).json({ count: count + 1 });
+        res.status(200).json({ message: 'Hello!' });
     } catch (error) {
         next(error);
     }
