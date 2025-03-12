@@ -4,13 +4,16 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "start-pub": "node index-publisher.js",
+    "start-sub": "node index-subscribe.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "redis": "^4.7.0"
+    "ioredis": "^5.6.0",
+    "minimist": "^1.2.8"
   }
 }

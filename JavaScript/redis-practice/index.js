@@ -1,14 +1,12 @@
-import { createClient } from 'redis';
+import Redis from 'ioredis';
 
-const client = createClient({
-    url: 'redis://localhost:6379'
-}).on('error', (err) => console.log('Redis Client Error', err));
+const redis = new Redis('redis://localhost:6379');
 
-await client.connect();
+redis.on('error', (err) => console.error('Redis Client Error', err));
 
-await client.set('key', `value:${new Date().getTime()}`);
+await redis.set('key', `value:${new Date().getTime()}`);
 
-const value = await client.get('key');
+const value = await redis.get('key');
 console.log(`key: ${value}`);
 
-await client.disconnect();
+redis.disconnect();
