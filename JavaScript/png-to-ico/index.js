@@ -45,7 +45,7 @@ try {
             width: images[i].width,
             height: images[i].height,
             bitDepth: images[i].bpp,
-            data: images[i].data.length
+            bytes: images[i].buffer.byteLength
         });
     }
 
