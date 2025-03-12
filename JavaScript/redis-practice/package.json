@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start-pub": "node index-publisher.js",
+    "start-pub": "node index-publish.js",
     "start-sub": "node index-subscribe.js"
   },
   "keywords": [],
