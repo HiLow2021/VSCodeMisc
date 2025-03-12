@@ -22,7 +22,7 @@ const table = instance.table(tableId);
 
 const [rows] = await table.getRows({
     filter: {
-        column: ["columnQualifier1"],
+        column: ['columnQualifier1'],
         value: {
             start: 1,
             end: 1
