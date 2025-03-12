@@ -1,4 +1,5 @@
 import fs from 'fs';
+import icojs from 'icojs';
 import pngToIco from 'png-to-ico';
 import sharp from 'sharp';
 
@@ -34,10 +35,19 @@ try {
         sizes.push(size);
     }
 
-    console.log('生成するアイコンサイズ:', sizes.reverse());
-
     const buffers = await Promise.all(sizes.reverse().map((size) => sharp(input).resize(size, size, { fit: 'contain' }).png().toBuffer()));
     const icoBuffer = await pngToIco(buffers);
+
+    const images = await icojs.parseICO(new Uint8Array(icoBuffer), 'image/png');
+    for (let i = 0; i < images.length; i++) {
+        console.log({
+            index: i + 1,
+            width: images[i].width,
+            height: images[i].height,
+            bitDepth: images[i].bpp,
+            data: images[i].data.length
+        });
+    }
 
     fs.writeFileSync(`${outDirectory}result.ico`, icoBuffer);
     console.log('アイコンファイルの生成に成功しました');

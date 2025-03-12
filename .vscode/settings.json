@@ -17,6 +17,7 @@
         "HAXM",
         "hexcode",
         "hilow",
+        "icojs",
         "imread",
         "imshow",
         "imwrite",
