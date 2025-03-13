@@ -5,7 +5,6 @@ import sharp from 'sharp';
 
 const mediaDirectory = './media/';
 const outDirectory = './out/';
-const input = fs.readFileSync(`${mediaDirectory}input.png`);
 
 if (!fs.existsSync(mediaDirectory)) {
     fs.mkdirSync(mediaDirectory);
@@ -14,6 +13,9 @@ if (!fs.existsSync(outDirectory)) {
     fs.mkdirSync(outDirectory);
 }
 
+const minSize = 32;
+const input = fs.readFileSync(`${mediaDirectory}input.png`);
+
 try {
     const metadata = await sharp(input).metadata();
     if (metadata.width !== metadata.height) {
@@ -21,21 +23,17 @@ try {
     }
 
     const originalSize = metadata.width;
-    if (originalSize < 32) {
-        throw new Error('32 ピクセル以上の画像を指定してください');
+    if (originalSize < minSize) {
+        throw new Error(`${minSize} ピクセル以上の画像を指定してください`);
     }
 
-    let maxSize = 1;
-    while (maxSize * 2 <= originalSize) {
-        maxSize *= 2;
+    const buffers = [];
+    for (let current = minSize; current < originalSize; current *= 2) {
+        buffers.push(await sharp(input).resize(current).png().toBuffer());
     }
 
-    const sizes = [originalSize];
-    for (let size = maxSize; size >= 32; size = size / 2) {
-        sizes.push(size);
-    }
+    buffers.push(await sharp(input).resize(originalSize).png().toBuffer());
 
-    const buffers = await Promise.all(sizes.reverse().map((size) => sharp(input).resize(size, size, { fit: 'contain' }).png().toBuffer()));
     const icoBuffer = await pngToIco(buffers);
 
     const images = await icojs.parseICO(new Uint8Array(icoBuffer), 'image/png');
