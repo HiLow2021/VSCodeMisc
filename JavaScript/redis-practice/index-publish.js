@@ -10,7 +10,14 @@ if (!channel || !message) {
     process.exit(1);
 }
 
-const redis = new Redis();
+const redis = new Redis('redis://localhost:6379', {
+    retryStrategy: (times) => {
+        console.log(`Retrying to connect to Redis (attempt ${times})...`);
+
+        const delay = Math.min(times * 50, 2000);
+        return delay;
+    }
+});
 
 redis
     .publish(channel, message)
@@ -22,3 +29,12 @@ redis
         console.error('Error publishing message:', err);
         process.exit(1);
     });
+
+redis.on('connect', () => {
+    console.log('Redis connected');
+});
+redis.on('error', (_err) => {
+    console.error('Redis connection error');
+});
+
+console.log('Press Ctrl+C to exit...');

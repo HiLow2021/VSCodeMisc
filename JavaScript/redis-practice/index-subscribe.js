@@ -9,7 +9,15 @@ if (!channel) {
     process.exit(1);
 }
 
-const redis = new Redis();
+const redis = new Redis('redis://localhost:6379', {
+    maxRetriesPerRequest: null,
+    retryStrategy: (times) => {
+        console.log(`Retrying to connect to Redis (attempt ${times})...`);
+
+        const delay = Math.min(times * 50, 2000);
+        return delay;
+    }
+});
 
 redis.subscribe(channel, (err) => {
     if (err) {
@@ -23,3 +31,11 @@ redis.subscribe(channel, (err) => {
 redis.on('message', (chan, message) => {
     console.log(`Received message from channel "${chan}": ${message}`);
 });
+redis.on('connect', () => {
+    console.log('Redis connected');
+});
+redis.on('error', (_err) => {
+    console.error('Redis connection error');
+});
+
+console.log('Press Ctrl+C to exit...');
