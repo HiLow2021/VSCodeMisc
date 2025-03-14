@@ -31,7 +31,7 @@ redis
     });
 
 redis.on('connect', () => {
-    console.log('Redis connected');
+    console.log('\x1b[32m%s\x1b[0m', 'Redis connected');
 });
 redis.on('error', (_err) => {
     console.error('Redis connection error');
