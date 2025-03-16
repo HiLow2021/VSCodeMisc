@@ -1,12 +1,29 @@
 import Redis from 'ioredis';
 
-const redis = new Redis('redis://localhost:6379');
+const redis = new Redis('redis://localhost:6379', {
+    maxRetriesPerRequest: null,
+    retryStrategy: (times) => {
+        console.log(`Retrying to connect to Redis (attempt ${times})...`);
 
-redis.on('error', (err) => console.error('Redis Client Error', err));
+        const delay = Math.min(times * 50, 2000);
+        return delay;
+    }
+});
 
-await redis.set('key', `value:${new Date().getTime()}`);
+redis.on('connect', () => {
+    console.log('\x1b[32m%s\x1b[0m', 'Redis connected');
+});
+redis.on('error', (_err) => {
+    console.error('Redis connection error');
+});
 
-const value = await redis.get('key');
-console.log(`key: ${value}`);
+(async () => {
+    await redis.set('key', `value:${new Date().getTime()}`);
 
-redis.disconnect();
+    const value = await redis.get('key');
+    console.log(`key: ${value}`);
+
+    redis.disconnect();
+})();
+
+console.log('Press Ctrl+C to exit...');
