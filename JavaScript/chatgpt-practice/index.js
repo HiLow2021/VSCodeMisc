@@ -1,20 +1,16 @@
-import { Configuration, OpenAIApi } from 'openai';
-import { Config } from './config.js';
+import dotenv from 'dotenv';
+import OpenAI from 'openai';
 
-const configuration = new Configuration({ apiKey: Config.ApiKey });
-const openai = new OpenAIApi(configuration);
+dotenv.config({ path: '.env' });
 
-const response = await openai.createChatCompletion(
-    {
-        model: 'gpt-3.5-turbo',
-        messages: [
-            { role: 'system', content: 'You are an excellent assistant.' },
-            { role: 'user', content: 'What is the highest mountain in Japan?' }
-        ]
-    },
-    {
-        timeout: 1000 * 60 // 60 seconds
-    }
-);
+const client = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY
+});
 
-console.log(response.data.choices[0].message?.content);
+const response = await client.responses.create({
+    model: 'o3-mini',
+    instructions: 'You are an excellent assistant.',
+    input: 'What is the highest mountain in Japan?'
+});
+
+console.log(response.output_text);

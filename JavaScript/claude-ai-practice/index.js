@@ -11,14 +11,14 @@ const message = await anthropic.messages.create({
   model: "claude-3-5-haiku-latest",
   max_tokens: 8192,
   temperature: 1,
-  system: "Speak in Japanese",
+  system: "You are an excellent assistant.",
   messages: [
     {
       "role": "user",
       "content": [
         {
           "type": "text",
-          "text": "おはよう"
+          "text": "What is the biggest lake in Japan?"
         }
       ]
     }
