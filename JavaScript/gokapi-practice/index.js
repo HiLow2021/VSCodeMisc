@@ -38,5 +38,5 @@ async function upload(filename) {
 
     const data = await res.json();
 
-    console.log('data', data);
+    console.log(filename, data);
 }
