@@ -108,8 +108,16 @@ fvm --version
 
     1. Android Studio インストール
 
-    2. adb.exe で `adb -a start-server` 実行
-        - adb サーバーが  0.0.0.0:5037 で Listening されていること
+    2. adb.exe で adb サーバーを 0.0.0.0:5037 で起動
+
+        ```powershell
+        adb kill-server
+        adb -a -P 5037 nodaemon server
+        ```
+
+        - この PowerShell は開いたままにする
+        - 別 PowerShell で `netstat -ano | findstr 5037` を実行し、`0.0.0.0:5037` で Listening されていることを確認
+        - 既に `127.0.0.1:5037` が残っている場合のみ、該当 adb.exe を終了してから再実行
 
     3. Android Studio を起動して、Virtual Device Manager で Android エミュレーター起動
         - 実機の場合、USB 接続
@@ -120,8 +128,8 @@ fvm --version
 
 ```sh
 cd /path/to/your/project
-fvm install stable
-fvm use stable
+fvm install
+fvm use
 fvm flutter pub get
 fvm flutter run -d <device_id>
 ```
@@ -262,7 +270,7 @@ fvm remove 3.22.2
 
 ```sh
 adb start-server                # ADB サーバー起動
-adb -a start-server             # ADB サーバー起動 (0.0.0.0)
+adb -a -P 5037 nodaemon server  # ADB サーバー起動 (0.0.0.0:5037、PowerShell を開いたままにする)
 adb kill-server                 # ADB サーバー停止
 adb devices -l                  # 接続デバイス一覧（詳細付き）
 adb connect <host>:<port>       # ネットワーク経由で接続（例: 192.168.0.10:5555）
@@ -415,6 +423,7 @@ export PATH="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platfo
 
 # Windows 側 adb サーバーに接続する場合に有効にする
 # Windows の IP が変わるので動的取得で設定
+# Windows 側 adb サーバーが 0.0.0.0:5037 で起動済みの状態で WSL を起動する
 export ADB_SERVER_SOCKET="tcp:$(ip route | awk '/^default via/ {print $3; exit}'):5037"
 EOF
 source ~/.bashrc
@@ -423,14 +432,23 @@ source ~/.bashrc
 ### WSL 側で `adb devices` で、Windows 側のデバイスが認識できない
     
 - adb サーバーを 0.0.0.0 で起動していない
-    - PC 起動時や Android Studio を起動すると、自動的に adb サーバーが 127.0.0.1 で起動するので、一旦終了してから、手動で `adb -a start-server` で adb サーバー起動
+    - PC 起動時や Android Studio を起動すると、自動的に adb サーバーが 127.0.0.1 で起動することがある
+    - 一旦終了してから、手動で `adb -a -P 5037 nodaemon server` を実行し、`0.0.0.0:5037` で起動する
+    - Windows 側 adb サーバーを起動してから WSL を起動するか、WSL 側で `source ~/.bashrc` を実行する
 - adb サーバーが Windows Firewall で遮断されている
     - Windows セキュリティ > ファイアウォールによるアプリケーションの許可から、adb.exe (TCP 5037) を追加して、プライベートとパブリックにチェックマークを入れる
 
 ### adb サーバーが勝手に起動してしまい、0.0.0.0 で起動できない
     
-- Android Studio を起動すると、adb サーバーが 127.0.0.1 で起動を繰り返すので、一旦終了してから、`adb kill-server && adb -a start-server` で手動で adb サーバーを起動した後に、Android Studio を起動
-    - `netstat -ano | findstr 5037` で、adb サーバーの起動状態を確認可能
+- Android Studio を起動すると、adb サーバーが 127.0.0.1 で起動を繰り返すことがある
+- Android Studio を一旦終了してから、PowerShell で下記を実行
+
+```powershell
+adb kill-server
+adb -a -P 5037 nodaemon server
+```
+
+- `netstat -ano | findstr 5037` で `0.0.0.0:5037` を確認してから、必要に応じて Android Studio を起動
 
 ### adb.exe の場所
 
