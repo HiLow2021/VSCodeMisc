@@ -32,7 +32,7 @@
 
 - Ubuntu 24.04 LTS で確認
 
-1. OpenJDK をインストール (例: oepnjdk-17)
+1. OpenJDK をインストール (例: openjdk-17)
 
 ```sh
 sudo apt update
@@ -42,13 +42,12 @@ java -version
 
 2. Android SDK をインストール (CLI ツール含む)
 
-- 環境変数を設定 (永続化は、[下記](#wsl-を再起動しても永続化するように設定ファイルに環境変数を追記)を参照)
+- Android SDK の環境変数を設定 (永続化は、[下記](#wsl-を再起動しても永続化するように設定ファイルに環境変数を追記)を参照)
 
 ```sh
 export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
 export ANDROID_HOME="$ANDROID_SDK_ROOT"
 export PATH="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH"
-export ADB_SERVER_SOCKET="tcp:$(ip route | awk '/^default via/ {print $3; exit}'):5037"
 ```
 
 - CLI ツール配置
@@ -124,7 +123,14 @@ fvm --version
 
     4. `adb devices` でデバイスが認識されていることを確認
 
-6. デバック実行
+6. WSL 側から Windows 側 adb サーバーに接続
+
+```sh
+export ADB_SERVER_SOCKET="tcp:$(ip route | awk '/^default via/ {print $3; exit}'):5037"
+adb devices -l
+```
+
+7. デバッグ実行
 
 ```sh
 cd /path/to/your/project
@@ -134,22 +140,100 @@ fvm flutter pub get
 fvm flutter run -d <device_id>
 ```
 
-## パッケージ
+## トラブルシューティング
+
+### Flutter 関連のインストール状況を調べる方法
+
+- `flutter doctor -v` コマンドを使う。
+
+### デバッグ時のデバイスを変更する方法
+
+Ctrl + Shift + P でコマンドパレットを開いて、Flutter: Select Device を選択。
+
+<a id="android"></a>
+
+### Android SDK を既にインストールしている場合
+
+- `flutter config --android-sdk <sdk_directory_name>` でインストール先を直接設定する。
+- Windows 10 & Visual Studio 2022 経由で Android SDK をインストールしている場合、`C:\Program Files (x86)\Android\android-sdk` にインストールされている可能性が高い。
+
+### Android SDK を既にインストールしているが、Android Studio 経由の Android SDK のパスに変更したい場合
+
+- `flutter config --android-sdk <sdk_directory_name>` でインストール先を直接設定する。
+- Android Studio をデフォルトの設定でインストールしている場合、`C:\Users\<User>\AppData\Local\Android\Sdk` にインストールされている可能性が高い。
+
+### Android デバッグ用のデバイス選択時にエラーが発生する場合
+
+- Hyper-V が起動しているか確認する。ただし、動作が重いため、正規の Intel HAXM をインストールするか、実機を使ったデバッグを推奨。
+
+### Git Clone でリポジトリをクローンした時にエラーが発生する場合
+
+- `flutter pub get` で依存パッケージを更新。
+
+### WSL を再起動しても永続化するように設定ファイルに環境変数を追記
+
+```sh
+cat <<'EOF' >> ~/.bashrc
+# Android SDK
+export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+export ANDROID_HOME="$ANDROID_SDK_ROOT"
+export PATH="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH"
+
+# Windows 側 adb サーバーが起動済みなら接続する
+_adb_host="$(ip route | awk '/^default via/ {print $3; exit}')"
+if [ -n "$_adb_host" ] && timeout 0.2 bash -c ":</dev/tcp/$_adb_host/5037" 2>/dev/null; then
+  export ADB_SERVER_SOCKET="tcp:$_adb_host:5037"
+fi
+unset _adb_host
+EOF
+source ~/.bashrc
+```
+
+### WSL 側で `adb devices` で、Windows 側のデバイスが認識できない
+
+- adb サーバーを 0.0.0.0 で起動していない
+    - PC 起動時や Android Studio を起動すると、自動的に adb サーバーが 127.0.0.1 で起動することがある
+    - 一旦終了してから、手動で `adb -a -P 5037 nodaemon server` を実行し、`0.0.0.0:5037` で起動する
+    - Windows 側 adb サーバーを起動してから WSL を起動するか、WSL 側で `source ~/.bashrc` を実行する
+- adb サーバーが Windows Firewall で遮断されている
+    - Windows セキュリティ > ファイアウォールによるアプリケーションの許可から、adb.exe (TCP 5037) を追加して、プライベートとパブリックにチェックマークを入れる
+
+### adb サーバーが勝手に起動してしまい、0.0.0.0 で起動できない
+
+- Android Studio を起動すると、adb サーバーが 127.0.0.1 で起動を繰り返すことがある
+- Android Studio を一旦終了してから、PowerShell で下記を実行
+
+```powershell
+adb kill-server
+adb -a -P 5037 nodaemon server
+```
+
+- `netstat -ano | findstr 5037` で `0.0.0.0:5037` を確認してから、必要に応じて Android Studio を起動
+
+### adb.exe の場所
+
+- Windows 10 では、`C:/Users/<ユーザー名>/AppData/Local/Android/Sdk/platform-tools/adb.exe`
+- Android Studio で、Settings > Appearance & Behavior > System Settings > Android SDK の「SDK Location」を開き、その配下の platform-tools/adb.exe
+- adb.exe を PATH に追加しておくと adb コマンドがターミナルのどこからも使えて便利
+
+## 付録
+
+### パッケージ
 
 - [公式](https://pub.dev/)
 
-## マテリアルデザイン (UIフレームワーク)
+### マテリアルデザイン (UIフレームワーク)
 
 - Flutter 3.16 から、マテリアルデザインはデフォルトで導入済みなので、別途インストールする必要なし。
 - [公式](https://m3.material.io/)
 - [コードサンプル](https://api.flutter.dev/flutter/material/material-library.html)
 - [アイコン検索](https://fonts.google.com/icons)
 
-## コマンド
+### コマンド
 
-### flutter
+#### flutter
 
-#### パッケージ
+##### パッケージ
 
 - パッケージ更新
 
@@ -175,7 +259,7 @@ flutter pub add --dev <package_name>
 flutter pub remove <package_name>
 ```
 
-#### 実行
+##### 実行
 
 - ビルド
 
@@ -195,7 +279,7 @@ flutter run -d <device_id>
 flutter run -d emulator-5554
 ```
 
-#### プロジェクト
+##### プロジェクト
 
 - build ディレクトリなど削除
 
@@ -203,7 +287,7 @@ flutter run -d emulator-5554
 flutter clean
 ```
 
-#### Android
+##### Android
 
 - Android SDK のパスを設定
 
@@ -214,7 +298,7 @@ flutter config --android-sdk <sdk_directory_name>
 flutter config --android-sdk "C:\Users\<User>\AppData\Local\Android\Sdk"
 ```
 
-### fvm
+#### fvm
 
 - flutter コマンド使用
 
@@ -264,7 +348,7 @@ fvm global 3.24.0       # グローバル切替
 fvm remove 3.22.2
 ```
 
-### adb
+#### adb
 
 - デバイス管理
 
@@ -292,7 +376,7 @@ adb forward tcp:8080 tcp:8080   # PC -> 端末（順方向）
 adb reverse tcp:8080 tcp:8080   # 端末 -> PC（逆方向、開発で便利）
 ```
 
-### その他
+#### その他
 
 - サーバー稼働状況確認
 
@@ -315,15 +399,15 @@ sudo update-java-alternatives --list
 sudo update-java-alternatives --set <NAME> (NAME は --list の1列目)
 ```
 
-## テスト
+### テスト
 
 ```sh
 flutter test
 ```
 
-## リリース (公開)
+### リリース (公開)
 
-### 手順
+#### 手順
 
 - Google PlayとApp Storeの場合は、公開のための申請を行い、審査を受ける必要あり。
 
@@ -336,7 +420,7 @@ flutter test
 | macOS | 実行可能形式にビルドして配布 |
 | Linux | 実行可能形式にビルドして配布 |
 
-### アプリ名の変更
+#### アプリ名の変更
 
 | プラットフォーム | パス | 説明 |
 | --- | --- | --- |
@@ -346,7 +430,7 @@ flutter test
 | macOS | [window_manager](https://pub.dev/packages/window_manager) を使用 |
 | Linux | [window_manager](https://pub.dev/packages/window_manager) を使用 |
 
-### アイコンの変更
+#### アイコンの変更
 
 1. [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons) パッケージをインストール
 
@@ -381,77 +465,3 @@ flutter_launcher_icons:
 ```
 
 3. `flutter pub run flutter_launcher_icons` コマンドを実行
-
-## トラブルシューティング
-
-### Flutter 関連のインストール状況を調べる方法
-
-- `flutter doctor -v` コマンドを使う。
-
-### デバッグ時のデバイスを変更する方法
-
-Ctrl + Shift + P でコマンドパレットを開いて、Flutter: Select Device を選択。
-
-<a id="android"></a>
-
-### Android SDK を既にインストールしている場合
-
-- `flutter config --android-sdk <sdk_directory_name>` でインストール先を直接設定する。
-- Windows 10 & Visual Studio 2022 経由で Android SDK をインストールしている場合、`C:\Program Files (x86)\Android\android-sdk` にインストールされている可能性が高い。
-
-### Android SDK を既にインストールしているが、Android Studio 経由の Android SDK のパスに変更したい場合
-
-- `flutter config --android-sdk <sdk_directory_name>` でインストール先を直接設定する。
-- Android Studio をデフォルトの設定でインストールしている場合、`C:\Users\<User>\AppData\Local\Android\Sdk` にインストールされている可能性が高い。
-
-### Android デバッグ用のデバイス選択時にエラーが発生する場合
-
-- Hyper-V が起動しているか確認する。ただし、動作が重いため、正規の Intel HAXM をインストールするか、実機を使ったデバッグを推奨。
-
-### Git Clone でリポジトリをクローンした時にエラーが発生する場合
-
-- `flutter pub get` で依存パッケージを更新。
-
-### WSL を再起動しても永続化するように設定ファイルに環境変数を追記
-
-```sh
-cat <<'EOF' >> ~/.bashrc
-# Android SDK
-export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
-export ANDROID_HOME="$ANDROID_SDK_ROOT"
-export PATH="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH"
-
-# Windows 側 adb サーバーに接続する場合に有効にする
-# Windows の IP が変わるので動的取得で設定
-# Windows 側 adb サーバーが 0.0.0.0:5037 で起動済みの状態で WSL を起動する
-export ADB_SERVER_SOCKET="tcp:$(ip route | awk '/^default via/ {print $3; exit}'):5037"
-EOF
-source ~/.bashrc
-```
-
-### WSL 側で `adb devices` で、Windows 側のデバイスが認識できない
-    
-- adb サーバーを 0.0.0.0 で起動していない
-    - PC 起動時や Android Studio を起動すると、自動的に adb サーバーが 127.0.0.1 で起動することがある
-    - 一旦終了してから、手動で `adb -a -P 5037 nodaemon server` を実行し、`0.0.0.0:5037` で起動する
-    - Windows 側 adb サーバーを起動してから WSL を起動するか、WSL 側で `source ~/.bashrc` を実行する
-- adb サーバーが Windows Firewall で遮断されている
-    - Windows セキュリティ > ファイアウォールによるアプリケーションの許可から、adb.exe (TCP 5037) を追加して、プライベートとパブリックにチェックマークを入れる
-
-### adb サーバーが勝手に起動してしまい、0.0.0.0 で起動できない
-    
-- Android Studio を起動すると、adb サーバーが 127.0.0.1 で起動を繰り返すことがある
-- Android Studio を一旦終了してから、PowerShell で下記を実行
-
-```powershell
-adb kill-server
-adb -a -P 5037 nodaemon server
-```
-
-- `netstat -ano | findstr 5037` で `0.0.0.0:5037` を確認してから、必要に応じて Android Studio を起動
-
-### adb.exe の場所
-
-- Windows 10 では、`C:/Users/<ユーザー名>/AppData/Local/Android/Sdk/platform-tools/adb.exe`
-- Android Studio で、Settings > Appearance & Behavior > System Settings > Android SDK の「SDK Location」を開き、その配下の platform-tools/adb.exe
-- adb.exe を PATH に追加しておくと adb コマンドがターミナルのどこからも使えて便利
