@@ -125,10 +125,14 @@ fvm --version
 
 6. WSL 側から Windows 側 adb サーバーに接続
 
+- 一時的に設定する場合
+
 ```sh
 export ADB_SERVER_SOCKET="tcp:$(ip route | awk '/^default via/ {print $3; exit}'):5037"
 adb devices -l
 ```
+
+- 永続化する場合は、[下記](#wsl-を再起動しても永続化するように設定ファイルに環境変数を追記)を参照
 
 7. デバッグ実行
 
@@ -171,6 +175,16 @@ Ctrl + Shift + P でコマンドパレットを開いて、Flutter: Select Devic
 - `flutter pub get` で依存パッケージを更新。
 
 ### WSL を再起動しても永続化するように設定ファイルに環境変数を追記
+
+この設定は、Windows 側 adb サーバーが `0.0.0.0:5037` で起動済みの場合だけ `ADB_SERVER_SOCKET` を設定する。
+安定させるには、先に Windows 側で下記を実行してから WSL を起動する。
+
+```powershell
+adb kill-server
+adb -a -P 5037 nodaemon server
+```
+
+WSL を先に起動していた場合は、Windows 側 adb サーバーを起動した後に WSL 側で `source ~/.bashrc` を実行する。
 
 ```sh
 cat <<'EOF' >> ~/.bashrc
