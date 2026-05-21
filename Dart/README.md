@@ -123,26 +123,80 @@ fvm --version
 
     4. `adb devices` でデバイスが認識されていることを確認
 
-6. WSL 側から Windows 側 adb サーバーに接続
+6. WSL 側の永続設定
 
-- 一時的に設定する場合
+- [下記](#wsl-の永続設定)を参照
+
+7. 毎回の開発手順
+
+- [下記](#毎回の開発手順-wsl--windows-adb)を参照
+
+## WSL の永続設定
+
+Android SDK の環境変数と、Windows 側 adb サーバーへの接続設定を `~/.bashrc` に追記する。
+`ADB_SERVER_SOCKET` は、Windows 側 adb サーバーに接続できる場合だけ設定する。
+
+WSL mirrored networking を有効にしている場合は `127.0.0.1:5037` を優先し、接続できない場合は WSL から見た Windows ホスト IP にフォールバックする。
+
+```sh
+cat <<'EOF' >> ~/.bashrc
+# Android SDK
+export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+export ANDROID_HOME="$ANDROID_SDK_ROOT"
+export PATH="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH"
+
+# Windows 側 adb サーバーが起動済みなら接続する
+if timeout 0.2 bash -c ":</dev/tcp/127.0.0.1/5037" 2>/dev/null; then
+  export ADB_SERVER_SOCKET="tcp:127.0.0.1:5037"
+else
+  _adb_host="$(ip route | awk '/^default via/ {print $3; exit}')"
+  if [ -n "$_adb_host" ] && timeout 0.2 bash -c ":</dev/tcp/$_adb_host/5037" 2>/dev/null; then
+    export ADB_SERVER_SOCKET="tcp:$_adb_host:5037"
+  fi
+  unset _adb_host
+fi
+EOF
+source ~/.bashrc
+```
+
+一時的に設定するだけなら、下記を実行する。
 
 ```sh
 export ADB_SERVER_SOCKET="tcp:$(ip route | awk '/^default via/ {print $3; exit}'):5037"
 adb devices -l
 ```
 
-- 永続化する場合は、[下記](#wsl-を再起動しても永続化するように設定ファイルに環境変数を追記)を参照
+## 毎回の開発手順 (WSL + Windows adb)
 
-7. デバッグ実行
+1. Windows 側で adb サーバーを `0.0.0.0:5037` で起動
 
-```sh
-cd /path/to/your/project
-fvm install
-fvm use
-fvm flutter pub get
-fvm flutter run -d <device_id>
-```
+    ```powershell
+    adb kill-server
+    adb -a -P 5037 nodaemon server
+    ```
+
+    - この PowerShell は開いたままにする
+    - 別 PowerShell で `netstat -ano | findstr 5037` を実行し、`0.0.0.0:5037` で Listening されていることを確認
+    - WSL mirrored networking を使う場合でも、`adb -a` で起動しておくと NAT 構成に戻した時に手順が変わりにくい
+
+2. Android Studio で Android エミュレーターを起動、または実機を接続
+
+3. WSL 側で Windows 側 adb サーバーへの接続を確認
+
+    ```sh
+    source ~/.bashrc
+    adb devices -l
+    ```
+
+4. Flutter を実行
+
+    ```sh
+    cd /path/to/your/project
+    fvm install      # 初回、または Flutter バージョン未導入時のみ
+    fvm use
+    fvm flutter pub get
+    fvm flutter run -d <device_id>
+    ```
 
 ## トラブルシューティング
 
@@ -173,35 +227,6 @@ Ctrl + Shift + P でコマンドパレットを開いて、Flutter: Select Devic
 ### Git Clone でリポジトリをクローンした時にエラーが発生する場合
 
 - `flutter pub get` で依存パッケージを更新。
-
-### WSL を再起動しても永続化するように設定ファイルに環境変数を追記
-
-この設定は、Windows 側 adb サーバーが `0.0.0.0:5037` で起動済みの場合だけ `ADB_SERVER_SOCKET` を設定する。
-安定させるには、先に Windows 側で下記を実行してから WSL を起動する。
-
-```powershell
-adb kill-server
-adb -a -P 5037 nodaemon server
-```
-
-WSL を先に起動していた場合は、Windows 側 adb サーバーを起動した後に WSL 側で `source ~/.bashrc` を実行する。
-
-```sh
-cat <<'EOF' >> ~/.bashrc
-# Android SDK
-export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
-export ANDROID_HOME="$ANDROID_SDK_ROOT"
-export PATH="$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH"
-
-# Windows 側 adb サーバーが起動済みなら接続する
-_adb_host="$(ip route | awk '/^default via/ {print $3; exit}')"
-if [ -n "$_adb_host" ] && timeout 0.2 bash -c ":</dev/tcp/$_adb_host/5037" 2>/dev/null; then
-  export ADB_SERVER_SOCKET="tcp:$_adb_host:5037"
-fi
-unset _adb_host
-EOF
-source ~/.bashrc
-```
 
 ### WSL 側で `adb devices` で、Windows 側のデバイスが認識できない
 
